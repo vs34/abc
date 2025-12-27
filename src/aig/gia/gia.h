@@ -1811,6 +1811,7 @@ extern int                 Gia_ManCountPisWithFanout( Gia_Man_t * p );
 extern int                 Gia_ManCountPosWithNonZeroDrivers( Gia_Man_t * p );
 extern void                Gia_ManUpdateCopy( Vec_Int_t * vCopy, Gia_Man_t * p );
 extern Vec_Int_t *         Gia_ManComputeDistance( Gia_Man_t * p, int iObj, Vec_Int_t * vObjs, int fVerbose );
+void somthing_happening(Gia_Man_t *graph);
 
 /*=== giaTtopt.cpp ===========================================================*/
 extern Gia_Man_t *         Gia_ManTtopt( Gia_Man_t * p, int nIns, int nOuts, int nRounds );

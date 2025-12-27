@@ -1078,6 +1078,7 @@ Gia_Man_t * Gia_ManAreaBalance( Gia_Man_t * p, int fSimpleAnd, int nNewNodesMax,
     if ( pNew0 != p ) Gia_ManStop( pNew0 );
     // perform the operation
     pNew1 = Dam_ManAreaBalanceInt( pNew, vCiLevels, nNewNodesMax, fVerbose, fVeryVerbose );
+    somthing_happening(pNew1);
     Gia_ManTransferTiming( pNew1, pNew );
     if ( fVerbose )     Gia_ManPrintStats( pNew1, NULL );
     Gia_ManStop( pNew );

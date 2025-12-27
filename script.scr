@@ -1,0 +1,7 @@
+read_verilog trash.v
+&get -n
+&st
+&b
+&put
+write_verilog trash_output.v
+quit
