@@ -75,6 +75,7 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
 }
 Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
 {
+    printf("netlist to GIA (&get)\n");
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
     int i;
@@ -99,6 +100,7 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     Gia_ManSetRegNum( pNew, Aig_ManRegNum(p) );
     if ( pNew->pNexts )
         Gia_ManDeriveReprs( pNew );
+    somthing_happening(pNew);
     return pNew;
 }
 
@@ -317,6 +319,7 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
 }
 Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
 {
+    printf("GIA to netlist (&put)\n");
     Aig_Man_t * pNew;
     Aig_Obj_t ** ppNodes;
     Gia_Obj_t * pObj;
@@ -348,6 +351,7 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     }
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
     ABC_FREE( ppNodes );
+    somthing_happening(p);
     return pNew;
 }
 

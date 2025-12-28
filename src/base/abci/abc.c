@@ -865,6 +865,7 @@ void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
         Gia_ManStop( pAbc->pGia2 );
     pAbc->pGia2 = pAbc->pGia;
     pAbc->pGia  = pNew;
+    somthing_happening(pNew);
 }
 
 /**Function*************************************************************
@@ -34445,7 +34446,7 @@ int Abc_CommandAbc9Get( Abc_Frame_t * pAbc, int argc, char ** argv )
         pGia->vOutReqs = Vec_FltAllocArray( Abc_NtkGetCoRequiredFloats(pNtk), Abc_NtkCoNum(pNtk) );
         pGia->And2Delay = pNtk->AndGateDelay;
     }
-    Abc_FrameUpdateGia( pAbc, pGia );
+    Abc_FrameUpdateGia( pAbc, pGia ); //main thing somthing
     return 0;
 
 usage:

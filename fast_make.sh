@@ -4,20 +4,21 @@ set -e
 CHANGED=$(git status --porcelain | awk '{print $2}' | grep -E '\.(c|cc|cpp)$' || true)
 
 if [ -z "$CHANGED" ]; then
-    echo "========= nothing changed"
+    echo "🌙 nothing changed"
     exit 0
 fi
 
-echo "========= changed sources:"
+echo "⚡ changed sources:"
 echo "$CHANGED"
 echo
 
 for f in $CHANGED; do
     obj="${f%.*}.o"
-    echo "touching $obj"
+    echo "🧹 removing $obj"
     rm -f "$obj"
 done
 
 echo
-echo "========== letting make do the dependency magic…"
-make -j$(nproc)
+echo "🧠 rebuilding with debug symbols..."
+make -j$(nproc) OPTFLAGS="-g -O0"
+
