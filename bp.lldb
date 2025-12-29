@@ -1,2 +1,4 @@
-b Gia_ManAreaBalance
-b Gia_ManFromAig
+b Gia_ManAreaBalance # balence
+b Abc_FrameUpdateGia    # updateing the graph
+b Gia_ManFromAig   # Aig(basc) to GIA
+b Gia_ManToAig   # GIA to Aig

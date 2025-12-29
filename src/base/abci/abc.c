@@ -835,6 +835,7 @@ void Abc_FrameClearDesign()
 ***********************************************************************/
 void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
+    printf("update the pAbc(mother) with pNew\n");
     if ( pNew == NULL )
     {
         Abc_Print( -1, "Abc_FrameUpdateGia(): Transformation has failed.\n" );
@@ -34364,6 +34365,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Get( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code for &get\n");
     extern Aig_Man_t * Abc_NtkToDarChoices( Abc_Ntk_t * pNtk );
     Abc_Ntk_t * pStrash;
     Aig_Man_t * pAig;
@@ -34476,6 +34478,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Put( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &put\n");
     extern Abc_Ntk_t * Abc_NtkFromDarChoices( Abc_Ntk_t * pNtkOld, Aig_Man_t * pMan );
     extern void Abc_NtkRedirectCiCo( Abc_Ntk_t * pNtk );
     extern Abc_Ntk_t * Abc_NtkFromCellMappedGia( Gia_Man_t * p, int fUseBuffs );
@@ -36227,6 +36230,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Strash( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &st\n");
     extern Gia_Man_t * Gia_ManDupMuxRestructure( Gia_Man_t * p );
     Gia_Man_t * pTemp;
     int c, Limit = 2;
@@ -39878,6 +39882,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Syn2( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &syn2\n");
     Gia_Man_t * pTemp;
     int c, fVerbose  =  0;
     int fOldAlgo     =  0;
@@ -42895,6 +42900,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Sweep( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &sweep\n");
     Gia_Man_t * pTemp;
     Dch_Pars_t Pars, * pPars = &Pars;
     int c;
@@ -43644,6 +43650,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9If( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &if\n");
     char Buffer[200];
     char LutSize[200];
     Gia_Man_t * pNew;
@@ -45476,6 +45483,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Nf( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &nf\n");
     extern void Nf_ManSetDefaultPars( Jf_Par_t * pPars );
     extern Gia_Man_t * Nf_ManPerformMapping( Gia_Man_t * pGia, Jf_Par_t * pPars );
     extern Gia_Man_t * Pf_ManPerformMapping( Gia_Man_t * pGia, Jf_Par_t * pPars );
@@ -48351,6 +48359,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Dch( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
+    printf("running code &dch\n");
     extern Gia_Man_t * Gia_ManEquivReduce2( Gia_Man_t * p, int fRandom );
     Gia_Man_t * pTemp;
     Dch_Pars_t Pars, * pPars = &Pars;

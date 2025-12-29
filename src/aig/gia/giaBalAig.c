@@ -1046,6 +1046,7 @@ Gia_Man_t * Dam_ManAreaBalanceInt( Gia_Man_t * pGia, Vec_Int_t * vCiLevels, int 
 }
 Gia_Man_t * Gia_ManAreaBalance( Gia_Man_t * p, int fSimpleAnd, int nNewNodesMax, int fVerbose, int fVeryVerbose )
 {
+    printf("ballnceing the graph\n");
     Gia_Man_t * pNew0, * pNew, * pNew1, * pNew2;
     Vec_Int_t * vCiLevels;
     // set arrival times for the input of the new AIG

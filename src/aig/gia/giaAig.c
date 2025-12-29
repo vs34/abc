@@ -75,7 +75,7 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
 }
 Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
 {
-    printf("netlist to GIA (&get)\n");
+    printf("AIG to GIA (&get)\n");
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
     int i;
@@ -319,7 +319,7 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
 }
 Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
 {
-    printf("GIA to netlist (&put)\n");
+    printf("GIA to AIG (&put)\n");
     Aig_Man_t * pNew;
     Aig_Obj_t ** ppNodes;
     Gia_Obj_t * pObj;

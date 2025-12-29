@@ -1,7 +1,16 @@
 read_verilog trash.v
+print_stats;
+print_level -n;
 &get -n
 &st
-&b
+&sweep
+# &b
+&dch
+# &nf  # causing error
+&syn2
+&if -g -K 6
 &put
+print_stats;
+print_level -n;
 write_verilog trash_output.v
 quit

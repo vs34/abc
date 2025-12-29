@@ -3565,7 +3565,7 @@ void Gia_ManFindMutualEquivsTest()
 
 
 void somthing_happening(Gia_Man_t *graph){
-    printf("======================somthing is happening===================\n");
+    printf("====================== somthing is happening ===================\n");
 
 }
 ////////////////////////////////////////////////////////////////////////
