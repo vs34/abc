@@ -3569,13 +3569,61 @@ void somthing_happening(Gia_Man_t *graph){
 
 }
 
-void updating_mother(Gia_Man_t * mother, Gia_Man_t * pNew, int mode){
-    if (mode == 0){
-        if (mother == pNew){
-            printf("nothing to update\n");
+void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
+{
+    // Mode 0: Forward Trace (Old -> New)
+    if (pOld == NULL || pNew == NULL){
+        printf("NULL\n");
+        return;
+    }
+    if ( mode == 0 )
+    {
+        if ( pOld == pNew ) {
+            fprintf(stderr, "[TRACE] Same manager. Skipping.\n");
+            return;
         }
-        printf("mother is changing so are we\n");
 
+        fprintf(stderr, "\n=== [TRACE START] Mapping Old GIA (%d) -> New GIA (%d) ===\n", 
+                Gia_ManObjNum(pOld), Gia_ManObjNum(pNew));
+
+        Gia_Obj_t * pObjOld;
+        int i;
+        int nMapped = 0;
+        int nLost = 0;
+
+        // Iterate over the MOTHER (Old Manager)
+        Gia_ManForEachObj( pOld, pObjOld, i )
+        {
+            // Skip Constant 0 (it always maps to 0)
+            if ( i == 0 ) continue;
+
+            // Check the bridge (pObjOld->Value holds the New Literal)
+            // GIA_NONE usually means -1, indicating the node was deleted/unused.
+            if ( ~pObjOld->Value ) 
+            {
+                int iNewLit = pObjOld->Value;
+                int iNewId = Abc_Lit2Var( iNewLit ); // Convert Lit -> ID
+                
+                // Safety: Is the destination valid?
+                if ( iNewId > 0 && iNewId < Gia_ManObjNum(pNew) )
+                {
+                    nMapped++;
+                    // Print first 20 mappings to verify
+                    if ( nMapped < 20 ) {
+                        fprintf(stderr, "  [MAP] Old Node %d  --->  New Node %d\n", i, iNewId);
+                    }
+                }
+                else {
+                    // Mapped to something weird (likely constant 0 or 1)
+                    // fprintf(stderr, "  [CONST] Old Node %d became Constant\n", i);
+                }
+            }
+            else {
+                nLost++; // Node was swept away / deleted
+            }
+        }
+        
+        fprintf(stderr, "=== [TRACE END] Mapped: %d | Deleted/Lost: %d ===\n\n", nMapped, nLost);
     }
 }
 ////////////////////////////////////////////////////////////////////////

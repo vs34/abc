@@ -837,6 +837,7 @@ void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
     printf("update the pAbc(mother) with pNew\n");
     updating_mother(pAbc->pGia, pNew, 0); // should work on pAbc could cause problem
+
     if ( pNew == NULL )
     {
         Abc_Print( -1, "Abc_FrameUpdateGia(): Transformation has failed.\n" );
@@ -34367,6 +34368,24 @@ usage:
 int Abc_CommandAbc9Get( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
     printf("running code for &get\n");
+
+
+    Abc_Obj_t * pObj;
+    int i;
+    printf("--- Netlist Nodes ---\n");
+    Abc_NtkForEachObj( pAbc->pNtkCur, pObj, i )
+    {
+        // Skip the constant node (ID 0) if you want
+        if ( Abc_ObjIsNode(pObj) || Abc_ObjIsCi(pObj) || Abc_ObjIsCo(pObj) )
+        {
+            // Abc_ObjName(pObj) fetches the string name (e.g., "wire_A")
+            printf("Object ID: %d, Name: %s\n", 
+                   Abc_ObjId(pObj), 
+                   Abc_ObjName(pObj));
+        }
+    }
+
+
     extern Aig_Man_t * Abc_NtkToDarChoices( Abc_Ntk_t * pNtk );
     Abc_Ntk_t * pStrash;
     Aig_Man_t * pAig;

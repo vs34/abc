@@ -1812,7 +1812,7 @@ extern int                 Gia_ManCountPosWithNonZeroDrivers( Gia_Man_t * p );
 extern void                Gia_ManUpdateCopy( Vec_Int_t * vCopy, Gia_Man_t * p );
 extern Vec_Int_t *         Gia_ManComputeDistance( Gia_Man_t * p, int iObj, Vec_Int_t * vObjs, int fVerbose );
 void somthing_happening(Gia_Man_t *graph);
-void updating_mother(Gia_Man_t * mother, Gia_Man_t * pNew, int mode);
+void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode );
 
 
 /*=== giaTtopt.cpp ===========================================================*/
