@@ -836,6 +836,7 @@ void Abc_FrameClearDesign()
 void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
     printf("update the pAbc(mother) with pNew\n");
+    updating_mother(pAbc->pGia, pNew, 0); // should work on pAbc could cause problem
     if ( pNew == NULL )
     {
         Abc_Print( -1, "Abc_FrameUpdateGia(): Transformation has failed.\n" );

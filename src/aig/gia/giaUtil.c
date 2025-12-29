@@ -3568,6 +3568,16 @@ void somthing_happening(Gia_Man_t *graph){
     printf("====================== somthing is happening ===================\n");
 
 }
+
+void updating_mother(Gia_Man_t * mother, Gia_Man_t * pNew, int mode){
+    if (mode == 0){
+        if (mother == pNew){
+            printf("nothing to update\n");
+        }
+        printf("mother is changing so are we\n");
+
+    }
+}
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///
 ////////////////////////////////////////////////////////////////////////

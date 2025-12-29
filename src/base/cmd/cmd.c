@@ -95,6 +95,7 @@ void Cmd_Init( Abc_Frame_t * pAbc )
     Cmd_CommandAdd( pAbc, "Basic", "sleep",         CmdCommandSleep,           0 );
     Cmd_CommandAdd( pAbc, "Basic", "echo",          CmdCommandEcho,            0 );
     Cmd_CommandAdd( pAbc, "Basic", "quit",          CmdCommandQuit,            0 );
+    Cmd_CommandAdd( pAbc, "Basic", "exit",          CmdCommandQuit,            0 );
     Cmd_CommandAdd( pAbc, "Basic", "abcrc",         CmdCommandAbcrc,           0 );
     Cmd_CommandAdd( pAbc, "Basic", "history",       CmdCommandHistory,         0 );
     Cmd_CommandAdd( pAbc, "Basic", "alias",         CmdCommandAlias,           0 );
