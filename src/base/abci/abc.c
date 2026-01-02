@@ -34376,13 +34376,13 @@ int Abc_CommandAbc9Get( Abc_Frame_t * pAbc, int argc, char ** argv )
     Abc_NtkForEachObj( pAbc->pNtkCur, pObj, i )
     {
         // Skip the constant node (ID 0) if you want
-        if ( Abc_ObjIsNode(pObj) || Abc_ObjIsCi(pObj) || Abc_ObjIsCo(pObj) )
-        {
+        // if ( Abc_ObjIsNode(pObj) || Abc_ObjIsCi(pObj) || Abc_ObjIsCo(pObj) )
+        // {
             // Abc_ObjName(pObj) fetches the string name (e.g., "wire_A")
             printf("Object ID: %d, Name: %s\n", 
                    Abc_ObjId(pObj), 
                    Abc_ObjName(pObj));
-        }
+        // }
     }
 
 

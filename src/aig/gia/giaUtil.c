@@ -3564,18 +3564,60 @@ void Gia_ManFindMutualEquivsTest()
 }
 
 
-void somthing_happening(Gia_Man_t *graph){
-    printf("====================== somthing is happening ===================\n");
+void somthing_happening(Gia_Man_t *p) {
+    if (!p) return;
+    
+    printf("\n--- GIA Table (Nodes: %d) ---\n", Gia_ManObjNum(p));
+    printf("ID   | Type | In0 | In1 | Logic (Decoded)\n");
+    printf("-----|------|-----|-----|----------------\n");
 
+    Gia_Obj_t *pObj; 
+    int i;
+    
+    Gia_ManForEachObj(p, pObj, i) {
+        if (Gia_ObjIsConst0(pObj)) {
+            printf("%-4d | Cnst |     |     | = 0\n", i);
+        }
+        else if (Gia_ObjIsCi(pObj)) {
+            printf("%-4d | PI   |     |     | (Input)\n", i);
+        }
+        else if (Gia_ObjIsCo(pObj)) {
+            int L = Gia_ObjFaninLit0(pObj, i);
+            printf("%-4d | PO   | %-3d |     | = %s%d\n", 
+                   i, L, Abc_LitIsCompl(L)?"!":"", Abc_Lit2Var(L));
+        }
+        else if (Gia_ObjIsAnd(pObj)) {
+            int L0 = Gia_ObjFaninLit0(pObj, i);
+            int L1 = Gia_ObjFaninLit1(pObj, i);
+            printf("%-4d | AND  | %-3d | %-3d | = %s%d & %s%d\n", 
+                   i, L0, L1, 
+                   Abc_LitIsCompl(L0)?"!":"", Abc_Lit2Var(L0),
+                   Abc_LitIsCompl(L1)?"!":"", Abc_Lit2Var(L1));
+        }
+    }
+    printf("-----------------------------\n");
 }
+
 
 void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
 {
-    // Mode 0: Forward Trace (Old -> New)
-    if (pOld == NULL || pNew == NULL){
-        printf("NULL\n");
+    // Mode 0: Forward Trace
+    if ( pOld == NULL && pNew == NULL ) {
+        fprintf(stderr, "[ERROR] Mother and Child manager is NULL.\n");
         return;
     }
+    if ( pOld == NULL ) {
+        fprintf(stderr, "[ERROR] Mother manager is NULL.\n");
+        fprintf(stderr, "[INFO] Child Graph Nodes:  %d\n", Gia_ManObjNum(pNew));
+        return;
+    }
+    if ( pNew == NULL ) {
+        fprintf(stderr, "[ERROR] Child manager is NULL.\n");
+        fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
+        return;
+    }
+    fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
+    fprintf(stderr, "[INFO] Child Graph Nodes:  %d\n", Gia_ManObjNum(pNew));
     if ( mode == 0 )
     {
         if ( pOld == pNew ) {
@@ -3589,41 +3631,51 @@ void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
         Gia_Obj_t * pObjOld;
         int i;
         int nMapped = 0;
+        int nConst = 0;
         int nLost = 0;
 
-        // Iterate over the MOTHER (Old Manager)
         Gia_ManForEachObj( pOld, pObjOld, i )
         {
-            // Skip Constant 0 (it always maps to 0)
-            if ( i == 0 ) continue;
+            // if ( i == 0 ) continue; // Skip strictly internal constant node
 
-            // Check the bridge (pObjOld->Value holds the New Literal)
-            // GIA_NONE usually means -1, indicating the node was deleted/unused.
+            // Case 1: Node is Mapped (Value is set)
             if ( ~pObjOld->Value ) 
             {
                 int iNewLit = pObjOld->Value;
-                int iNewId = Abc_Lit2Var( iNewLit ); // Convert Lit -> ID
-                
-                // Safety: Is the destination valid?
-                if ( iNewId > 0 && iNewId < Gia_ManObjNum(pNew) )
+                int iNewId = Abc_Lit2Var( iNewLit ); 
+                int IsCompl = Abc_LitIsCompl( iNewLit );
+
+                // Sub-case A: Mapped to Constant 0 (ID = 0)
+                if ( iNewId == 0 )
+                {
+                    nConst++;
+                    // if ( nConst <= 5 ) // Only print a few
+                        fprintf(stderr, "  [CONST] Old %d optimized to CONSTANT %d\n", i, IsCompl);
+                }
+                // Sub-case B: Mapped to a Real Node (ID > 0)
+                else if ( iNewId < Gia_ManObjNum(pNew) )
                 {
                     nMapped++;
-                    // Print first 20 mappings to verify
-                    if ( nMapped < 20 ) {
-                        fprintf(stderr, "  [MAP] Old Node %d  --->  New Node %d\n", i, iNewId);
-                    }
+                    // if ( nMapped <= 20 ) {
+                        // Check if it became a buffer (inverted or straight)
+                        char * suffix = IsCompl ? " (INV)" : "";
+                        fprintf(stderr, "  [MAP]   Old %d ---> New %d%s\n", i, iNewId, suffix);
+                    // }
                 }
                 else {
-                    // Mapped to something weird (likely constant 0 or 1)
-                    // fprintf(stderr, "  [CONST] Old Node %d became Constant\n", i);
+                    fprintf(stderr, "  [ERR]   Old %d mapped to Out-of-Bounds ID %d\n", i, iNewId);
                 }
             }
+            // Case 2: Node is Lost (Value is -1)
             else {
-                nLost++; // Node was swept away / deleted
+                // Only complain if it's NOT a dangling node that was supposed to be swept
+                nLost++;
+                // fprintf(stderr, "  [LOST]  Old %d dropped (Dangling?)\n", i);
             }
         }
         
-        fprintf(stderr, "=== [TRACE END] Mapped: %d | Deleted/Lost: %d ===\n\n", nMapped, nLost);
+        fprintf(stderr, "=== [TRACE END] Mapped: %d | Constants: %d | Swept/Lost: %d ===\n\n", 
+                nMapped, nConst, nLost);
     }
 }
 ////////////////////////////////////////////////////////////////////////

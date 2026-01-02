@@ -1,16 +1,14 @@
 read_verilog trash.v
 print_stats;
-print_level -n;
 &get -n # n is to preserve the name
 &st
 &sweep
-# &b
-&dch   # most complex
+# &dch   # most complex
 # &nf  # causing error
-&syn2
+&syn2  # calling bal
 &if -g -K 6
+print_level -n;
 &put
 print_stats;
-print_level -n;
 write_verilog trash_output.v
 quit

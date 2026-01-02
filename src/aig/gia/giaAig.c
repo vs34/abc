@@ -101,6 +101,44 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     if ( pNew->pNexts )
         Gia_ManDeriveReprs( pNew );
     somthing_happening(pNew);
+
+    // ================= [VERIFY LINK START] =================
+    printf("\n=== [LINK] Verifying AIG (Source) -> GIA (Destination) ===\n");
+    
+    // 1. Check Primary Inputs (PIs)
+    // In GIA, PIs are usually copied in the exact same order.
+    Aig_ManForEachCi( p, pObj, i )
+    {
+        int iGiaLit = pObj->iData;
+        int iGiaId = Abc_Lit2Var( iGiaLit ); // Convert Literal to ID
+        printf("  [LINK] Input  AIG %d  --->  GIA %d\n", pObj->Id, iGiaId);
+    }
+
+    Aig_ManForEachCo( p, pObj, i )
+    {
+        int iGiaLit = pObj->iData;
+        int iGiaId = Abc_Lit2Var( iGiaLit ); // Convert Literal to ID
+        printf("  [LINK] Output  AIG %d  --->  GIA %d\n", pObj->Id, iGiaId);
+    }
+    // 2. Check Internal Logic (AND Gates)
+    // Only print the first 10 to avoid spamming the screen
+    int count = 0;
+    Aig_ManForEachNode( p, pObj, i )
+    {
+        int iGiaLit = pObj->iData;
+        int iGiaId = Abc_Lit2Var( iGiaLit );
+        
+        // Only if the node was actually used/mapped (ID > 0)
+        // if ( iGiaId > 0 ) {
+            count++;
+            if ( count <= 10 ) {
+                printf("  [LINK] Logic  AIG %d  --->  GIA %d\n", pObj->Id, iGiaId);
+            }
+        // }
+    }
+    printf("=== [LINK] Verified %d logic gates transferred. ===\n\n", count);
+    // ================= [VERIFY LINK END] =================
+
     return pNew;
 }
 
@@ -350,6 +388,65 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCo( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
     }
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
+// ================= [VERIFY LINK START] =================
+    // PASTE THIS *BEFORE* ABC_FREE( ppNodes );
+    
+    printf("\n=== [LINK] Verifying GIA (Source) -> AIG (Destination) ===\n");
+
+    // 1. Check Primary Inputs
+    Gia_ManForEachCi( p, pObj, i )
+    {
+        int iGiaId = Gia_ObjId(p, pObj);
+        // Safety: Ensure we don't read out of bounds or read NULL
+        if ( ppNodes && iGiaId < Gia_ManObjNum(p) ) 
+        {
+            Aig_Obj_t * pAigObj = ppNodes[iGiaId];
+            if ( pAigObj ) {
+                printf("  [LINK] Input  GIA %d  --->  AIG %d\n", iGiaId, pAigObj->Id);
+            }
+        }
+    }
+
+    // 2. Check Primary Outputs
+    Gia_ManForEachCo( p, pObj, i )
+    {
+        int iGiaId = Gia_ObjId(p, pObj);
+        if ( ppNodes && iGiaId < Gia_ManObjNum(p) ) 
+        {
+            Aig_Obj_t * pAigObj = ppNodes[iGiaId];
+            if ( pAigObj ) {
+                // Get the driver (logic feeding this output)
+                Aig_Obj_t * pDriver = Aig_ObjFanin0(pAigObj);
+                
+                // CRITICAL SAFETY CHECK: pDriver can be NULL
+                int driverId = pDriver ? pDriver->Id : -1;
+                
+                printf("  [LINK] Output GIA %d  --->  AIG %d (Driven by AIG %d)\n", 
+                       iGiaId, pAigObj->Id, driverId);
+            }
+        }
+    }
+
+    // 3. Check Logic Gates (AND)
+    int countLog = 0;
+    Gia_ManForEachAnd( p, pObj, i )
+    {
+        // For 'ForEachAnd', 'i' IS the ID
+        if ( ppNodes && i < Gia_ManObjNum(p) ) 
+        {
+            Aig_Obj_t * pAigObj = ppNodes[i];
+            if ( pAigObj ) {
+                countLog++;
+                if ( countLog <= 10 ) {
+                    printf("  [LINK] Logic  GIA %d  --->  AIG %d\n", i, pAigObj->Id);
+                }
+            }
+        }
+    }
+    printf("=== [LINK] Verified %d logic gates transferred. ===\n\n", countLog);
+    // ================= [VERIFY LINK END] =================
+
+
     ABC_FREE( ppNodes );
     somthing_happening(p);
     return pNew;
