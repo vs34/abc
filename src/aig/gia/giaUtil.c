@@ -3567,8 +3567,9 @@ void Gia_ManFindMutualEquivsTest()
 void somthing_happening(Gia_Man_t *p) 
 {
 
-    printf("\n++++ tracking the main GIA +++++\n", Gia_ManObjNum(p));
+    printf("\n++++ tracking the main GIA +++++\n");
     if (!p) return;
+    printf( "Address of p: %p\n", (void *)p );
 
     printf("\n=== GIA Table & Lineage (Nodes: %d) ===\n", Gia_ManObjNum(p));
     printf(" ID   | Type | Fanins      | Lineage {AIG IDs}\n");
@@ -3634,7 +3635,10 @@ void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
         fprintf(stderr, "[ERROR] Child manager is NULL.\n");
         fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
         return;
-    }
+    }// Example: Printing the address of the GIA Managers
+printf( "Address of pNew: %p\n", (void *)pNew );
+printf( "Address of pOld: %p\n", (void *)pOld );
+    /*
     fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
     fprintf(stderr, "[INFO] Child Graph Nodes:  %d\n", Gia_ManObjNum(pNew));
     somthing_happening(pNew);
@@ -3697,6 +3701,7 @@ void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
         fprintf(stderr, "=== [TRACE END] Mapped: %d | Constants: %d | Swept/Lost: %d ===\n\n", 
                 nMapped, nConst, nLost);
     }
+    */
 }
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///

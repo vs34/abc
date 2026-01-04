@@ -836,7 +836,6 @@ void Abc_FrameClearDesign()
 void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
     printf("update the pAbc(mother) with pNew\n");
-    updating_mother(pAbc->pGia, pNew, 0); // should work on pAbc could cause problem
 
     if ( pNew == NULL )
     {
@@ -868,6 +867,7 @@ void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
         Gia_ManStop( pAbc->pGia2 );
     pAbc->pGia2 = pAbc->pGia;
     pAbc->pGia  = pNew;
+    updating_mother(pAbc->pGia2, pNew, 0); // should work on pAbc could cause problem
     Abc_vLineageUpdate(pAbc);
     somthing_happening(pNew);
 }
@@ -937,10 +937,11 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
         // This handles the "Merge" automatically!
         // If multiple Old Nodes map to the same New ID, we append ALL their histories.
         Vec_IntAppend( vNewList, vOldList );
+
     }
 
     // Optional: Log that transfer happened (useful for debugging)
-    // printf("Abc_vLineageUpdate: Transferred lineage from GIA %p to %p\n", pOld, pNew);
+    printf("Abc_vLineageUpdate: Transferred lineage from GIA %p to %p\n", pOld, pNew);
 }
 
 
