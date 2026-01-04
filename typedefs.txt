@@ -1,0 +1,1599 @@
+./lib/semaphore.h:typedef unsigned int mode_t;
+./lib/semaphore.h:typedef struct sem_t_ * sem_t;
+./lib/sched.h:typedef int pid_t;
+./lib/pthread.h:typedef unsigned long DWORD_PTR;
+./lib/pthread.h:typedef struct {
+./lib/pthread.h:typedef ptw32_handle_t pthread_t;
+./lib/pthread.h:typedef struct pthread_attr_t_ * pthread_attr_t;
+./lib/pthread.h:typedef struct pthread_once_t_ pthread_once_t;
+./lib/pthread.h:typedef struct pthread_key_t_ * pthread_key_t;
+./lib/pthread.h:typedef struct pthread_mutex_t_ * pthread_mutex_t;
+./lib/pthread.h:typedef struct pthread_mutexattr_t_ * pthread_mutexattr_t;
+./lib/pthread.h:typedef struct pthread_cond_t_ * pthread_cond_t;
+./lib/pthread.h:typedef struct pthread_condattr_t_ * pthread_condattr_t;
+./lib/pthread.h:typedef struct pthread_rwlock_t_ * pthread_rwlock_t;
+./lib/pthread.h:typedef struct pthread_rwlockattr_t_ * pthread_rwlockattr_t;
+./lib/pthread.h:typedef struct pthread_spinlock_t_ * pthread_spinlock_t;
+./lib/pthread.h:typedef struct pthread_barrier_t_ * pthread_barrier_t;
+./lib/pthread.h:typedef struct pthread_barrierattr_t_ * pthread_barrierattr_t;
+./lib/pthread.h:typedef struct ptw32_cleanup_t ptw32_cleanup_t;
+./lib/pthread.h:typedef void (* PTW32_CDECL ptw32_cleanup_callback_t)(void *);
+Binary file ./.git/objects/pack/pack-6be919de5a9c9352a713f3eeab1ead98b73d66fa.pack matches
+./src/misc/util/abc_global.h:typedef platform_dependent_type ABC_PTRDIFF_T;
+./src/misc/util/abc_global.h:typedef ptrdiff_t ABC_PTRDIFF_T;
+./src/misc/util/abc_global.h:typedef long ABC_PTRDIFF_T;
+./src/misc/util/abc_global.h:typedef long long ABC_PTRDIFF_T;
+./src/misc/util/abc_global.h:typedef int ABC_PTRDIFF_T;
+./src/misc/util/abc_global.h:typedef platform_dependent_type ABC_PTRUINT_T;
+./src/misc/util/abc_global.h:typedef uintptr_t ABC_PTRUINT_T;
+./src/misc/util/abc_global.h:typedef unsigned long ABC_PTRUINT_T;
+./src/misc/util/abc_global.h:typedef unsigned long long ABC_PTRUINT_T;
+./src/misc/util/abc_global.h:typedef unsigned int ABC_PTRUINT_T;
+./src/misc/util/abc_global.h:typedef platform_dependent_type ABC_PTRINT_T;
+./src/misc/util/abc_global.h:typedef intptr_t ABC_PTRINT_T;
+./src/misc/util/abc_global.h:typedef long ABC_PTRINT_T;
+./src/misc/util/abc_global.h:typedef long long ABC_PTRINT_T;
+./src/misc/util/abc_global.h:typedef int ABC_PTRINT_T;
+./src/misc/util/abc_global.h:typedef platform_dependent_type ABC_INT64_T;
+./src/misc/util/abc_global.h:typedef int64_t ABC_INT64_T;
+./src/misc/util/abc_global.h:typedef long ABC_INT64_T;
+./src/misc/util/abc_global.h:typedef long long ABC_INT64_T;
+./src/misc/util/abc_global.h:typedef signed __int64 ABC_INT64_T;
+./src/misc/util/abc_global.h:typedef platform_dependent_type ABC_UINT64_T;
+./src/misc/util/abc_global.h:typedef uint64_t ABC_UINT64_T;
+./src/misc/util/abc_global.h:typedef unsigned long ABC_UINT64_T;
+./src/misc/util/abc_global.h:typedef unsigned long long ABC_UINT64_T;
+./src/misc/util/abc_global.h:typedef unsigned __int64 ABC_UINT64_T;
+./src/misc/util/abc_global.h:typedef ABC_UINT64_T word;
+./src/misc/util/abc_global.h:typedef ABC_INT64_T iword;
+./src/misc/util/abc_global.h:typedef ABC_INT64_T abctime;
+./src/misc/util/utilDouble.h:typedef word xdbl;
+./src/misc/util/utilCex.h:typedef struct Abc_Cex_t_ Abc_Cex_t;
+./src/misc/util/utilMem.c:typedef struct Vec_Mem_t_       Vec_Mem_t;
+./src/misc/util/utilNet.c:typedef struct tn_vi_ {
+./src/misc/util/utilNet.c:typedef struct tn_gr_ {
+./src/misc/util/utilBSet.c:typedef struct Abc_BSEval_t_  Abc_BSEval_t;
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilBipart.c:typedef struct {
+./src/misc/util/utilFloat.h:typedef struct xFloat_t_ xFloat_t;
+./src/misc/util/utilIsop.c:typedef word FUNC_ISOP( word *, word *, word *, word, int * );
+./src/misc/util/utilPth.c:typedef struct Util_ThData_t_
+./src/misc/util/utilMiniver.c:typedef struct {
+./src/misc/util/utilMiniver.c:typedef struct {
+./src/misc/util/utilMiniver.c:typedef struct {
+./src/misc/util/utilMiniver.c:typedef int (*emit_fn)(mv_ctx *, const char *, int, int);
+./src/misc/util/utilNam.h:typedef struct Abc_Nam_t_           Abc_Nam_t;
+./src/misc/mvc/mvc.h:typedef unsigned int               Mvc_CubeWord_t;
+./src/misc/mvc/mvc.h:typedef struct MvcCubeStruct       Mvc_Cube_t;
+./src/misc/mvc/mvc.h:typedef struct MvcListStruct       Mvc_List_t;
+./src/misc/mvc/mvc.h:typedef struct MvcCoverStruct      Mvc_Cover_t;
+./src/misc/mvc/mvc.h:typedef struct MvcDataStruct       Mvc_Data_t;
+./src/misc/mvc/mvc.h:typedef struct MvcManagerStruct    Mvc_Manager_t;
+./src/misc/hash/hashGen.h:typedef struct Hash_Gen_t_       Hash_Gen_t;
+./src/misc/hash/hashGen.h:typedef struct Hash_Gen_Entry_t_ Hash_Gen_Entry_t;
+./src/misc/hash/hashGen.h:typedef int (*Hash_GenHashFunction_t)(void* key, int nBins);
+./src/misc/hash/hashGen.h:typedef int (*Hash_GenCompFunction_t)(void* key, void* data);
+./src/misc/hash/hashFlt.h:typedef struct Hash_Flt_t_       Hash_Flt_t;
+./src/misc/hash/hashFlt.h:typedef struct Hash_Flt_Entry_t_ Hash_Flt_Entry_t;
+./src/misc/hash/hashInt.h:typedef struct Hash_Int_t_       Hash_Int_t;
+./src/misc/hash/hashInt.h:typedef struct Hash_Int_Entry_t_ Hash_Int_Entry_t;
+./src/misc/hash/hashPtr.h:typedef struct Hash_Ptr_t_       Hash_Ptr_t;
+./src/misc/hash/hashPtr.h:typedef struct Hash_Ptr_Entry_t_ Hash_Ptr_Entry_t;
+./src/misc/bbl/bblif.h:typedef enum { 
+./src/misc/bbl/bblif.h:typedef struct Bbl_Man_t_ Bbl_Man_t;
+./src/misc/bbl/bblif.h:typedef struct Bbl_Obj_t_ Bbl_Obj_t;
+./src/misc/bbl/bblif.c:typedef struct Vec_Int_t_ Vec_Int_t;
+./src/misc/bbl/bblif.c:typedef struct Vec_Str_t_ Vec_Str_t;
+./src/misc/bbl/bblif.c:typedef struct Bbl_Fnc_t_ Bbl_Fnc_t;
+./src/misc/bbl/bblif.c:typedef struct Bbl_Ent_t_ Bbl_Ent_t;
+./src/misc/parse/parseInt.h:typedef struct ParseStackFnStruct    Parse_StackFn_t;    // the function stack
+./src/misc/parse/parseInt.h:typedef struct ParseStackOpStruct    Parse_StackOp_t;    // the operation stack
+./src/misc/zlib/zutil.h:typedef unsigned char  uch;
+./src/misc/zlib/zutil.h:typedef uch FAR uchf;
+./src/misc/zlib/zutil.h:typedef unsigned short ush;
+./src/misc/zlib/zutil.h:typedef ush FAR ushf;
+./src/misc/zlib/zutil.h:typedef unsigned long  ulg;
+./src/misc/zlib/zutil.h:       typedef int ptrdiff_t;
+./src/misc/zlib/inftrees.h:typedef struct {
+./src/misc/zlib/inftrees.h:typedef enum {
+./src/misc/zlib/inflate.c: * - Changed inflateBack() argument and in_func typedef to swap the length
+./src/misc/zlib/deflate.c:typedef enum {
+./src/misc/zlib/deflate.c:typedef block_state (*compress_func) OF((deflate_state *s, int flush));
+./src/misc/zlib/deflate.c:typedef struct config_s {
+./src/misc/zlib/crc32.c:       typedef unsigned int u4;
+./src/misc/zlib/crc32.c:         typedef unsigned long u4;
+./src/misc/zlib/crc32.c:           typedef unsigned short u4;
+./src/misc/zlib/zutil.c:typedef struct ptr_table_s {
+./src/misc/zlib/deflate.h:typedef struct ct_data_s {
+./src/misc/zlib/deflate.h:typedef struct static_tree_desc_s  static_tree_desc;
+./src/misc/zlib/deflate.h:typedef struct tree_desc_s {
+./src/misc/zlib/deflate.h:typedef ush Pos;
+./src/misc/zlib/deflate.h:typedef Pos FAR Posf;
+./src/misc/zlib/deflate.h:typedef unsigned IPos;
+./src/misc/zlib/deflate.h:typedef struct internal_state {
+./src/misc/zlib/deflate.h:    /* Didn't use ct_data typedef below to supress compiler warning */
+./src/misc/zlib/gzguts.h:typedef struct {
+./src/misc/zlib/gzguts.h:typedef gz_state FAR *gz_statep;
+./src/misc/zlib/zlib.h:typedef voidpf (*alloc_func) OF((voidpf opaque, uInt items, uInt size));
+./src/misc/zlib/zlib.h:typedef void   (*free_func)  OF((voidpf opaque, voidpf address));
+./src/misc/zlib/zlib.h:typedef struct z_stream_s {
+./src/misc/zlib/zlib.h:typedef z_stream FAR *z_streamp;
+./src/misc/zlib/zlib.h:typedef struct gz_header_s {
+./src/misc/zlib/zlib.h:typedef gz_header FAR *gz_headerp;
+./src/misc/zlib/zlib.h:typedef unsigned (*in_func) OF((void FAR *, unsigned char FAR * FAR *));
+./src/misc/zlib/zlib.h:typedef int (*out_func) OF((void FAR *, unsigned char FAR *, unsigned));
+./src/misc/zlib/zlib.h:   typedefs.  inflateBack() will call in(in_desc, &buf) which should return the
+./src/misc/zlib/zlib.h:typedef voidp gzFile;       /* opaque gzip file descriptor */
+./src/misc/zlib/inflate.h:typedef enum {
+./src/misc/zlib/zconf.h:/* all zlib typedefs in zlib.h and zconf.h */
+./src/misc/zlib/zconf.h:typedef unsigned char  Byte;  /* 8 bits */
+./src/misc/zlib/zconf.h:typedef unsigned int   uInt;  /* 16 bits or more */
+./src/misc/zlib/zconf.h:typedef unsigned long  uLong; /* 32 bits or more */
+./src/misc/zlib/zconf.h:   /* Borland C/C++ and some old MSC versions ignore FAR inside typedef */
+./src/misc/zlib/zconf.h:   typedef Byte  FAR Bytef;
+./src/misc/zlib/zconf.h:typedef char  FAR charf;
+./src/misc/zlib/zconf.h:typedef int   FAR intf;
+./src/misc/zlib/zconf.h:typedef uInt  FAR uIntf;
+./src/misc/zlib/zconf.h:typedef uLong FAR uLongf;
+./src/misc/zlib/zconf.h:   typedef void const *voidpc;
+./src/misc/zlib/zconf.h:   typedef void FAR   *voidpf;
+./src/misc/zlib/zconf.h:   typedef void       *voidp;
+./src/misc/zlib/zconf.h:   typedef Byte const *voidpc;
+./src/misc/zlib/zconf.h:   typedef Byte FAR   *voidpf;
+./src/misc/zlib/zconf.h:   typedef Byte       *voidp;
+./src/misc/st/st.h:typedef int (* st__compare_func_type)(const char*, const char*);
+./src/misc/st/st.h:typedef int (* st__hash_func_type)(const char*, int);
+./src/misc/st/st.h:typedef struct st__table_entry st__table_entry;
+./src/misc/st/st.h:typedef struct st__table st__table;
+./src/misc/st/st.h:typedef struct st__generator st__generator;
+./src/misc/st/st.h:typedef enum st__retval (* st__PFSR)(char *, char *, char *);
+./src/misc/st/st.h:typedef int (* st__PFI)();
+./src/misc/st/stmm.h:typedef int (*stmm_compare_func_type)(const char*, const char*);
+./src/misc/st/stmm.h:typedef int (*stmm_hash_func_type)(const char*, int);
+./src/misc/st/stmm.h:typedef struct stmm_table_entry stmm_table_entry;
+./src/misc/st/stmm.h:typedef struct stmm_table stmm_table;
+./src/misc/st/stmm.h:typedef struct stmm_generator stmm_generator;
+./src/misc/st/stmm.h:typedef enum stmm_retval (*STMM_PFSR) (char *, char *, char *);
+./src/misc/tim/tim.h:typedef struct Tim_Man_t_  Tim_Man_t;
+./src/misc/tim/timInt.h:typedef struct Tim_Box_t_           Tim_Box_t;
+./src/misc/tim/timInt.h:typedef struct Tim_Obj_t_           Tim_Obj_t;
+./src/misc/vec/vecMem.h:typedef struct Vec_Mem_t_       Vec_Mem_t;
+./src/misc/vec/vecPtr.h:typedef struct Vec_Ptr_t_       Vec_Ptr_t;
+./src/misc/vec/vecStr.h:typedef struct Vec_Str_t_       Vec_Str_t;
+./src/misc/vec/vecSet.h:typedef struct Vec_Set_t_ Vec_Set_t;
+./src/misc/vec/vecHash.h:typedef struct Hash_IntObj_t_ Hash_IntObj_t;
+./src/misc/vec/vecHash.h:typedef struct Hash_IntMan_t_ Hash_IntMan_t;
+./src/misc/vec/vecBit.h:typedef struct Vec_Bit_t_       Vec_Bit_t;
+./src/misc/vec/vecFlt.h:typedef struct Vec_Flt_t_       Vec_Flt_t;
+./src/misc/vec/vecInt.h:typedef struct Vec_Int_t_       Vec_Int_t;
+./src/misc/vec/vecAtt.h:typedef enum { 
+./src/misc/vec/vecAtt.h:typedef struct Vec_Att_t_  Vec_Att_t;
+./src/misc/vec/vecHsh.h:typedef struct Hsh_Int1Man_t_ Hsh_Int1Man_t;
+./src/misc/vec/vecHsh.h:typedef struct Hsh_IntObj_t_ Hsh_IntObj_t;
+./src/misc/vec/vecHsh.h:typedef union Hsh_IntObjWord_t_ Hsh_IntObjWord_t;
+./src/misc/vec/vecHsh.h:typedef struct Hsh_IntMan_t_ Hsh_IntMan_t;
+./src/misc/vec/vecHsh.h:typedef struct Hsh_VecObj_t_ Hsh_VecObj_t;
+./src/misc/vec/vecHsh.h:typedef struct Hsh_VecMan_t_ Hsh_VecMan_t;
+./src/misc/vec/vecQue.h:typedef struct Vec_Que_t_  Vec_Que_t;
+./src/misc/vec/vecWrd.h:typedef struct Vec_Wrd_t_       Vec_Wrd_t;
+./src/misc/vec/vecVec.h:typedef struct Vec_Vec_t_       Vec_Vec_t;
+./src/misc/vec/vecWec.h:typedef struct Vec_Wec_t_       Vec_Wec_t;
+./src/misc/extra/extraUtilPrime.c:typedef struct Tab_Man_t_ Tab_Man_t;
+./src/misc/extra/extraUtilPrime.c:typedef struct Tab_Ent_t_ Tab_Ent_t;
+./src/misc/extra/extraUtilEnum.c:typedef struct Abc_EnuMan_t_ Abc_EnuMan_t;
+./src/misc/extra/extraUtilPerm.c:typedef enum  
+./src/misc/extra/extraUtilPerm.c:typedef struct Abc_ZddObj_ Abc_ZddObj;
+./src/misc/extra/extraUtilPerm.c:typedef struct Abc_ZddEnt_ Abc_ZddEnt;
+./src/misc/extra/extraUtilPerm.c:typedef struct Abc_ZddMan_ Abc_ZddMan;
+./src/misc/extra/extraUtilDsd.c:typedef struct Sdm_Dsd_t_ Sdm_Dsd_t;
+./src/misc/extra/extraZddTrunc.c:typedef struct Vec_Int_t_       Vec_Int_t;
+./src/misc/extra/extraUtilReader.c:typedef enum { 
+./src/misc/extra/extra.h:typedef unsigned char      uint8;
+./src/misc/extra/extra.h:typedef unsigned short     uint16;
+./src/misc/extra/extra.h:typedef unsigned int       uint32;
+./src/misc/extra/extra.h:typedef struct Extra_BitMat_t_ Extra_BitMat_t;
+./src/misc/extra/extra.h:typedef struct Extra_FileReader_t_ Extra_FileReader_t;
+./src/misc/extra/extra.h:typedef struct Extra_MmFixed_t_    Extra_MmFixed_t;    
+./src/misc/extra/extra.h:typedef struct Extra_MmFlex_t_     Extra_MmFlex_t;     
+./src/misc/extra/extra.h:typedef struct Extra_MmStep_t_     Extra_MmStep_t;     
+./src/misc/extra/extra.h:typedef struct Sdm_Man_t_ Sdm_Man_t; 
+./src/misc/extra/extra.h:typedef struct ProgressBarStruct ProgressBar;
+./src/misc/extra/extraUtilMaj.c:typedef struct Gem_Man_t_  Gem_Man_t;
+./src/misc/extra/extraUtilMaj.c:typedef struct Gem_Obj_t_  Gem_Obj_t;
+./src/misc/extra/extraUtilMult.c:typedef struct Abc_BddMan_ Abc_BddMan;
+./src/misc/nm/nmInt.h:typedef struct Nm_Entry_t_ Nm_Entry_t;
+./src/misc/nm/nm.h:typedef struct Nm_Man_t_ Nm_Man_t;
+./src/misc/avl/avl.h:typedef struct avl_node_struct avl_node;
+./src/misc/avl/avl.h:typedef struct avl_tree_struct avl_tree;
+./src/misc/avl/avl.h:typedef struct avl_generator_struct avl_generator;
+./src/misc/bar/bar.h:typedef struct Bar_Progress_t_ Bar_Progress_t;
+./src/misc/bzlib/bzlib_private.h:typedef char            Char;
+./src/misc/bzlib/bzlib_private.h:typedef unsigned char   Bool;
+./src/misc/bzlib/bzlib_private.h:typedef unsigned char   UChar;
+./src/misc/bzlib/bzlib_private.h:typedef int             Int32;
+./src/misc/bzlib/bzlib_private.h:typedef unsigned int    UInt32;
+./src/misc/bzlib/bzlib_private.h:typedef short           Int16;
+./src/misc/bzlib/bzlib_private.h:typedef unsigned short  UInt16;
+./src/misc/bzlib/bzlib_private.h:typedef
+./src/misc/bzlib/bzlib_private.h:typedef
+./src/misc/bzlib/bzlib.h:typedef 
+./src/misc/bzlib/bzlib.h:typedef void BZFILE;
+./src/misc/bzlib/bzlib.c:typedef 
+./src/misc/bzlib/manual.html:<pre class="programlisting">typedef struct {
+./src/misc/bzlib/manual.html:<pre class="programlisting">typedef void BZFILE;
+./src/misc/bzlib/manual.html:<pre class="programlisting">typedef void BZFILE;
+./src/misc/espresso/mincov_int.h:typedef struct stats_struct stats_t;
+./src/misc/espresso/mincov_int.h:typedef struct solution_struct solution_t;
+./src/misc/espresso/sparse.h:typedef struct sm_element_struct sm_element;
+./src/misc/espresso/sparse.h:typedef struct sm_row_struct sm_row;
+./src/misc/espresso/sparse.h:typedef struct sm_col_struct sm_col;
+./src/misc/espresso/sparse.h:typedef struct sm_matrix_struct sm_matrix;
+./src/misc/espresso/espresso.h:typedef unsigned int *pset;
+./src/misc/espresso/espresso.h:typedef struct set_family {
+./src/misc/espresso/espresso.h:typedef struct cost_struct {
+./src/misc/espresso/espresso.h:typedef struct pair_struct {
+./src/misc/espresso/espresso.h:typedef struct symbolic_list_struct {
+./src/misc/espresso/espresso.h:typedef struct symbolic_label_struct {
+./src/misc/espresso/espresso.h:typedef struct symbolic_struct {
+./src/misc/espresso/espresso.h:typedef struct {
+./src/misc/mem/mem2.h:typedef struct Mmr_Flex_t_     Mmr_Flex_t;     
+./src/misc/mem/mem2.h:typedef struct Mmr_Fixed_t_    Mmr_Fixed_t;    
+./src/misc/mem/mem2.h:typedef struct Mmr_Step_t_     Mmr_Step_t;     
+./src/misc/mem/mem.h:typedef struct Mem_Fixed_t_    Mem_Fixed_t;    
+./src/misc/mem/mem.h:typedef struct Mem_Flex_t_     Mem_Flex_t;     
+./src/misc/mem/mem.h:typedef struct Mem_Step_t_     Mem_Step_t;     
+./src/proof/ssc/ssc.h:typedef struct Ssc_Pars_t_ Ssc_Pars_t;
+./src/proof/ssc/sscInt.h:typedef struct Ssc_Man_t_ Ssc_Man_t;
+./src/proof/ssw/sswSemi.c:typedef struct Ssw_Sem_t_ Ssw_Sem_t; // BMC manager
+./src/proof/ssw/sswRarity2.c:typedef struct Ssw_RarMan_t_ Ssw_RarMan_t;
+./src/proof/ssw/sswRarity.c:typedef struct Ssw_RarMan_t_ Ssw_RarMan_t;
+./src/proof/ssw/sswPart.c:typedef struct Par_ScorrThData_t_
+./src/proof/ssw/sswInt.h:typedef struct Ssw_Man_t_ Ssw_Man_t; // signal correspondence manager
+./src/proof/ssw/sswInt.h:typedef struct Ssw_Frm_t_ Ssw_Frm_t; // unrolled frames manager
+./src/proof/ssw/sswInt.h:typedef struct Ssw_Sat_t_ Ssw_Sat_t; // SAT solver manager
+./src/proof/ssw/sswInt.h:typedef struct Ssw_Cla_t_ Ssw_Cla_t; // equivalence classe manager
+./src/proof/ssw/ssw.h:typedef struct Ssw_Pars_t_ Ssw_Pars_t;
+./src/proof/ssw/ssw.h:typedef struct Ssw_RarPars_t_ Ssw_RarPars_t;
+./src/proof/ssw/ssw.h:typedef struct Ssw_Sml_t_ Ssw_Sml_t; // sequential simulation manager
+./src/proof/fra/fraLcr.c:typedef struct Fra_Lcr_t_    Fra_Lcr_t;
+./src/proof/fra/fraClaus.c:typedef struct Clu_Man_t_    Clu_Man_t;
+./src/proof/fra/fraClau.c:typedef struct Cla_Man_t_    Cla_Man_t;
+./src/proof/fra/fra.h:typedef struct Fra_Par_t_   Fra_Par_t;
+./src/proof/fra/fra.h:typedef struct Fra_Ssw_t_   Fra_Ssw_t;
+./src/proof/fra/fra.h:typedef struct Fra_Sec_t_   Fra_Sec_t;
+./src/proof/fra/fra.h:typedef struct Fra_Man_t_   Fra_Man_t;
+./src/proof/fra/fra.h:typedef struct Fra_Cla_t_   Fra_Cla_t;
+./src/proof/fra/fra.h:typedef struct Fra_Sml_t_   Fra_Sml_t;
+./src/proof/fra/fra.h:typedef struct Fra_Bmc_t_   Fra_Bmc_t;
+./src/proof/int2/int2Int.h:typedef struct Int2_Man_t_ Int2_Man_t;
+./src/proof/int2/int2.h:typedef struct Int2_ManPars_t_ Int2_ManPars_t;
+./src/proof/pdr/pdrInt.h:typedef struct Txs_Man_t_  Txs_Man_t;
+./src/proof/pdr/pdrInt.h:typedef struct Txs3_Man_t_ Txs3_Man_t;
+./src/proof/pdr/pdrInt.h:typedef struct Pdr_Set_t_ Pdr_Set_t;
+./src/proof/pdr/pdrInt.h:typedef struct Pdr_Obl_t_ Pdr_Obl_t;
+./src/proof/pdr/pdrInt.h:typedef struct Pdr_Man_t_ Pdr_Man_t;
+./src/proof/pdr/pdr.h:typedef struct Pdr_Par_t_ Pdr_Par_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_ManStruct_t_         Fraig_Man_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_NodeStruct_t_        Fraig_Node_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_NodeVecStruct_t_     Fraig_NodeVec_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_HashTableStruct_t_   Fraig_HashTable_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_ParamsStruct_t_      Fraig_Params_t;
+./src/proof/fraig/fraig.h:typedef struct Fraig_PatternsStruct_t_    Fraig_Patterns_t;
+./src/proof/fraig/fraig.h:typedef struct Prove_ParamsStruct_t_      Prove_Params_t;
+./src/proof/fraig/fraigInt.h:typedef struct Fraig_MemFixed_t_    Fraig_MemFixed_t;    
+./src/proof/int/intInt.h:typedef struct Inter_Man_t_ Inter_Man_t;
+./src/proof/int/intInt.h:typedef struct Inter_Check_t_ Inter_Check_t;
+./src/proof/int/int.h:typedef struct Inter_ManParams_t_ Inter_ManParams_t;
+./src/proof/abs/absGla.c:typedef struct Ga2_Man_t_ Ga2_Man_t; // manager
+./src/proof/abs/absVta.c:typedef struct Vta_Obj_t_ Vta_Obj_t; // object
+./src/proof/abs/absVta.c:typedef struct Vta_Man_t_ Vta_Man_t; // manager
+./src/proof/abs/absRefJ.c:typedef struct Rf2_Obj_t_ Rf2_Obj_t; // refinement object
+./src/proof/abs/absPth.c:typedef struct Abs_ThData_t_
+./src/proof/abs/abs.h:typedef struct Abs_Par_t_ Abs_Par_t;
+./src/proof/abs/abs.h:typedef struct Gia_ParAbs_t_ Gia_ParAbs_t;
+./src/proof/abs/absOldSat.c:typedef struct Saig_RefMan_t_ Saig_RefMan_t;
+./src/proof/abs/absRef.h:typedef struct Rnm_Obj_t_ Rnm_Obj_t; // refinement object
+./src/proof/abs/absRef.h:typedef struct Rnm_Man_t_ Rnm_Man_t; // refinement manager
+./src/proof/abs/absGlaOld.c:typedef struct Rfn_Obj_t_ Rfn_Obj_t; // refinement object
+./src/proof/abs/absGlaOld.c:typedef struct Gla_Obj_t_ Gla_Obj_t; // abstraction object
+./src/proof/abs/absGlaOld.c:typedef struct Gla_Man_t_ Gla_Man_t; // manager
+./src/proof/abs/absRefJ.h:typedef struct Rf2_Man_t_ Rf2_Man_t; // refinement manager
+./src/proof/abs/absOldCex.c:typedef struct Saig_ManCba_t_ Saig_ManCba_t;
+./src/proof/live/liveness.c:typedef struct ltlNode_t ltlNode;
+./src/proof/live/ltl_parser.c:typedef enum ltlToken tokenType;
+./src/proof/live/ltl_parser.c:typedef enum ltlGrammerToken ltlGrammerTokenType;
+./src/proof/live/ltl_parser.c:typedef struct ltlNode_t ltlNode;
+./src/proof/dch/dch.h:typedef struct Dch_Pars_t_ Dch_Pars_t;
+./src/proof/dch/dchInt.h:typedef struct Dch_Cla_t_ Dch_Cla_t;
+./src/proof/dch/dchInt.h:typedef struct Dch_Man_t_ Dch_Man_t;
+./src/proof/acec/acecPolyn.c:typedef struct Pln_Man_t_ Pln_Man_t;
+./src/proof/acec/acec2Mult.c:typedef struct Sdb_Cut_t_ Sdb_Cut_t; 
+./src/proof/acec/acec2Mult.c:typedef struct Sdb_Sto_t_ Sdb_Sto_t; 
+./src/proof/acec/acec.h:typedef struct Acec_ParCec_t_ Acec_ParCec_t;
+./src/proof/acec/acecInt.h:typedef struct Acec_Box_t_ Acec_Box_t;
+./src/proof/cec/cecSatG.c:typedef struct Cec3_Par_t_ Cec3_Par_t;
+./src/proof/cec/cecSatG.c:typedef struct Cec3_Man_t_ Cec3_Man_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParSat_t_ Cec_ParSat_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParSim_t_ Cec_ParSim_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParSmf_t_ Cec_ParSmf_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParFra_t_ Cec_ParFra_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParCec_t_ Cec_ParCec_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParCor_t_ Cec_ParCor_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParChc_t_ Cec_ParChc_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParSeq_t_ Cec_ParSeq_t;
+./src/proof/cec/cec.h:typedef struct Cec_ParSimGen_t_ Cec_ParSimGen_t;
+./src/proof/cec/cecSat.c:typedef struct Cec2_Par_t_ Cec2_Par_t;
+./src/proof/cec/cecSat.c:typedef struct Cec2_Man_t_ Cec2_Man_t;
+./src/proof/cec/cecInt.h:typedef struct Cec_ManPat_t_ Cec_ManPat_t;
+./src/proof/cec/cecInt.h:typedef struct Cec_ManSat_t_ Cec_ManSat_t;
+./src/proof/cec/cecInt.h:typedef struct Cec_ManSim_t_ Cec_ManSim_t;
+./src/proof/cec/cecInt.h:typedef struct Cec_ManFra_t_ Cec_ManFra_t;
+./src/proof/cec/cecSim.c:typedef struct Cec_ManS_t_ Cec_ManS_t;
+./src/proof/cec/cecSatG3.c:typedef struct Cec5_Man_t_ Cec5_Man_t;
+./src/proof/cec/cecSplit.c:typedef struct Par_ThData_t_
+./src/proof/cec/cecProve.c:typedef struct Par_Share_t_ Par_Share_t;
+./src/proof/cec/cecProve.c:typedef struct Par_ThData_t_ Par_ThData_t;
+./src/proof/cec/cecProve.c:typedef struct Par_ThData_t_
+./src/proof/cec/cecSatG2.c:typedef struct Cec4_Man_t_ Cec4_Man_t;
+./src/template.c:typedef struct Xyz_ParTry_t_ Xyz_ParTry_t;
+./src/template.c:typedef struct Xyz_ManTry_t_ Xyz_ManTry_t;
+./src/aig/saig/saigPhase.c:typedef struct Saig_Tsim_t_ Saig_Tsim_t;
+./src/aig/saig/saigSwitch.c:typedef struct Saig_SimObj_t_ Saig_SimObj_t;
+./src/aig/saig/saigSwitch.c://typedef struct Aig_CMan_t_ Aig_CMan_t;
+./src/aig/saig/saigSwitch.c:typedef struct Aig_CMan_t_ Aig_CMan_t;
+./src/aig/saig/saigRefSat.c:typedef struct Saig_RefMan_t_ Saig_RefMan_t;
+./src/aig/saig/saig.h:typedef struct Sec_MtrStatus_t_ Sec_MtrStatus_t;
+./src/aig/saig/saig.h:typedef struct Saig_ParBbr_t_ Saig_ParBbr_t;
+./src/aig/saig/saigSimFast.c:typedef struct Faig_Man_t_ Faig_Man_t;
+./src/aig/saig/saigIsoSlow.c:typedef struct Iso_Obj_t_ Iso_Obj_t;
+./src/aig/saig/saigIsoSlow.c:typedef struct Iso_Man_t_ Iso_Man_t;
+./src/aig/saig/saigSimMv.c:typedef struct Saig_MvObj_t_ Saig_MvObj_t;
+./src/aig/saig/saigSimMv.c:typedef struct Saig_MvAnd_t_ Saig_MvAnd_t;
+./src/aig/saig/saigSimMv.c:typedef struct Saig_MvMan_t_ Saig_MvMan_t;
+./src/aig/saig/saigIsoFast.c:typedef struct Iso_Dat_t_ Iso_Dat_t;
+./src/aig/saig/saigIsoFast.c:typedef struct Iso_Dat2_t_ Iso_Dat2_t;
+./src/aig/saig/saigIsoFast.c:typedef struct Iso_Sto_t_ Iso_Sto_t;
+./src/aig/saig/saigGlaPba2.c:typedef struct Aig_Gla3Man_t_ Aig_Gla3Man_t;
+./src/aig/saig/saigGlaPba.c:typedef struct Aig_Gla2Man_t_ Aig_Gla2Man_t;
+./src/aig/saig/saigGlaCba.c:typedef struct Aig_Gla1Man_t_ Aig_Gla1Man_t;
+./src/aig/saig/saigSimSeq.c:typedef struct Raig_Man_t_ Raig_Man_t;
+./src/aig/hop/cudd2.c:typedef struct Aig_CuddMan_t_        Aig_CuddMan_t;
+./src/aig/hop/hop.h:typedef struct Hop_Man_t_            Hop_Man_t;
+./src/aig/hop/hop.h:typedef struct Hop_Obj_t_            Hop_Obj_t;
+./src/aig/hop/hop.h:typedef int                          Hop_Edge_t;
+./src/aig/hop/hop.h:typedef enum { 
+./src/aig/ivy/attr.h:typedef struct Attr_ManStruct_t_     Attr_Man_t;
+./src/aig/ivy/ivyMulti.c:typedef struct Ivy_Eva_t_ Ivy_Eva_t;
+./src/aig/ivy/ivyFastMap.c:typedef struct Ivy_SuppMan_t_ Ivy_SuppMan_t;
+./src/aig/ivy/ivyFastMap.c:typedef struct Ivy_Supp_t_ Ivy_Supp_t;
+./src/aig/ivy/ivy.h:typedef struct Ivy_Man_t_            Ivy_Man_t;
+./src/aig/ivy/ivy.h:typedef struct Ivy_Obj_t_            Ivy_Obj_t;
+./src/aig/ivy/ivy.h:typedef int                          Ivy_Edge_t;
+./src/aig/ivy/ivy.h:typedef struct Ivy_FraigParams_t_    Ivy_FraigParams_t;
+./src/aig/ivy/ivy.h:typedef enum { 
+./src/aig/ivy/ivy.h:typedef enum { 
+./src/aig/ivy/ivy.h:typedef struct Ivy_Cut_t_ Ivy_Cut_t;
+./src/aig/ivy/ivy.h:typedef struct Ivy_Store_t_ Ivy_Store_t;
+./src/aig/ivy/ivyFraig.c:typedef struct Ivy_FraigMan_t_        Ivy_FraigMan_t;
+./src/aig/ivy/ivyFraig.c:typedef struct Ivy_FraigSim_t_        Ivy_FraigSim_t;
+./src/aig/ivy/ivyFraig.c:typedef struct Ivy_FraigList_t_       Ivy_FraigList_t;
+./src/aig/ivy/ivyFraig.c:typedef struct Prove_ParamsStruct_t_      Prove_Params_t;
+./src/aig/ivy/ivyDsd.c:typedef enum { 
+./src/aig/ivy/ivyDsd.c:typedef struct Ivy_Dec_t_ Ivy_Dec_t;
+./src/aig/ivy/ivyMulti8.c:typedef struct Ivy_Eval_t_ Ivy_Eval_t;
+./src/aig/aig/aigTsim.c:typedef struct Aig_Tsi_t_ Aig_Tsi_t;
+./src/aig/aig/aigJust.c:typedef struct Aig_ManPack_t_ Aig_ManPack_t;
+./src/aig/aig/aigPack.c:typedef struct Aig_ManPack_t_ Aig_ManPack_t;
+./src/aig/aig/aigPartReg.c:typedef struct Aig_ManPre_t_         Aig_ManPre_t;
+./src/aig/aig/aigRet.c:typedef enum { 
+./src/aig/aig/aigRet.c:typedef struct Rtm_Man_t_    Rtm_Man_t;
+./src/aig/aig/aigRet.c:typedef struct Rtm_Edg_t_    Rtm_Edg_t;
+./src/aig/aig/aigRet.c:typedef struct Rtm_Obj_t_    Rtm_Obj_t;
+./src/aig/aig/aigPart.c:typedef struct Part_Man_t_     Part_Man_t;
+./src/aig/aig/aigPart.c:typedef struct Part_One_t_     Part_One_t;
+./src/aig/aig/aig.h:typedef struct Aig_Man_t_            Aig_Man_t;
+./src/aig/aig/aig.h:typedef struct Aig_Obj_t_            Aig_Obj_t;
+./src/aig/aig/aig.h:typedef struct Aig_MmFixed_t_        Aig_MmFixed_t;    
+./src/aig/aig/aig.h:typedef struct Aig_MmFlex_t_         Aig_MmFlex_t;     
+./src/aig/aig/aig.h:typedef struct Aig_MmStep_t_         Aig_MmStep_t;     
+./src/aig/aig/aig.h:typedef enum { 
+./src/aig/aig/aig.h:typedef struct Aig_ManCut_t_         Aig_ManCut_t;
+./src/aig/aig/aig.h:typedef struct Aig_Cut_t_            Aig_Cut_t;
+./src/aig/aig/aigCanon.c:typedef struct Aig_VSig_t_ Aig_VSig_t;
+./src/aig/aig/aigCanon.c:typedef struct Aig_Tru_t_ Aig_Tru_t;
+./src/aig/aig/aigCanon.c:typedef struct Aig_RMan_t_ Aig_RMan_t;
+./src/aig/aig/aigDoms.c:typedef struct Aig_Sto_t_ Aig_Sto_t;
+./src/aig/aig/aigDoms.c:typedef struct Aig_Dom_t_ Aig_Dom_t;
+./src/aig/miniaig/miniaig.h:typedef struct Mini_Aig_t_       Mini_Aig_t;
+./src/aig/miniaig/minilut.h:typedef struct Mini_Lut_t_       Mini_Lut_t;
+./src/aig/miniaig/abcOper.h:typedef enum { 
+./src/aig/miniaig/ndr.h:typedef enum {
+./src/aig/miniaig/ndr.h:typedef struct Ndr_Data_t_  Ndr_Data_t;
+./src/aig/gia/giaMf.c:typedef struct Mf_Cut_t_ Mf_Cut_t; 
+./src/aig/gia/giaMf.c:typedef struct Mf_Obj_t_ Mf_Obj_t; 
+./src/aig/gia/giaMf.c:typedef struct Mf_Man_t_ Mf_Man_t; 
+./src/aig/gia/giaGig.c:typedef struct Gls_Man_t_ Gls_Man_t;
+./src/aig/gia/giaIso2.c:typedef struct Gia_Iso2Man_t_       Gia_Iso2Man_t;
+./src/aig/gia/giaEsop.c:typedef struct Eso_Man_t_ Eso_Man_t;
+./src/aig/gia/giaCSat.c:typedef struct Cbs_Par_t_ Cbs_Par_t;
+./src/aig/gia/giaCSat.c:typedef struct Cbs_Que_t_ Cbs_Que_t;
+./src/aig/gia/giaCSat.c://typedef struct Cbs_Man_t_ Cbs_Man_t;
+./src/aig/gia/gia.h:typedef struct Gia_MmFixed_t_        Gia_MmFixed_t;    
+./src/aig/gia/gia.h:typedef struct Gia_MmFlex_t_         Gia_MmFlex_t;     
+./src/aig/gia/gia.h:typedef struct Gia_MmStep_t_         Gia_MmStep_t;     
+./src/aig/gia/gia.h:typedef struct Gia_Dat_t_            Gia_Dat_t;
+./src/aig/gia/gia.h:typedef struct Gia_Rpr_t_ Gia_Rpr_t;
+./src/aig/gia/gia.h:typedef struct Gia_Plc_t_ Gia_Plc_t;
+./src/aig/gia/gia.h:typedef struct Gia_Obj_t_ Gia_Obj_t;
+./src/aig/gia/gia.h:typedef struct Gia_Man_t_ Gia_Man_t;
+./src/aig/gia/gia.h:typedef struct Gps_Par_t_ Gps_Par_t;
+./src/aig/gia/gia.h:typedef struct Emb_Par_t_ Emb_Par_t;
+./src/aig/gia/gia.h:typedef struct Gia_ParFra_t_ Gia_ParFra_t;
+./src/aig/gia/gia.h:typedef struct Gia_ParSim_t_ Gia_ParSim_t;
+./src/aig/gia/gia.h:typedef struct Gia_ManSim_t_ Gia_ManSim_t;
+./src/aig/gia/gia.h:typedef struct Jf_Par_t_ Jf_Par_t; 
+./src/aig/gia/gia.h:typedef struct Cbs_Man_t_  Cbs_Man_t;
+./src/aig/gia/gia.h:typedef struct Gia_ChMan_t_ Gia_ChMan_t;
+./src/aig/gia/gia.h:typedef struct Gia_ManMin_t_ Gia_ManMin_t;
+./src/aig/gia/gia.h:typedef struct Gia_Man2Min_t_ Gia_Man2Min_t;
+./src/aig/gia/gia.h:typedef struct Tas_Man_t_  Tas_Man_t;
+./src/aig/gia/gia.h:typedef struct Bnd_Man_t_  Bnd_Man_t;
+./src/aig/gia/giaGiarf.c:typedef struct Hcd_Man_t_ Hcd_Man_t;
+./src/aig/gia/giaBalLut.c:typedef struct Bal_Cut_t_ Bal_Cut_t; 
+./src/aig/gia/giaBalLut.c:typedef struct Bal_Man_t_ Bal_Man_t;
+./src/aig/gia/giaPf.c:typedef struct Pf_Cut_t_ Pf_Cut_t; 
+./src/aig/gia/giaPf.c:typedef struct Pf_Mat_t_ Pf_Mat_t; 
+./src/aig/gia/giaPf.c:typedef struct Pf_Obj_t_ Pf_Obj_t; 
+./src/aig/gia/giaPf.c:typedef struct Pf_Man_t_ Pf_Man_t; 
+./src/aig/gia/giaCSat2.c:typedef struct Cbs2_Par_t_ Cbs2_Par_t;
+./src/aig/gia/giaCSat2.c:typedef struct Cbs2_Que_t_ Cbs2_Que_t;
+./src/aig/gia/giaCSat2.c:typedef struct Cbs2_Man_t_ Cbs2_Man_t;
+./src/aig/gia/giaBalAig.c:typedef struct Dam_Man_t_ Dam_Man_t;
+./src/aig/gia/giaResub.c:typedef struct Gia_ResbMan_t_ Gia_ResbMan_t;
+./src/aig/gia/giaCof.c:typedef struct Cof_Fan_t_ Cof_Fan_t;
+./src/aig/gia/giaCof.c:typedef struct Cof_Obj_t_ Cof_Obj_t;
+./src/aig/gia/giaCof.c:typedef struct Cof_Man_t_ Cof_Man_t;
+./src/aig/gia/giaLf.c:typedef struct Lf_Cut_t_ Lf_Cut_t; 
+./src/aig/gia/giaLf.c:typedef struct Lf_Plc_t_ Lf_Plc_t; 
+./src/aig/gia/giaLf.c:typedef struct Lf_Bst_t_ Lf_Bst_t; 
+./src/aig/gia/giaLf.c:typedef struct Lf_Mem_t_ Lf_Mem_t; 
+./src/aig/gia/giaLf.c:typedef struct Lf_Man_t_ Lf_Man_t; 
+./src/aig/gia/giaEra2.c:typedef struct Gia_PtrAre_t_ Gia_PtrAre_t;
+./src/aig/gia/giaEra2.c:typedef union Gia_PtrAreInt_t_ Gia_PtrAreInt_t;
+./src/aig/gia/giaEra2.c:typedef struct Gia_ObjAre_t_ Gia_ObjAre_t;
+./src/aig/gia/giaEra2.c:typedef struct Gia_StaAre_t_ Gia_StaAre_t;
+./src/aig/gia/giaEra2.c:typedef struct Gia_ManAre_t_ Gia_ManAre_t;
+./src/aig/gia/giaCCof.c:typedef struct Ccf_Man_t_ Ccf_Man_t; // manager
+./src/aig/gia/giaIff.c:typedef struct Iff_Man_t_ Iff_Man_t;
+./src/aig/gia/giaStr.c:typedef struct Str_Obj_t_ Str_Obj_t; 
+./src/aig/gia/giaStr.c:typedef struct Str_Ntk_t_ Str_Ntk_t; 
+./src/aig/gia/giaStr.c:typedef struct Str_Man_t_ Str_Man_t; 
+./src/aig/gia/giaStr.c:typedef struct Str_Edg_t_ Str_Edg_t; 
+./src/aig/gia/giaStr.c:typedef struct Str_Mux_t_ Str_Mux_t; // 64 bytes
+./src/aig/gia/giaShrink7.c:typedef struct Unm_Man_t_ Unm_Man_t;
+./src/aig/gia/giaGlitch.c:typedef struct Gli_Obj_t_ Gli_Obj_t;
+./src/aig/gia/giaGlitch.c:typedef struct Gli_Man_t_ Gli_Man_t;
+./src/aig/gia/giaSwitch.c:typedef struct Gia_ParSwi_t_ Gia_ParSwi_t;
+./src/aig/gia/giaSwitch.c:typedef struct Gia_ManSwi_t_ Gia_ManSwi_t;
+./src/aig/gia/giaSat.c:typedef struct Gia_ManSat_t_ Gia_ManSat_t;
+./src/aig/gia/giaSat.c:typedef struct Gia_ObjSat1_t_ Gia_ObjSat1_t;
+./src/aig/gia/giaSat.c:typedef struct Gia_ObjSat2_t_ Gia_ObjSat2_t;
+./src/aig/gia/giaSat.c:typedef struct Gia_ObjSat_t_ Gia_ObjSat_t;
+./src/aig/gia/giaFrames.c:typedef struct Gia_ManFra_t_ Gia_ManFra_t;
+./src/aig/gia/giaFrames.c:typedef struct Gia_ManUnr_t_ Gia_ManUnr_t;
+./src/aig/gia/giaSatMap.c:typedef struct Sbm_Man_t_ Sbm_Man_t;
+./src/aig/gia/giaSupMin.c:typedef struct Gia_ManSup_t_ Gia_ManSup_t;
+./src/aig/gia/giaAgi.c:typedef struct Agi_Man_t_ Agi_Man_t;
+./src/aig/gia/giaEra.c:typedef struct Gia_ObjEra_t_ Gia_ObjEra_t;
+./src/aig/gia/giaEra.c:typedef struct Gia_ManEra_t_ Gia_ManEra_t;
+./src/aig/gia/giaCTas.c:typedef struct Tas_Par_t_ Tas_Par_t;
+./src/aig/gia/giaCTas.c:typedef struct Tas_Cls_t_ Tas_Cls_t;
+./src/aig/gia/giaCTas.c:typedef struct Tas_Sto_t_ Tas_Sto_t;
+./src/aig/gia/giaCTas.c:typedef struct Tas_Que_t_ Tas_Que_t;
+./src/aig/gia/giaEmbed.c:typedef float  Emb_Dat_t;
+./src/aig/gia/giaEmbed.c:typedef struct Emb_Obj_t_ Emb_Obj_t;
+./src/aig/gia/giaEmbed.c:typedef struct Emb_Man_t_ Emb_Man_t;
+./src/aig/gia/giaSatEdge.c:typedef struct Seg_Man_t_ Seg_Man_t;
+./src/aig/gia/giaStoch.c:typedef struct StochSynData_t_
+./src/aig/gia/giaTranStoch.c:typedef struct Gia_ManTranStochParam Gia_ManTranStochParam;
+./src/aig/gia/giaUtil.c:typedef struct Gia_MapLut_t_
+./src/aig/gia/giaMuxes.c:typedef struct Mux_Man_t_ Mux_Man_t; 
+./src/aig/gia/giaMuxes.c:typedef enum { GIA_FOREACH_ITEM(GENERATE_ENUM) } Gia_ObjType_t;
+./src/aig/gia/giaBsFind.c:typedef struct BsFind_UserData_t_ {
+./src/aig/gia/gia.c:typedef struct Slv_Man_t_ Slv_Man_t;
+./src/aig/gia/giaShrink6.c:typedef struct Shr_Fan_t_ Shr_Fan_t;
+./src/aig/gia/giaShrink6.c:typedef struct Shr_Man_t_ Shr_Man_t;
+./src/aig/gia/giaSplit.c:typedef struct Spl_Man_t_ Spl_Man_t;
+./src/aig/gia/giaSupps.c:typedef struct Supp_Man_t_ Supp_Man_t;
+./src/aig/gia/giaBound.c:typedef struct Bnd_Man_t_  Bnd_Man_t;
+./src/aig/gia/giaMinLut2.c:typedef struct Tree_Sto_t_ Tree_Sto_t; 
+./src/aig/gia/giaCSatP.h:typedef struct CbsP_Par_t_ CbsP_Par_t;
+./src/aig/gia/giaCSatP.h:typedef struct CbsP_Que_t_ CbsP_Que_t;
+./src/aig/gia/giaCSatP.h:typedef struct CbsP_Man_t_ CbsP_Man_t;
+./src/aig/gia/giaResub6.c:typedef struct Res6_Man_t_ Res6_Man_t;
+./src/aig/gia/giaTsim.c:typedef struct Gia_ManTer_t_ Gia_ManTer_t;
+./src/aig/gia/giaTtopt.cpp:  typedef std::bitset<64> bsw;
+./src/aig/gia/giaIso.c:typedef struct Gia_IsoMan_t_       Gia_IsoMan_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Par_t_ Tas_Par_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Sto_t_ Tas_Sto_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Que_t_ Tas_Que_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Var_t_ Tas_Var_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Cls_t_ Tas_Cls_t;
+./src/aig/gia/giaCTas2.c:typedef struct Tas_Man_t_ Tas_Man_t;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned short     var;
+./src/aig/gia/giaNewBdd.h:  typedef int                bvar;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned           lit;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned short     ref;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned long long size;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned           edge;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned           uniq;
+./src/aig/gia/giaNewBdd.h:  typedef unsigned           cac;
+./src/aig/gia/giaQbf.c:typedef struct Qbf_Man_t_ Qbf_Man_t; 
+./src/aig/gia/giaSweeper.c:typedef struct Swp_Man_t_ Swp_Man_t;
+./src/aig/gia/giaResub2.c:typedef struct Gia_Rsb2Man_t_ Gia_Rsb2Man_t;
+./src/aig/gia/giaSatLE.c:typedef struct Sle_Man_t_ Sle_Man_t;
+./src/aig/gia/giaForce.c:typedef struct Frc_Obj_t_ Frc_Obj_t;
+./src/aig/gia/giaForce.c:typedef struct Frc_Man_t_ Frc_Man_t;
+./src/aig/gia/giaKf.c:typedef struct Kf_Cut_t_ Kf_Cut_t; 
+./src/aig/gia/giaKf.c:typedef struct Kf_Set_t_ Kf_Set_t; 
+./src/aig/gia/giaKf.c:typedef struct Kf_Man_t_ Kf_Man_t; 
+./src/aig/gia/giaKf.c:typedef struct Kf_ThData_t_
+./src/aig/gia/giaCut.c:typedef struct Gia_Cut_t_ Gia_Cut_t; 
+./src/aig/gia/giaCut.c:typedef struct Gia_Sto_t_ Gia_Sto_t; 
+./src/aig/gia/giaPat2.c:typedef struct Min_Man_t_ Min_Man_t;
+./src/aig/gia/giaCone.c:typedef struct Opa_Man_t_ Opa_Man_t;
+./src/aig/gia/giaSim2.c:typedef struct Gia_Sim2_t_ Gia_Sim2_t;
+./src/aig/gia/giaSimBase.c:typedef struct Gia_SimRsbMan_t_ Gia_SimRsbMan_t;
+./src/aig/gia/giaSimBase.c:typedef struct Gia_SimAbsMan_t_ Gia_SimAbsMan_t;
+./src/aig/gia/giaSimBase.c:typedef struct Gia_RsbMan_t_ Gia_RsbMan_t;
+./src/aig/gia/giaOf.c:typedef struct Of_Cut_t_ Of_Cut_t; 
+./src/aig/gia/giaOf.c:typedef struct Of_Obj_t_ Of_Obj_t; 
+./src/aig/gia/giaOf.c:typedef struct Of_Man_t_ Of_Man_t; 
+./src/aig/gia/giaCSatOld.c:typedef struct Cbs0_Par_t_ Cbs0_Par_t;
+./src/aig/gia/giaCSatOld.c:typedef struct Cbs0_Que_t_ Cbs0_Que_t;
+./src/aig/gia/giaCSatOld.c:typedef struct Cbs0_Man_t_ Cbs0_Man_t;
+./src/aig/gia/giaNewTt.h:  typedef int                bvar;
+./src/aig/gia/giaNewTt.h:  typedef unsigned           lit;
+./src/aig/gia/giaNewTt.h:  typedef unsigned short     ref;
+./src/aig/gia/giaNewTt.h:  typedef unsigned long long size;
+./src/aig/gia/giaNewTt.h:    typedef unsigned long long word;
+./src/aig/gia/giaNewTt.h:    typedef std::bitset<64> bsw;
+./src/aig/gia/giaHcd.c:typedef struct Hcd_Pars_t_ Hcd_Pars_t;
+./src/aig/gia/giaNf.c:typedef struct Nf_Cut_t_ Nf_Cut_t; 
+./src/aig/gia/giaNf.c:typedef struct Nf_Cfg_t_ Nf_Cfg_t; 
+./src/aig/gia/giaNf.c:typedef struct Nf_Mat_t_ Nf_Mat_t; 
+./src/aig/gia/giaNf.c:typedef struct Nf_Obj_t_ Nf_Obj_t; 
+./src/aig/gia/giaNf.c:typedef struct Nf_Man_t_ Nf_Man_t; 
+./src/aig/gia/giaCSat3.c:typedef struct Cbs3_Par_t_ Cbs3_Par_t;
+./src/aig/gia/giaCSat3.c:typedef struct Cbs3_Que_t_ Cbs3_Que_t;
+./src/aig/gia/giaCSat3.c:typedef struct Cbs3_Man_t_ Cbs3_Man_t;
+./src/aig/gia/giaJf.c:typedef struct Jf_Cut_t_ Jf_Cut_t; 
+./src/aig/gia/giaJf.c:typedef struct Jf_Man_t_ Jf_Man_t; 
+./src/aig/gia/giaSatLut.c:typedef struct Sbl_Man_t_ Sbl_Man_t;
+./src/aig/gia/giaSatLut.c:typedef enum { 
+./src/aig/gia/giaSatLut.c:typedef enum { 
+./src/phys/place/place_genqp.c:typedef struct reverseCOG {
+./src/phys/place/place_gordian.h:typedef struct Partition {
+./src/phys/place/place_partition.c:typedef struct FM_cell {
+./src/phys/place/place_base.h://typedef char bool;
+./src/phys/place/place_base.h:typedef struct Rect {
+./src/phys/place/place_base.h:typedef struct AbstractCell {
+./src/phys/place/place_base.h:typedef struct ConcreteCell {
+./src/phys/place/place_base.h:typedef struct ConcreteNet {
+./src/phys/place/place_qpsolver.h:  typedef float qps_float_t;
+./src/phys/place/place_qpsolver.h:  typedef struct qps_problem {
+./src/map/if/ifDec66.c:typedef struct If_Grp_t_ If_Grp_t;
+./src/map/if/ifDec66.c:typedef struct If_Hte_t_ If_Hte_t;
+./src/map/if/ifDsd.c:typedef enum { 
+./src/map/if/ifDsd.c:typedef struct If_DsdObj_t_ If_DsdObj_t;
+./src/map/if/ifDsd.c:typedef struct Ifn_ThData_t_
+./src/map/if/ifTest.c:typedef struct Par_ThData_t_
+./src/map/if/ifDec16.c:typedef struct If_Grp_t_ If_Grp_t;
+./src/map/if/ifDec16.c:typedef struct If_Hte_t_ If_Hte_t;
+./src/map/if/ifTune.c:typedef enum { 
+./src/map/if/ifTune.c:typedef struct Ifn_Obj_t_  Ifn_Obj_t;
+./src/map/if/if.h:typedef enum { 
+./src/map/if/if.h:typedef struct If_Man_t_     If_Man_t;
+./src/map/if/if.h:typedef struct If_Par_t_     If_Par_t;
+./src/map/if/if.h:typedef struct If_Obj_t_     If_Obj_t;
+./src/map/if/if.h:typedef struct If_Cut_t_     If_Cut_t;
+./src/map/if/if.h:typedef struct If_Set_t_     If_Set_t;
+./src/map/if/if.h:typedef struct If_LibLut_t_  If_LibLut_t;
+./src/map/if/if.h:typedef struct If_LibCell_t_ If_LibCell_t;
+./src/map/if/if.h:typedef struct If_LibBox_t_  If_LibBox_t;
+./src/map/if/if.h:typedef struct If_DsdMan_t_  If_DsdMan_t;
+./src/map/if/if.h:typedef struct Ifn_Ntk_t_    Ifn_Ntk_t;
+./src/map/if/if.h:typedef struct Ifif_Par_t_   Ifif_Par_t;
+./src/map/if/if.h:typedef struct If_Box_t_ If_Box_t;
+./src/map/if/ifCheck.c:typedef unsigned __int64 word;
+./src/map/if/ifCheck.c:typedef unsigned long long word;
+./src/map/mapper/mapper.h:typedef struct Map_ManStruct_t_         Map_Man_t;
+./src/map/mapper/mapper.h:typedef struct Map_NodeStruct_t_        Map_Node_t;
+./src/map/mapper/mapper.h:typedef struct Map_NodeVecStruct_t_     Map_NodeVec_t;
+./src/map/mapper/mapper.h:typedef struct Map_CutStruct_t_         Map_Cut_t;
+./src/map/mapper/mapper.h:typedef struct Map_MatchStruct_t_       Map_Match_t;
+./src/map/mapper/mapper.h:typedef struct Map_SuperStruct_t_       Map_Super_t;
+./src/map/mapper/mapper.h:typedef struct Map_SuperLibStruct_t_    Map_SuperLib_t;
+./src/map/mapper/mapper.h:typedef struct Map_HashTableStruct_t_   Map_HashTable_t;
+./src/map/mapper/mapper.h:typedef struct Map_HashEntryStruct_t_   Map_HashEntry_t;
+./src/map/mapper/mapper.h:typedef struct Map_TimeStruct_t_        Map_Time_t;
+./src/map/mapper/mapperCut.c:typedef struct Map_CutTableStrutct_t Map_CutTable_t;
+./src/map/super/superAnd.c:typedef struct Super2_ManStruct_t_     Super2_Man_t;   // manager
+./src/map/super/superAnd.c:typedef struct Super2_LibStruct_t_     Super2_Lib_t;   // library
+./src/map/super/superAnd.c:typedef struct Super2_GateStruct_t_    Super2_Gate_t;  // supergate
+./src/map/super/superGate.c:typedef struct Super_ManStruct_t_     Super_Man_t;   // manager
+./src/map/super/superGate.c:typedef struct Super_GateStruct_t_    Super_Gate_t;  // supergate
+./src/map/fpga/fpga.h:typedef struct Fpga_ManStruct_t_         Fpga_Man_t;
+./src/map/fpga/fpga.h:typedef struct Fpga_NodeStruct_t_        Fpga_Node_t;
+./src/map/fpga/fpga.h:typedef struct Fpga_NodeVecStruct_t_     Fpga_NodeVec_t;
+./src/map/fpga/fpga.h:typedef struct Fpga_CutStruct_t_         Fpga_Cut_t;
+./src/map/fpga/fpga.h:typedef struct Fpga_LutLibStruct_t_      Fpga_LutLib_t;
+./src/map/fpga/fpgaCut.c:typedef struct Fpga_CutTableStrutct_t Fpga_CutTable_t;
+./src/map/mpm/mpmMig.h:typedef struct Mig_Fan_t_ Mig_Fan_t;
+./src/map/mpm/mpmMig.h:typedef struct Mig_Obj_t_ Mig_Obj_t;
+./src/map/mpm/mpmMig.h:typedef struct Mig_Man_t_ Mig_Man_t;
+./src/map/mpm/mpmInt.h:typedef struct Mpm_Cut_t_ Mpm_Cut_t;  // 8 bytes + NLeaves * 4 bytes
+./src/map/mpm/mpmInt.h:typedef struct Mpm_Uni_t_ Mpm_Uni_t;  // 48 bytes
+./src/map/mpm/mpmInt.h:typedef struct Mpm_Dsd_t_ Mpm_Dsd_t;
+./src/map/mpm/mpmInt.h:typedef struct Mpm_Man_t_ Mpm_Man_t;
+./src/map/mpm/mpmPre.c:typedef struct Ifd_Obj_t_ Ifd_Obj_t;
+./src/map/mpm/mpmPre.c:typedef struct Ifd_Man_t_ Ifd_Man_t;
+./src/map/mpm/mpm.h:typedef struct Mpm_LibLut_t_ Mpm_LibLut_t;
+./src/map/mpm/mpm.h:typedef struct Mpm_Par_t_ Mpm_Par_t;
+./src/map/amap/amapRead.c:typedef enum { 
+./src/map/amap/amapLiberty.c:typedef enum { 
+./src/map/amap/amapLiberty.c:typedef struct Amap_Pair_t_ Amap_Pair_t;
+./src/map/amap/amapLiberty.c:typedef struct Amap_Item_t_ Amap_Item_t;
+./src/map/amap/amapLiberty.c:typedef struct Amap_Tree_t_ Amap_Tree_t;
+./src/map/amap/amapInt.h:typedef enum { 
+./src/map/amap/amapInt.h:typedef struct Amap_Pin_t_ Amap_Pin_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Gat_t_ Amap_Gat_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Nod_t_ Amap_Nod_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Set_t_ Amap_Set_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Man_t_ Amap_Man_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Obj_t_ Amap_Obj_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Cut_t_ Amap_Cut_t;
+./src/map/amap/amapInt.h:typedef struct Amap_Mat_t_ Amap_Mat_t;
+./src/map/amap/amap.h:typedef struct Amap_Lib_t_ Amap_Lib_t;
+./src/map/amap/amap.h:typedef struct Amap_Par_t_ Amap_Par_t;
+./src/map/amap/amap.h:typedef struct Amap_Out_t_ Amap_Out_t;
+./src/map/scl/sclLib.h:typedef enum  
+./src/map/scl/sclLib.h:typedef enum      // -- timing sense, positive-, negative- or non-unate
+./src/map/scl/sclLib.h:typedef struct SC_DontUse_ SC_DontUse;
+./src/map/scl/sclLib.h:typedef struct SC_Pair_         SC_Pair;
+./src/map/scl/sclLib.h:typedef struct SC_PairI_        SC_PairI;
+./src/map/scl/sclLib.h:typedef struct SC_SizePars_    SC_SizePars;
+./src/map/scl/sclLib.h:typedef struct SC_BusPars_     SC_BusPars;
+./src/map/scl/sclLib.h:typedef struct SC_WireLoad_    SC_WireLoad;
+./src/map/scl/sclLib.h:typedef struct SC_WireLoadSel_ SC_WireLoadSel;
+./src/map/scl/sclLib.h:typedef struct SC_TableTempl_  SC_TableTempl;
+./src/map/scl/sclLib.h:typedef struct SC_Surface_     SC_Surface;
+./src/map/scl/sclLib.h:typedef struct SC_Timing_      SC_Timing;
+./src/map/scl/sclLib.h:typedef struct SC_Timings_     SC_Timings;
+./src/map/scl/sclLib.h:typedef struct SC_Pin_         SC_Pin;
+./src/map/scl/sclLib.h:typedef struct SC_Cell_        SC_Cell;
+./src/map/scl/sclLib.h:typedef struct SC_Lib_         SC_Lib;
+./src/map/scl/sclBufSize.c:typedef struct Bus_Man_t_ Bus_Man_t;
+./src/map/scl/sclBuffer.c:typedef struct Buf_Man_t_ Buf_Man_t;
+./src/map/scl/sclTime.h:typedef struct SC_Time_           SC_Time;
+./src/map/scl/sclSize.h:typedef struct SC_Man_          SC_Man;
+./src/map/scl/sclLiberty.c:typedef enum { 
+./src/map/scl/sclLiberty.c:typedef struct Scl_Pair_t_ Scl_Pair_t;
+./src/map/scl/sclLiberty.c:typedef struct Scl_Item_t_ Scl_Item_t;
+./src/map/scl/sclLiberty.c:typedef struct Scl_Tree_t_ Scl_Tree_t;
+./src/map/scl/sclCon.h:typedef struct Scl_Con_t_ Scl_Con_t;
+./src/map/cov/cov.h:typedef struct Cov_Man_t_  Cov_Man_t;
+./src/map/cov/cov.h:typedef struct Cov_Obj_t_  Cov_Obj_t;
+./src/map/cov/covInt.h:typedef struct Min_Man_t_  Min_Man_t;
+./src/map/cov/covInt.h:typedef struct Min_Cube_t_ Min_Cube_t;
+./src/map/mio/mio.h:typedef enum { MIO_PHASE_UNKNOWN, MIO_PHASE_INV, MIO_PHASE_NONINV } Mio_PinPhase_t;
+./src/map/mio/mio.h:typedef struct  Mio_LibraryStruct_t_      Mio_Library_t;
+./src/map/mio/mio.h:typedef struct  Mio_GateStruct_t_         Mio_Gate_t;
+./src/map/mio/mio.h:typedef struct  Mio_PinStruct_t_          Mio_Pin_t;
+./src/map/mio/mio.h:typedef struct Mio_Cell_t_ Mio_Cell_t; 
+./src/map/mio/mio.h:typedef struct Mio_Cell2_t_ Mio_Cell2_t; 
+./src/sat/msat/msat.h:typedef struct Msat_Solver_t_      Msat_Solver_t;
+./src/sat/msat/msat.h:typedef struct Msat_IntVec_t_      Msat_IntVec_t;
+./src/sat/msat/msat.h:typedef struct Msat_ClauseVec_t_   Msat_ClauseVec_t;
+./src/sat/msat/msat.h:typedef struct Msat_VarHeap_t_     Msat_VarHeap_t;
+./src/sat/msat/msat.h:typedef enum { MSAT_FALSE = -1, MSAT_UNKNOWN = 0, MSAT_TRUE = 1 } Msat_Type_t;
+./src/sat/msat/msatOrderJ.c:typedef struct Msat_OrderVar_t_  Msat_OrderVar_t;
+./src/sat/msat/msatOrderJ.c:typedef struct Msat_OrderRing_t_ Msat_OrderRing_t;
+./src/sat/msat/msatInt.h:typedef struct Msat_Clause_t_      Msat_Clause_t;
+./src/sat/msat/msatInt.h:typedef struct Msat_Queue_t_       Msat_Queue_t;
+./src/sat/msat/msatInt.h:typedef struct Msat_Order_t_       Msat_Order_t;
+./src/sat/msat/msatInt.h:typedef struct Msat_MmFixed_t_     Msat_MmFixed_t;    
+./src/sat/msat/msatInt.h:typedef struct Msat_MmFlex_t_      Msat_MmFlex_t;     
+./src/sat/msat/msatInt.h:typedef struct Msat_MmStep_t_      Msat_MmStep_t;     
+./src/sat/msat/msatInt.h:typedef int                       Msat_Lit_t;  
+./src/sat/msat/msatInt.h:typedef int                       Msat_Var_t;  
+./src/sat/msat/msatInt.h:typedef struct Msat_SolverStats_t_ Msat_SolverStats_t;
+./src/sat/msat/msatInt.h:typedef struct Msat_SearchParams_t_ Msat_SearchParams_t;
+./src/sat/glucose/AbcGlucose.h:typedef struct Glucose_Pars_ Glucose_Pars;
+./src/sat/glucose/AbcGlucose.h:typedef void bmcg_sat_solver;
+./src/sat/glucose/SolverTypes.h:typedef int Var;
+./src/sat/glucose/SolverTypes.h:typedef RegionAllocator<uint32_t>::Ref CRef;
+./src/sat/glucose/SolverTypes.h:    typedef Map<CRef, T, CRefHash> HashTable;
+./src/sat/glucose/pstdint.h:    typedef unsigned char uint8_t;
+./src/sat/glucose/pstdint.h:    typedef signed char int8_t;
+./src/sat/glucose/pstdint.h:  typedef unsigned int uint16_t;
+./src/sat/glucose/pstdint.h:  typedef unsigned short uint16_t;
+./src/sat/glucose/pstdint.h:  typedef signed int int16_t;
+./src/sat/glucose/pstdint.h:  typedef signed short int16_t;
+./src/sat/glucose/pstdint.h:  typedef unsigned long uint32_t;
+./src/sat/glucose/pstdint.h:  typedef unsigned int uint32_t;
+./src/sat/glucose/pstdint.h:  typedef unsigned short uint32_t;
+./src/sat/glucose/pstdint.h:  typedef signed long int32_t;
+./src/sat/glucose/pstdint.h:  typedef signed int int32_t;
+./src/sat/glucose/pstdint.h:  typedef signed short int32_t;
+./src/sat/glucose/pstdint.h:   typedef long long int64_t;
+./src/sat/glucose/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/glucose/pstdint.h:   __extension__ typedef long long int64_t;
+./src/sat/glucose/pstdint.h:   __extension__ typedef unsigned long long uint64_t;
+./src/sat/glucose/pstdint.h:   typedef long long int64_t;
+./src/sat/glucose/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/glucose/pstdint.h:   typedef __int64 int64_t;
+./src/sat/glucose/pstdint.h:   typedef unsigned __int64 uint64_t;
+./src/sat/glucose/pstdint.h:  typedef int64_t intmax_t;
+./src/sat/glucose/pstdint.h:  typedef uint64_t uintmax_t;
+./src/sat/glucose/pstdint.h:  typedef int32_t intmax_t;
+./src/sat/glucose/pstdint.h:  typedef uint32_t uintmax_t;
+./src/sat/glucose/pstdint.h:  typedef   int8_t   int_least8_t;
+./src/sat/glucose/pstdint.h:  typedef  uint8_t  uint_least8_t;
+./src/sat/glucose/pstdint.h:  typedef  int16_t  int_least16_t;
+./src/sat/glucose/pstdint.h:  typedef uint16_t uint_least16_t;
+./src/sat/glucose/pstdint.h:  typedef  int32_t  int_least32_t;
+./src/sat/glucose/pstdint.h:  typedef uint32_t uint_least32_t;
+./src/sat/glucose/pstdint.h:    typedef  int64_t  int_least64_t;
+./src/sat/glucose/pstdint.h:    typedef uint64_t uint_least64_t;
+./src/sat/glucose/pstdint.h:typedef   int_least8_t   int_fast8_t;
+./src/sat/glucose/pstdint.h:typedef  uint_least8_t  uint_fast8_t;
+./src/sat/glucose/pstdint.h:typedef  int_least16_t  int_fast16_t;
+./src/sat/glucose/pstdint.h:typedef uint_least16_t uint_fast16_t;
+./src/sat/glucose/pstdint.h:typedef  int_least32_t  int_fast32_t;
+./src/sat/glucose/pstdint.h:typedef uint_least32_t uint_fast32_t;
+./src/sat/glucose/pstdint.h:  typedef  int_least64_t  int_fast64_t;
+./src/sat/glucose/pstdint.h:  typedef uint_least64_t uint_fast64_t;
+./src/sat/glucose/pstdint.h:  typedef stdint_intptr_glue3(uint,stdint_intptr_bits,_t) uintptr_t;
+./src/sat/glucose/pstdint.h:  typedef stdint_intptr_glue3( int,stdint_intptr_bits,_t)  intptr_t;
+./src/sat/glucose/pstdint.h:  typedef ptrdiff_t intptr_t;
+./src/sat/glucose/Alloc.h:    typedef uint32_t Ref;
+./src/sat/glucose/Queue.h:    typedef T Key;
+./src/sat/proof/pr.h:typedef struct Pr_Man_t_ Pr_Man_t;
+./src/sat/proof/pr.c:typedef unsigned lit;
+./src/sat/proof/pr.c:typedef struct Pr_Cls_t_ Pr_Cls_t;
+./src/sat/satoko/types.h:typedef sdbl_t act_t;
+./src/sat/satoko/types.h:typedef vec_sdbl_t vec_act_t ;
+./src/sat/satoko/types.h:typedef unsigned clause_act_t;
+./src/sat/satoko/solver.h:typedef struct solver_t_ solver_t;
+./src/sat/satoko/utils/vec/vec_int.h:typedef struct vec_int_t_ vec_int_t;
+./src/sat/satoko/utils/vec/vec_flt.h:typedef struct vec_flt_t_ vec_flt_t;
+./src/sat/satoko/utils/vec/vec_uint.h:typedef struct vec_uint_t_ vec_uint_t;
+./src/sat/satoko/utils/vec/vec_char.h:typedef struct vec_char_t_ vec_char_t;
+./src/sat/satoko/utils/vec/vec_sdbl.h:typedef struct vec_sdbl_t_ vec_sdbl_t;
+./src/sat/satoko/utils/b_queue.h:typedef struct b_queue_t_ b_queue_t;
+./src/sat/satoko/utils/heap.h:typedef struct heap_t_ heap_t;
+./src/sat/satoko/utils/sdbl.h:typedef word sdbl_t;
+./src/sat/satoko/satoko.h:typedef struct solver_t_ satoko_t;
+./src/sat/satoko/satoko.h:typedef struct satoko_opts satoko_opts_t;
+./src/sat/satoko/satoko.h:typedef struct satoko_stats satoko_stats_t;
+./src/sat/satoko/watch_list.h:typedef struct vec_wl_t_ vec_wl_t;
+./src/sat/psat/m114p_types.h:typedef int   M114p_Solver_t;
+./src/sat/lsat/solver.h:typedef struct solver_t solver;
+./src/sat/lsat/solver.h:typedef int solver_Var;
+./src/sat/lsat/solver.h:typedef int solver_Lit;
+./src/sat/lsat/solver.h:typedef int solver_lbool;
+./src/sat/kissat/vivify.c:typedef struct countref countref;
+./src/sat/kissat/vivify.c:typedef STACK (countref) countrefs;
+./src/sat/kissat/vivify.c:typedef struct vivifier vivifier;
+./src/sat/kissat/kissatSolver.h:typedef struct kissat_solver_ kissat_solver;
+./src/sat/kissat/assign.h:typedef struct assigned assigned;
+./src/sat/kissat/fifo.h:typedef struct unsigned_fifo unsigned_fifo;
+./src/sat/kissat/proof.c:typedef struct write_buffer write_buffer;
+./src/sat/kissat/factor.c:typedef struct quotient quotient;
+./src/sat/kissat/factor.c:typedef struct scores scores;
+./src/sat/kissat/factor.c:typedef struct factoring factoring;
+./src/sat/kissat/internal.h:typedef struct datarank datarank;
+./src/sat/kissat/internal.h:typedef struct import import;
+./src/sat/kissat/internal.h:typedef struct termination termination;
+./src/sat/kissat/internal.h:typedef STACK (value) eliminated;
+./src/sat/kissat/internal.h:typedef STACK (import) imports;
+./src/sat/kissat/internal.h:typedef STACK (datarank) dataranks;
+./src/sat/kissat/internal.h:typedef STACK (watch) statches;
+./src/sat/kissat/internal.h:typedef STACK (watch *) patches;
+./src/sat/kissat/profile.h:typedef struct profile profile;
+./src/sat/kissat/profile.h:typedef struct profiles profiles;
+./src/sat/kissat/check.c:typedef struct hash hash;
+./src/sat/kissat/check.c:typedef struct bucket bucket;
+./src/sat/kissat/check.c:typedef STACK (bucket*) buckets_;
+./src/sat/kissat/reduce.c:typedef struct reducible reducible;
+./src/sat/kissat/reduce.c:typedef STACK (reducible) reducibles;
+./src/sat/kissat/smooth.h:typedef struct smooth smooth;
+./src/sat/kissat/vector.c:typedef unsigned rank;
+./src/sat/kissat/vector.c:typedef uintptr_t rank;
+./src/sat/kissat/fastel.c:typedef struct candidate candidate;
+./src/sat/kissat/fastel.c:typedef STACK (candidate) candidates;
+./src/sat/kissat/phases.h:typedef struct phases phases;
+./src/sat/kissat/flags.h:typedef struct flags flags;
+./src/sat/kissat/file.h:typedef struct file file;
+./src/sat/kissat/parse.h:typedef enum strictness strictness;
+./src/sat/kissat/utilities.h://typedef uintptr_t word;
+./src/sat/kissat/utilities.h:typedef uintptr_t w2rd[2];
+./src/sat/kissat/sweep.c:typedef struct sweeper sweeper;
+./src/sat/kissat/sweep.c:typedef struct sweep_candidate sweep_candidate;
+./src/sat/kissat/sweep.c:typedef STACK(sweep_candidate) sweep_candidates;
+./src/sat/kissat/kitten.h:typedef struct kitten kitten;
+./src/sat/kissat/value.h:typedef signed char value;
+./src/sat/kissat/value.h:typedef signed char mark;
+./src/sat/kissat/options.h:typedef struct opt opt;
+./src/sat/kissat/options.h:typedef struct options options;
+./src/sat/kissat/congruence.c:typedef struct gate gate;
+./src/sat/kissat/congruence.c:typedef STACK (gate *) gates;
+./src/sat/kissat/congruence.c:typedef struct gate_hash_table gate_hash_table;
+./src/sat/kissat/congruence.c:typedef struct binary_clause binary_clause;
+./src/sat/kissat/congruence.c:typedef struct binary_hash_table binary_hash_table;
+./src/sat/kissat/congruence.c:typedef struct hash_ref hash_ref;
+./src/sat/kissat/congruence.c:typedef struct large_clause_hash_table large_clause_hash_table;
+./src/sat/kissat/congruence.c:typedef struct closure closure;
+./src/sat/kissat/congruence.c:typedef struct offsetsize offsetsize;
+./src/sat/kissat/congruence.c:typedef struct refsize refsize;
+./src/sat/kissat/congruence.c:typedef STACK (refsize) refsizes;
+./src/sat/kissat/walk.c:typedef struct tagged tagged;
+./src/sat/kissat/walk.c:typedef struct counter counter;
+./src/sat/kissat/walk.c:typedef struct walker walker;
+./src/sat/kissat/walk.c:typedef STACK (double) doubles;
+./src/sat/kissat/proof.h:typedef struct proof proof;
+./src/sat/kissat/reluctant.h:typedef struct reluctant reluctant;
+./src/sat/kissat/averages.h:typedef struct averages averages;
+./src/sat/kissat/mode.h:typedef struct mode mode;
+./src/sat/kissat/kissat.h:typedef struct kissat kissat;
+./src/sat/kissat/check.h:typedef struct checker checker;
+./src/sat/kissat/statistics.h:typedef struct statistics statistics;
+./src/sat/kissat/array.h:typedef ARRAY (unsigned) unsigned_array;
+./src/sat/kissat/stack.h:typedef STACK (char) chars;
+./src/sat/kissat/stack.h:typedef STACK (int) ints;
+./src/sat/kissat/stack.h:typedef STACK (size_t) sizes;
+./src/sat/kissat/stack.h:typedef STACK (unsigned) unsigneds;
+./src/sat/kissat/heap.h:typedef struct heap heap;
+./src/sat/kissat/definition.c:typedef struct definition_extractor definition_extractor;
+./src/sat/kissat/definition.c:typedef struct lemma_extractor lemma_extractor;
+./src/sat/kissat/classify.h:typedef struct classification classification;
+./src/sat/kissat/reference.h:typedef unsigned reference;
+./src/sat/kissat/reference.h:typedef STACK (reference) references;
+./src/sat/kissat/watch.h:typedef union watch watch;
+./src/sat/kissat/watch.h:typedef struct binary_tagged_literal watch_type;
+./src/sat/kissat/watch.h:typedef struct binary_tagged_literal binary_watch;
+./src/sat/kissat/watch.h:typedef struct binary_tagged_literal blocking_watch;
+./src/sat/kissat/watch.h:typedef struct binary_tagged_reference large_watch;
+./src/sat/kissat/watch.h:typedef vector watches;
+./src/sat/kissat/watch.h:typedef struct litwatch litwatch;
+./src/sat/kissat/watch.h:typedef struct litpair litpair;
+./src/sat/kissat/watch.h:typedef struct litriple litriple;
+./src/sat/kissat/watch.h:typedef STACK (litwatch) litwatches;
+./src/sat/kissat/watch.h:typedef STACK (litpair) litpairs;
+./src/sat/kissat/watch.h:typedef STACK (litriple) litriples;
+./src/sat/kissat/extend.h:typedef struct extension extension;
+./src/sat/kissat/extend.h:typedef STACK (extension) extensions;
+./src/sat/kissat/format.h:typedef struct kormat kormat;
+./src/sat/kissat/vector.h:typedef struct vector vector;
+./src/sat/kissat/vector.h:typedef struct vectors vectors;
+./src/sat/kissat/arena.h:typedef word ward;
+./src/sat/kissat/arena.h:typedef w2rd ward;
+./src/sat/kissat/arena.h:typedef STACK (ward) arena;
+./src/sat/kissat/frames.h:typedef struct frame frame;
+./src/sat/kissat/frames.h:typedef struct slice slice;
+./src/sat/kissat/frames.h:typedef STACK (frame) frames;
+./src/sat/kissat/clause.h:typedef struct clause clause;
+./src/sat/kissat/queue.h:typedef struct links links;
+./src/sat/kissat/queue.h:typedef struct queue queue;
+./src/sat/kissat/random.h:typedef uint64_t generator;
+./src/sat/kissat/kitten.c:typedef signed char value;
+./src/sat/kissat/kitten.c:typedef struct kar kar;
+./src/sat/kissat/kitten.c:typedef struct kink kink;
+./src/sat/kissat/kitten.c:typedef struct klause klause;
+./src/sat/kissat/kitten.c:typedef struct katch katch;
+./src/sat/kissat/kitten.c:typedef STACK (unsigned) klauses;
+./src/sat/kissat/kitten.c:typedef STACK (katch) katches;
+./src/sat/kissat/kitten.c:typedef struct statistics statistics;
+./src/sat/kissat/kitten.c:typedef struct kimits kimits;
+./src/sat/kissat/kitten.c:typedef struct parser parser;
+./src/sat/kissat/kitten.c:typedef struct line line;
+./src/sat/kissat/kitten.c:typedef struct core_writer core_writer;
+./src/sat/kissat/kitten.c:typedef struct lemma_writer lemma_writer;
+./src/sat/kissat/kimits.h:typedef struct bounds bounds;
+./src/sat/kissat/kimits.h:typedef struct changes changes;
+./src/sat/kissat/kimits.h:typedef struct delays delays;
+./src/sat/kissat/kimits.h:typedef struct delay delay;
+./src/sat/kissat/kimits.h:typedef struct remember remember;
+./src/sat/kissat/kimits.h:typedef struct enabled enabled;
+./src/sat/kissat/kimits.h:typedef struct limited limited;
+./src/sat/kissat/kimits.h:typedef struct limits limits;
+./src/sat/csat/csat_apis.h:typedef struct ABC_ManagerStruct_t     ABC_Manager_t;
+./src/sat/csat/csat_apis.h:typedef struct ABC_ManagerStruct_t *   ABC_Manager;
+./src/sat/csat/csat_apis.h:typedef struct _CSAT_Target_ResultT CSAT_Target_ResultT;
+./src/sat/bsat/satMem.h:typedef struct Sat_MmFixed_t_ Sat_MmFixed_t;
+./src/sat/bsat/satMem.h:typedef struct Sat_MmFlex_t_  Sat_MmFlex_t;
+./src/sat/bsat/satMem.h:typedef struct Sat_MmStep_t_  Sat_MmStep_t;
+./src/sat/bsat/satClause.h:typedef struct clause_t clause;
+./src/sat/bsat/satClause.h:typedef struct Sat_Mem_t_ Sat_Mem_t;
+./src/sat/bsat/satProof2.h:typedef struct Prf_Man_t_ Prf_Man_t;
+./src/sat/bsat/satTruth.c:typedef struct Tru_One_t_ Tru_One_t; // 16 bytes minimum
+./src/sat/bsat/satProof.c:typedef struct satset_t satset;
+./src/sat/bsat/satSolver3.h:typedef struct sat_solver3_t sat_solver3;
+./src/sat/bsat/satSolver3.h://typedef struct clause_t clause;
+./src/sat/bsat/satSolver3.h:typedef struct varinfo_t varinfo;
+./src/sat/bsat/satStore.h:typedef unsigned lit;
+./src/sat/bsat/satStore.h:typedef struct Sto_Cls_t_ Sto_Cls_t;
+./src/sat/bsat/satStore.h:typedef struct Sto_Man_t_ Sto_Man_t;
+./src/sat/bsat/satStore.h:typedef struct Int_Man_t_ Int_Man_t;
+./src/sat/bsat/satStore.h:typedef struct Inta_Man_t_ Inta_Man_t;
+./src/sat/bsat/satStore.h:typedef struct Intb_Man_t_ Intb_Man_t;
+./src/sat/bsat/satStore.h:typedef struct Intp_Man_t_ Intp_Man_t;
+./src/sat/bsat/satSolver2.h:typedef struct sat_solver2_t sat_solver2;
+./src/sat/bsat/satSolver2.h:typedef struct Int2_Man_t_ Int2_Man_t;
+./src/sat/bsat/satSolver2.h:typedef struct varinfo2_t varinfo2;
+./src/sat/bsat/satSolver.h:typedef struct sat_solver_t sat_solver;
+./src/sat/bsat/satSolver.h://typedef struct clause_t clause;
+./src/sat/bsat/satSolver.h:typedef struct varinfo_t varinfo;
+./src/sat/bsat/satTruth.h:typedef struct Tru_Man_t_ Tru_Man_t;
+./src/sat/bsat/satVec.h:typedef struct veci_t veci;
+./src/sat/bsat/satVec.h:typedef struct vecp_t vecp;
+./src/sat/bsat/satVec.h:typedef int    lit;
+./src/sat/bsat/satVec.h:typedef int    cla;
+./src/sat/bsat/satVec.h:typedef signed char lbool;
+./src/sat/bsat/satVec.h:typedef struct stats_t stats_t;
+./src/sat/cnf/cnfUtil.c:typedef struct Cnf_ThData_t_
+./src/sat/cnf/cnf.h:typedef struct Cnf_Man_t_            Cnf_Man_t;
+./src/sat/cnf/cnf.h:typedef struct Cnf_Dat_t_            Cnf_Dat_t;
+./src/sat/cnf/cnf.h:typedef struct Cnf_Cut_t_            Cnf_Cut_t;
+./src/sat/bsat2/SolverTypes.h:typedef int Var;
+./src/sat/bsat2/SolverTypes.h:typedef RegionAllocator<uint32_t>::Ref CRef;
+./src/sat/bsat2/SolverTypes.h:    typedef Map<CRef, T, CRefHash> HashTable;
+./src/sat/bsat2/pstdint.h:    typedef unsigned char uint8_t;
+./src/sat/bsat2/pstdint.h:    typedef signed char int8_t;
+./src/sat/bsat2/pstdint.h:  typedef unsigned int uint16_t;
+./src/sat/bsat2/pstdint.h:  typedef unsigned short uint16_t;
+./src/sat/bsat2/pstdint.h:  typedef signed int int16_t;
+./src/sat/bsat2/pstdint.h:  typedef signed short int16_t;
+./src/sat/bsat2/pstdint.h:  typedef unsigned long uint32_t;
+./src/sat/bsat2/pstdint.h:  typedef unsigned int uint32_t;
+./src/sat/bsat2/pstdint.h:  typedef unsigned short uint32_t;
+./src/sat/bsat2/pstdint.h:  typedef signed long int32_t;
+./src/sat/bsat2/pstdint.h:  typedef signed int int32_t;
+./src/sat/bsat2/pstdint.h:  typedef signed short int32_t;
+./src/sat/bsat2/pstdint.h:   typedef long long int64_t;
+./src/sat/bsat2/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/bsat2/pstdint.h:   __extension__ typedef long long int64_t;
+./src/sat/bsat2/pstdint.h:   __extension__ typedef unsigned long long uint64_t;
+./src/sat/bsat2/pstdint.h:   typedef long long int64_t;
+./src/sat/bsat2/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/bsat2/pstdint.h:   typedef __int64 int64_t;
+./src/sat/bsat2/pstdint.h:   typedef unsigned __int64 uint64_t;
+./src/sat/bsat2/pstdint.h:  typedef int64_t intmax_t;
+./src/sat/bsat2/pstdint.h:  typedef uint64_t uintmax_t;
+./src/sat/bsat2/pstdint.h:  typedef int32_t intmax_t;
+./src/sat/bsat2/pstdint.h:  typedef uint32_t uintmax_t;
+./src/sat/bsat2/pstdint.h:  typedef   int8_t   int_least8_t;
+./src/sat/bsat2/pstdint.h:  typedef  uint8_t  uint_least8_t;
+./src/sat/bsat2/pstdint.h:  typedef  int16_t  int_least16_t;
+./src/sat/bsat2/pstdint.h:  typedef uint16_t uint_least16_t;
+./src/sat/bsat2/pstdint.h:  typedef  int32_t  int_least32_t;
+./src/sat/bsat2/pstdint.h:  typedef uint32_t uint_least32_t;
+./src/sat/bsat2/pstdint.h:    typedef  int64_t  int_least64_t;
+./src/sat/bsat2/pstdint.h:    typedef uint64_t uint_least64_t;
+./src/sat/bsat2/pstdint.h:typedef   int_least8_t   int_fast8_t;
+./src/sat/bsat2/pstdint.h:typedef  uint_least8_t  uint_fast8_t;
+./src/sat/bsat2/pstdint.h:typedef  int_least16_t  int_fast16_t;
+./src/sat/bsat2/pstdint.h:typedef uint_least16_t uint_fast16_t;
+./src/sat/bsat2/pstdint.h:typedef  int_least32_t  int_fast32_t;
+./src/sat/bsat2/pstdint.h:typedef uint_least32_t uint_fast32_t;
+./src/sat/bsat2/pstdint.h:  typedef  int_least64_t  int_fast64_t;
+./src/sat/bsat2/pstdint.h:  typedef uint_least64_t uint_fast64_t;
+./src/sat/bsat2/pstdint.h:  typedef stdint_intptr_glue3(uint,stdint_intptr_bits,_t) uintptr_t;
+./src/sat/bsat2/pstdint.h:  typedef stdint_intptr_glue3( int,stdint_intptr_bits,_t)  intptr_t;
+./src/sat/bsat2/pstdint.h:  typedef ptrdiff_t intptr_t;
+./src/sat/bsat2/Alloc.h:    typedef uint32_t Ref;
+./src/sat/bsat2/Queue.h:    typedef T Key;
+./src/sat/xsat/xsat.h:typedef struct xSAT_Solver_t_ xSAT_Solver_t;
+./src/sat/xsat/xsatClause.h:typedef struct xSAT_Clause_t_ xSAT_Clause_t;
+./src/sat/xsat/xsatMemory.h:typedef struct xSAT_Mem_t_ xSAT_Mem_t;
+./src/sat/xsat/xsatBQueue.h:typedef struct xSAT_BQueue_t_ xSAT_BQueue_t;
+./src/sat/xsat/xsatHeap.h:typedef struct xSAT_Heap_t_ xSAT_Heap_t;
+./src/sat/xsat/xsatWatchList.h:typedef struct xSAT_Watcher_t_ xSAT_Watcher_t;
+./src/sat/xsat/xsatWatchList.h:typedef struct xSAT_WatchList_t_ xSAT_WatchList_t;
+./src/sat/xsat/xsatWatchList.h:typedef struct xSAT_VecWatchList_t_ xSAT_VecWatchList_t;
+./src/sat/xsat/xsatSolver.h:typedef struct xSAT_SolverOptions_t_ xSAT_SolverOptions_t;
+./src/sat/xsat/xsatSolver.h:typedef struct xSAT_Stats_t_ xSAT_Stats_t;
+./src/sat/bmc/bmcLoad.c:typedef struct Bmc_Load_t_ Bmc_Load_t;  
+./src/sat/bmc/bmcMaj8.c:typedef struct Exa8_Man_t_ Exa8_Man_t;
+./src/sat/bmc/bmcMaj2.c:typedef struct Maj_Man_t_ Maj_Man_t;
+./src/sat/bmc/bmcMaj2.c:typedef struct Exa_Man_t_ Exa_Man_t;
+./src/sat/bmc/bmcMaj2.c:typedef struct Exa3_Man_t_ Exa3_Man_t;
+./src/sat/bmc/bmcUnroll.c:typedef struct Unr_Obj_t_ Unr_Obj_t; // 24 bytes + (RankMax-1) * 4 bytes
+./src/sat/bmc/bmcMaj.c:typedef struct Maj_Man_t_ Maj_Man_t;
+./src/sat/bmc/bmcMaj.c:typedef struct Exa_Man_t_ Exa_Man_t;
+./src/sat/bmc/bmcMaj.c:typedef struct Exa3_Man_t_ Exa3_Man_t;
+./src/sat/bmc/bmcMaj.c:typedef struct Exa4_Man_t_ Exa4_Man_t;
+./src/sat/bmc/bmcMaj.c:typedef struct Exa5_Man_t_ Exa5_Man_t;
+./src/sat/bmc/bmcMaj.c:typedef struct Exa6_Man_t_ Exa6_Man_t;
+./src/sat/bmc/bmcFx.c:typedef struct Tab_Obj_t_ Tab_Obj_t; // 16 bytes
+./src/sat/bmc/bmcFx.c:typedef struct Tab_Tab_t_ Tab_Tab_t; // 16 bytes
+./src/sat/bmc/bmcFx.c:typedef enum { 
+./src/sat/bmc/bmcBmcG.c:typedef struct Bmcg_Man_t_ Bmcg_Man_t;
+./src/sat/bmc/bmcBmc3.c:typedef struct Gia_ManBmc_t_ Gia_ManBmc_t;
+./src/sat/bmc/bmcBmc2.c:typedef struct Saig_Bmc_t_ Saig_Bmc_t;
+./src/sat/bmc/bmc.h:typedef struct Bmc_EsPar_t_ Bmc_EsPar_t;
+./src/sat/bmc/bmc.h:typedef struct Unr_Man_t_ Unr_Man_t;
+./src/sat/bmc/bmc.h:typedef struct Saig_ParBmc_t_ Saig_ParBmc_t;
+./src/sat/bmc/bmc.h:typedef struct Bmc_AndPar_t_ Bmc_AndPar_t;
+./src/sat/bmc/bmc.h:typedef struct Bmc_BCorePar_t_ Bmc_BCorePar_t;
+./src/sat/bmc/bmc.h:typedef struct Bmc_MulPar_t_ Bmc_MulPar_t;
+./src/sat/bmc/bmc.h:typedef struct Bmc_ParFf_t_ Bmc_ParFf_t;
+./src/sat/bmc/bmcMaj3.c:typedef struct Maj3_Man_t_ Maj3_Man_t;
+./src/sat/bmc/bmcMaj3.c:typedef struct Zyx_Man_t_ Zyx_Man_t;
+./src/sat/bmc/bmcMaj9.c:typedef struct Exa9_Man_t_ Exa9_Man_t;
+./src/sat/bmc/bmcMaj7.c:typedef struct Exa7_Man_t_ Exa7_Man_t;
+./src/sat/bmc/bmcBmcAnd.c:typedef struct Bmc_Mna_t_ Bmc_Mna_t; 
+./src/sat/bmc/bmcBmcS.c:typedef struct Bmcs_Man_t_ Bmcs_Man_t;
+./src/sat/bmc/bmcBmcS.c:typedef struct Par_ThData_t_
+./src/sat/cadical/radix.hpp:  typedef size_t Type;
+./src/sat/cadical/radix.hpp:  typedef typename iterator_traits<I>::value_type T;
+./src/sat/cadical/radix.hpp:  typedef typename Rank::Type R;
+./src/sat/cadical/watch.hpp:typedef vector<Watch> Watches; // of one literal
+./src/sat/cadical/watch.hpp:typedef Watches::iterator watch_iterator;
+./src/sat/cadical/watch.hpp:typedef Watches::const_iterator const_watch_iterator;
+./src/sat/cadical/congruence.hpp:typedef int64_t LRAT_ID;
+./src/sat/cadical/congruence.hpp:typedef std::vector<lit_implication> lit_implications;
+./src/sat/cadical/congruence.hpp:typedef std::vector<lit_equivalence> lit_equivalences;
+./src/sat/cadical/congruence.hpp:  typedef size_t Type;
+./src/sat/cadical/congruence.hpp:typedef vector<Gate *> GOccs;
+./src/sat/cadical/congruence.hpp:  typedef unordered_set<Gate *, Hash, GateEqualTo> GatesTable;
+./src/sat/cadical/cadical_kitten.c:typedef signed char value;
+./src/sat/cadical/cadical_kitten.c:typedef struct kar kar;
+./src/sat/cadical/cadical_kitten.c:typedef struct kink kink;
+./src/sat/cadical/cadical_kitten.c:typedef struct klause klause;
+./src/sat/cadical/cadical_kitten.c:typedef STACK (unsigned) klauses;
+./src/sat/cadical/cadical_kitten.c:typedef unsigneds katches;
+./src/sat/cadical/cadical_kitten.c:typedef struct statistics statistics;
+./src/sat/cadical/cadical_kitten.c:typedef struct kimits kimits;
+./src/sat/cadical/ccadical.h:typedef struct CCaDiCaL CCaDiCaL;
+./src/sat/cadical/cadical_shrink.cpp:  typedef uint64_t Type;
+./src/sat/cadical/queue.hpp:typedef std::vector<Link> Links;
+./src/sat/cadical/kitten.h:typedef struct cadical_kitten cadical_kitten;
+./src/sat/cadical/cadical_assume.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_vivify.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_vivify.cpp:  typedef uint64_t Type;
+./src/sat/cadical/factor.hpp:typedef heap<factor_occs_size> FactorSchedule;
+./src/sat/cadical/checker.hpp:typedef vector<CheckerWatch> CheckerWatcher;
+./src/sat/cadical/score.hpp:typedef heap<score_smaller> ScoreSchedule;
+./src/sat/cadical/block.hpp:typedef heap<block_more_occs_size> BlockSchedule;
+./src/sat/cadical/occs.hpp:typedef vector<Clause *> Occs;
+./src/sat/cadical/occs.hpp:typedef Occs::iterator occs_iterator;
+./src/sat/cadical/occs.hpp:typedef Occs::const_iterator const_occs_iterator;
+./src/sat/cadical/cadical_lookahead.cpp:  typedef size_t Type;
+./src/sat/cadical/clause.hpp:typedef int *literal_iterator;
+./src/sat/cadical/clause.hpp:typedef const int *const_literal_iterator;
+./src/sat/cadical/options.hpp:  typedef Option *iterator;
+./src/sat/cadical/options.hpp:  typedef const Option *const_iterator;
+./src/sat/cadical/heap.hpp:  typedef typename vector<unsigned>::iterator iterator;
+./src/sat/cadical/heap.hpp:  typedef typename vector<unsigned>::const_iterator const_iterator;
+./src/sat/cadical/stack.h:typedef STACK (char) chars;
+./src/sat/cadical/stack.h:typedef STACK (int) ints;
+./src/sat/cadical/stack.h:typedef STACK (size_t) sizes;
+./src/sat/cadical/stack.h:typedef STACK (unsigned) unsigneds;
+./src/sat/cadical/cadical_congruence.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_congruence.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_congruence.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_congruence.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_congruence.cpp:  typedef size_t Type;
+./src/sat/cadical/cadical_congruence.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_analyze.cpp:  typedef uint64_t Type;
+./src/sat/cadical/cadical_analyze.cpp:  typedef uint64_t Type;
+./src/sat/cadical/random.h:typedef uint64_t generator;
+./src/sat/cadical/cadicalSolver.h:typedef struct cadical_solver_ cadical_solver;
+./src/sat/cadical/cadical_minimize.cpp:  typedef unsigned Type;
+./src/sat/cadical/cadical_minimize.cpp:  typedef uint64_t Type;
+./src/sat/cadical/elim.hpp:typedef heap<elim_more> ElimSchedule;
+./src/sat/cadical/bins.hpp:typedef vector<Bin> Bins;
+./src/sat/cadical/cadical_probe.cpp:  typedef size_t Type;
+./src/sat/glucose2/Solver.h:        typedef double Key;
+./src/sat/glucose2/Solver.h:        typedef Var Data;
+./src/sat/glucose2/Solver.h:        typedef int Attr;
+./src/sat/glucose2/SolverTypes.h:typedef int Var;
+./src/sat/glucose2/SolverTypes.h:typedef RegionAllocator<uint32_t>::Ref CRef;
+./src/sat/glucose2/SolverTypes.h:    typedef Map<CRef, T, CRefHash> HashTable;
+./src/sat/glucose2/pstdint.h:    typedef unsigned char uint8_t;
+./src/sat/glucose2/pstdint.h:    typedef signed char int8_t;
+./src/sat/glucose2/pstdint.h:  typedef unsigned int uint16_t;
+./src/sat/glucose2/pstdint.h:  typedef unsigned short uint16_t;
+./src/sat/glucose2/pstdint.h:  typedef signed int int16_t;
+./src/sat/glucose2/pstdint.h:  typedef signed short int16_t;
+./src/sat/glucose2/pstdint.h:  typedef unsigned long uint32_t;
+./src/sat/glucose2/pstdint.h:  typedef unsigned int uint32_t;
+./src/sat/glucose2/pstdint.h:  typedef unsigned short uint32_t;
+./src/sat/glucose2/pstdint.h:  typedef signed long int32_t;
+./src/sat/glucose2/pstdint.h:  typedef signed int int32_t;
+./src/sat/glucose2/pstdint.h:  typedef signed short int32_t;
+./src/sat/glucose2/pstdint.h:   typedef long long int64_t;
+./src/sat/glucose2/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/glucose2/pstdint.h:   __extension__ typedef long long int64_t;
+./src/sat/glucose2/pstdint.h:   __extension__ typedef unsigned long long uint64_t;
+./src/sat/glucose2/pstdint.h:   typedef long long int64_t;
+./src/sat/glucose2/pstdint.h:   typedef unsigned long long uint64_t;
+./src/sat/glucose2/pstdint.h:   typedef __int64 int64_t;
+./src/sat/glucose2/pstdint.h:   typedef unsigned __int64 uint64_t;
+./src/sat/glucose2/pstdint.h:  typedef int64_t intmax_t;
+./src/sat/glucose2/pstdint.h:  typedef uint64_t uintmax_t;
+./src/sat/glucose2/pstdint.h:  typedef int32_t intmax_t;
+./src/sat/glucose2/pstdint.h:  typedef uint32_t uintmax_t;
+./src/sat/glucose2/pstdint.h:  typedef   int8_t   int_least8_t;
+./src/sat/glucose2/pstdint.h:  typedef  uint8_t  uint_least8_t;
+./src/sat/glucose2/pstdint.h:  typedef  int16_t  int_least16_t;
+./src/sat/glucose2/pstdint.h:  typedef uint16_t uint_least16_t;
+./src/sat/glucose2/pstdint.h:  typedef  int32_t  int_least32_t;
+./src/sat/glucose2/pstdint.h:  typedef uint32_t uint_least32_t;
+./src/sat/glucose2/pstdint.h:    typedef  int64_t  int_least64_t;
+./src/sat/glucose2/pstdint.h:    typedef uint64_t uint_least64_t;
+./src/sat/glucose2/pstdint.h:typedef   int_least8_t   int_fast8_t;
+./src/sat/glucose2/pstdint.h:typedef  uint_least8_t  uint_fast8_t;
+./src/sat/glucose2/pstdint.h:typedef  int_least16_t  int_fast16_t;
+./src/sat/glucose2/pstdint.h:typedef uint_least16_t uint_fast16_t;
+./src/sat/glucose2/pstdint.h:typedef  int_least32_t  int_fast32_t;
+./src/sat/glucose2/pstdint.h:typedef uint_least32_t uint_fast32_t;
+./src/sat/glucose2/pstdint.h:  typedef  int_least64_t  int_fast64_t;
+./src/sat/glucose2/pstdint.h:  typedef uint_least64_t uint_fast64_t;
+./src/sat/glucose2/pstdint.h:  typedef stdint_intptr_glue3(uint,stdint_intptr_bits,_t) uintptr_t;
+./src/sat/glucose2/pstdint.h:  typedef stdint_intptr_glue3( int,stdint_intptr_bits,_t)  intptr_t;
+./src/sat/glucose2/pstdint.h:  typedef ptrdiff_t intptr_t;
+./src/sat/glucose2/AbcGlucose2.h:typedef struct Glucose2_Pars_ Glucose2_Pars;
+./src/sat/glucose2/AbcGlucose2.h:typedef void bmcg2_sat_solver;
+./src/sat/glucose2/Alloc.h:    typedef uint32_t Ref;
+./src/sat/glucose2/Queue.h:    typedef T Key;
+./src/bool/rpo/rpo.h:typedef struct Rpo_LCI_Edge_t_ Rpo_LCI_Edge_t;
+./src/bool/rpo/literal.h:typedef enum {
+./src/bool/rpo/literal.h:typedef struct Literal_t_ Literal_t;
+./src/bool/rpo/rpo.c:typedef struct Rpo_Man_t_ Rpo_Man_t;
+./src/bool/lucky/lucky.h:typedef struct
+./src/bool/lucky/luckyInt.h:typedef unsigned __int64  word;
+./src/bool/lucky/luckyInt.h:typedef struct
+./src/bool/lucky/luckyInt.h:typedef struct  
+./src/bool/lucky/luckyInt.h:typedef struct 
+./src/bool/lucky/luckyInt.h:typedef struct 
+./src/bool/lucky/lucky.c:typedef struct
+./src/bool/kit/cloud.h:// data structure typedefs
+./src/bool/kit/cloud.h:typedef struct cloudManager       CloudManager;
+./src/bool/kit/cloud.h:typedef unsigned                  CloudVar;
+./src/bool/kit/cloud.h:typedef unsigned                  CloudSign;
+./src/bool/kit/cloud.h:typedef struct cloudNode          CloudNode;
+./src/bool/kit/cloud.h:typedef struct cloudCacheEntry1   CloudCacheEntry1;
+./src/bool/kit/cloud.h:typedef struct cloudCacheEntry2   CloudCacheEntry2;
+./src/bool/kit/cloud.h:typedef struct cloudCacheEntry3   CloudCacheEntry3;
+./src/bool/kit/cloud.h:typedef enum { 
+./src/bool/kit/kitDec.c:typedef struct Kit_ManDec_t_ Kit_ManDec_t;
+./src/bool/kit/kit.h:typedef struct Kit_Sop_t_ Kit_Sop_t;
+./src/bool/kit/kit.h:typedef struct Kit_Edge_t_ Kit_Edge_t;
+./src/bool/kit/kit.h:typedef struct Kit_Node_t_ Kit_Node_t;
+./src/bool/kit/kit.h:typedef struct Kit_Graph_t_ Kit_Graph_t;
+./src/bool/kit/kit.h:typedef enum { 
+./src/bool/kit/kit.h:typedef struct Kit_DsdObj_t_ Kit_DsdObj_t;
+./src/bool/kit/kit.h:typedef struct Kit_DsdNtk_t_ Kit_DsdNtk_t;
+./src/bool/kit/kit.h:typedef struct Kit_DsdMan_t_ Kit_DsdMan_t;
+./src/bool/kit/kitPerm.c:typedef unsigned __int64 word;
+./src/bool/kit/kitPerm.c:typedef unsigned short   shot;
+./src/bool/kit/kitPerm.c:typedef unsigned char    byte;
+./src/bool/kit/kitCloud.c:typedef struct Kit_Mux_t_ Kit_Mux_t;
+./src/bool/deco/deco.h:typedef struct Dec_Edge_t_ Dec_Edge_t;
+./src/bool/deco/deco.h:typedef struct Dec_Node_t_ Dec_Node_t;
+./src/bool/deco/deco.h:typedef struct Dec_Graph_t_ Dec_Graph_t;
+./src/bool/deco/deco.h:typedef struct Dec_Man_t_ Dec_Man_t;
+./src/bool/dec/dec.h:typedef struct Dec_Edge_t_ Dec_Edge_t;
+./src/bool/dec/dec.h:typedef struct Dec_Node_t_ Dec_Node_t;
+./src/bool/dec/dec.h:typedef struct Dec_Graph_t_ Dec_Graph_t;
+./src/bool/dec/dec.h:typedef struct Dec_Man_t_ Dec_Man_t;
+./src/bool/bdc/bdc.h:typedef struct Bdc_Fun_t_ Bdc_Fun_t;
+./src/bool/bdc/bdc.h:typedef struct Bdc_Man_t_ Bdc_Man_t;
+./src/bool/bdc/bdc.h:typedef struct Bdc_Par_t_ Bdc_Par_t;
+./src/bool/bdc/bdcSpfd.c:typedef struct Bdc_Nod_t_ Bdc_Nod_t;
+./src/bool/bdc/bdcSpfd.c:typedef struct Bdc_Ent_t_ Bdc_Ent_t; // 24 bytes
+./src/bool/bdc/bdcInt.h:typedef enum { 
+./src/bool/bdc/bdcInt.h:typedef struct Bdc_Isf_t_ Bdc_Isf_t;
+./src/bool/rsb/rsb.h:typedef struct Rsb_Man_t_ Rsb_Man_t;
+./src/opt/fxu/fxu.h:typedef struct FxuDataStruct   Fxu_Data_t;
+./src/opt/fxu/fxuInt.h:typedef struct FxuMatrix        Fxu_Matrix;     // the sparse matrix
+./src/opt/fxu/fxuInt.h:typedef struct FxuCube          Fxu_Cube;       // one cube in the sparse matrix
+./src/opt/fxu/fxuInt.h:typedef struct FxuVar           Fxu_Var;        // one literal in the sparse matrix
+./src/opt/fxu/fxuInt.h:typedef struct FxuLit           Fxu_Lit;        // one entry in the sparse matrix
+./src/opt/fxu/fxuInt.h:typedef struct FxuPair          Fxu_Pair;       // the pair of cubes
+./src/opt/fxu/fxuInt.h:typedef struct FxuDouble        Fxu_Double;     // the double-cube divisor
+./src/opt/fxu/fxuInt.h:typedef struct FxuSingle        Fxu_Single;     // the two-literal single-cube divisor
+./src/opt/fxu/fxuInt.h:typedef struct FxuListCube      Fxu_ListCube;   // the list of cubes
+./src/opt/fxu/fxuInt.h:typedef struct FxuListVar       Fxu_ListVar;    // the list of literals
+./src/opt/fxu/fxuInt.h:typedef struct FxuListLit       Fxu_ListLit;    // the list of entries
+./src/opt/fxu/fxuInt.h:typedef struct FxuListPair      Fxu_ListPair;   // the list of pairs
+./src/opt/fxu/fxuInt.h:typedef struct FxuListDouble    Fxu_ListDouble; // the list of divisors
+./src/opt/fxu/fxuInt.h:typedef struct FxuListSingle    Fxu_ListSingle; // the list of single-cube divisors
+./src/opt/fxu/fxuInt.h:typedef struct FxuHeapDouble    Fxu_HeapDouble; // the heap of divisors
+./src/opt/fxu/fxuInt.h:typedef struct FxuHeapSingle    Fxu_HeapSingle; // the heap of variables
+./src/opt/fsim/fsimInt.h:typedef struct Fsim_Obj_t_ Fsim_Obj_t;
+./src/opt/fsim/fsim.h:typedef struct Fsim_Man_t_ Fsim_Man_t;
+./src/opt/fsim/fsim.h:typedef struct Fsim_ParSim_t_ Fsim_ParSim_t;
+./src/opt/fsim/fsim.h:typedef struct Fsim_ParSwitch_t_ Fsim_ParSwitch_t;
+./src/opt/res/resCore.c:typedef struct Res_Man_t_ Res_Man_t;
+./src/opt/res/resInt.h:typedef struct Res_Win_t_ Res_Win_t;
+./src/opt/res/resInt.h:typedef struct Res_Sim_t_ Res_Sim_t;
+./src/opt/res/res.h:typedef struct Res_Par_t_ Res_Par_t;
+./src/opt/sbd/sbdCut2.c:typedef struct Sbd_Cut_t_ Sbd_Cut_t; 
+./src/opt/sbd/sbdSat.c:typedef struct Sbd_Pro_t_ Sbd_Pro_t;
+./src/opt/sbd/sbdInt.h:typedef struct Sbd_Sto_t_ Sbd_Sto_t;
+./src/opt/sbd/sbdInt.h:typedef struct Sbd_Srv_t_ Sbd_Srv_t; 
+./src/opt/sbd/sbdInt.h:typedef struct Sbd_Str_t_ Sbd_Str_t;
+./src/opt/sbd/sbdCore.c:typedef struct Sbd_Man_t_ Sbd_Man_t;
+./src/opt/sbd/sbd.h:typedef struct Sbd_Par_t_ Sbd_Par_t;
+./src/opt/sbd/sbdCut.c:typedef struct Sbd_Cut_t_ Sbd_Cut_t; 
+./src/opt/rwt/rwt.h:typedef struct Rwt_Man_t_   Rwt_Man_t;
+./src/opt/rwt/rwt.h:typedef struct Rwt_Node_t_  Rwt_Node_t;
+./src/opt/rwr/rwr.h:typedef struct Rwr_Man_t_   Rwr_Man_t;
+./src/opt/rwr/rwr.h:typedef struct Rwr_Node_t_  Rwr_Node_t;
+./src/opt/rwr/rwrExp.c:typedef struct Rwr_Man4_t_ Rwr_Man4_t;
+./src/opt/rwr/rwrExp.c:typedef struct Rwr_Man5_t_ Rwr_Man5_t;
+./src/opt/dau/dauTree.c:typedef struct Dss_Fun_t_ Dss_Fun_t;
+./src/opt/dau/dauTree.c:typedef struct Dss_Ent_t_ Dss_Ent_t;
+./src/opt/dau/dauTree.c:typedef struct Dss_Obj_t_ Dss_Obj_t;
+./src/opt/dau/dauTree.c:typedef struct Dss_Ntk_t_ Dss_Ntk_t;
+./src/opt/dau/dauTree.c:        typedef struct If_Grp_t_ If_Grp_t;
+./src/opt/dau/dau.h:typedef enum { 
+./src/opt/dau/dau.h:typedef struct Dss_Man_t_ Dss_Man_t;
+./src/opt/dau/dau.h:typedef struct Abc_TtHieMan_t_ Abc_TtHieMan_t;
+./src/opt/dau/dau.h:typedef unsigned(*TtCanonicizeFunc)(Abc_TtHieMan_t * p, word * pTruth, int nVars, char * pCanonPerm, int flag);
+./src/opt/dau/dauArray.c:typedef struct Dau_Dsd_t_ Dau_Dsd_t;
+./src/opt/dau/dauCore.c:typedef struct Xyz_ParTry_t_ Xyz_ParTry_t;
+./src/opt/dau/dauCore.c:typedef struct Xyz_ManTry_t_ Xyz_ManTry_t;
+./src/opt/dau/dauCanon.c:typedef struct TiedGroup_
+./src/opt/dau/dauCanon.c:typedef struct Abc_TgMan_t_
+./src/opt/dau/dauCanon.c://typedef unsigned(*TtCanonicizeFunc)(Abc_TtHieMan_t * p, word * pTruth, int nVars, char * pCanonPerm, int flag);
+./src/opt/dau/dauCanon.c:typedef struct Abc_SccCost_t_ {
+./src/opt/dau/dauMerge.c:typedef struct Dau_Sto_t_ Dau_Sto_t;
+./src/opt/dau/dauNpn2.c:typedef struct Dtt_Man_t_ Dtt_Man_t;
+./src/opt/dau/dauNpn2.c:typedef struct Dtt_FunImpl_t_ Dtt_FunImpl_t;
+./src/opt/dau/dauDsd.c:typedef struct Dau_Dsd_t_ Dau_Dsd_t;
+./src/opt/dau/dauDsd2.c:typedef struct Dua_Obj_t_ Dua_Obj_t;
+./src/opt/dau/dauDsd2.c:typedef struct Dua_Dsd_t_ Dua_Dsd_t;
+./src/opt/dar/darLib.c:typedef struct Dar_Lib_t_            Dar_Lib_t;
+./src/opt/dar/darLib.c:typedef struct Dar_LibObj_t_         Dar_LibObj_t;
+./src/opt/dar/darLib.c:typedef struct Dar_LibDat_t_         Dar_LibDat_t;
+./src/opt/dar/darInt.h:typedef struct Dar_Man_t_            Dar_Man_t;
+./src/opt/dar/darInt.h:typedef struct Dar_Cut_t_            Dar_Cut_t;
+./src/opt/dar/darRefact.c:typedef struct Ref_Man_t_            Ref_Man_t;
+./src/opt/dar/dar.h:typedef struct Dar_RwrPar_t_            Dar_RwrPar_t;
+./src/opt/dar/dar.h:typedef struct Dar_RefPar_t_            Dar_RefPar_t;
+./src/opt/sfm/sfmDec.c:typedef struct Sfm_Dec_t_ Sfm_Dec_t;
+./src/opt/sfm/sfmInt.h:typedef struct Sfm_Fun_t_ Sfm_Fun_t; 
+./src/opt/sfm/sfmInt.h:typedef struct Sfm_Lib_t_ Sfm_Lib_t; 
+./src/opt/sfm/sfmInt.h:typedef struct Sfm_Tim_t_ Sfm_Tim_t;
+./src/opt/sfm/sfmInt.h:typedef struct Sfm_Mit_t_ Sfm_Mit_t;
+./src/opt/sfm/sfm.h:typedef struct Sfm_Ntk_t_ Sfm_Ntk_t;
+./src/opt/sfm/sfm.h:typedef struct Sfm_Par_t_ Sfm_Par_t;
+./src/opt/fxch/Fxch.h:typedef unsigned char uint8_t;
+./src/opt/fxch/Fxch.h:typedef unsigned int  uint32_t;
+./src/opt/fxch/Fxch.h:typedef struct Fxch_Man_t_               Fxch_Man_t;
+./src/opt/fxch/Fxch.h:typedef struct Fxch_SubCube_t_           Fxch_SubCube_t;
+./src/opt/fxch/Fxch.h:typedef struct Fxch_SCHashTable_t_       Fxch_SCHashTable_t;
+./src/opt/fxch/Fxch.h:typedef struct Fxch_SCHashTable_Entry_t_ Fxch_SCHashTable_Entry_t;
+./src/opt/lpk/lpkSets.c:typedef struct Lpk_Set_t_ Lpk_Set_t;
+./src/opt/lpk/lpk.h:typedef struct Lpk_Par_t_ Lpk_Par_t;
+./src/opt/lpk/lpkInt.h:typedef struct Lpk_Man_t_ Lpk_Man_t;
+./src/opt/lpk/lpkInt.h:typedef struct Lpk_Cut_t_ Lpk_Cut_t;
+./src/opt/lpk/lpkInt.h:typedef struct Lpk_Fun_t_ Lpk_Fun_t;
+./src/opt/lpk/lpkInt.h:typedef struct Lpk_Res_t_ Lpk_Res_t;
+./src/opt/rar/rewireVec.h:typedef struct vi_ {
+./src/opt/rar/rewireMiaig.h:typedef unsigned __int64 word;   // 32-bit windows
+./src/opt/rar/rewireMiaig.h:typedef long long unsigned word; // other platforms
+./src/opt/rar/rewireMiaig.h:typedef __int64 iword;   // 32-bit windows
+./src/opt/rar/rewireMiaig.h:typedef long long iword; // other platforms
+./src/opt/eslim/eSLIM.h:  typedef struct eSLIM_ParamStruct_ eSLIM_ParamStruct;
+./src/opt/eslim/synthesisEngine.hpp:  typedef OneshotManager<CadicalEngineOneShot> CadicalOneShot;
+./src/opt/eslim/synthesisEngine.hpp:  typedef OneshotManager<KissatEngineOneShot> KissatOneShot;
+./src/opt/eslim/synthesisEngine.hpp:  typedef OneshotManager<KissatCmdEngine> KissatCmdOneShot;
+./src/opt/mfs/mfs.h:typedef struct Mfs_Par_t_ Mfs_Par_t;
+./src/opt/mfs/mfsInt.h:typedef struct Mfs_Man_t_ Mfs_Man_t;
+./src/opt/cgt/cgt.h:typedef struct Cgt_Par_t_ Cgt_Par_t;
+./src/opt/cgt/cgtInt.h:typedef struct Cgt_Man_t_ Cgt_Man_t;
+./src/opt/nwk/nwkMerge.h:typedef struct Nwk_LMPars_t_  Nwk_LMPars_t;
+./src/opt/nwk/nwkMerge.h:typedef struct Nwk_Edg_t_  Nwk_Edg_t;
+./src/opt/nwk/nwkMerge.h:typedef struct Nwk_Vrt_t_  Nwk_Vrt_t;
+./src/opt/nwk/nwkMerge.h:typedef struct Nwk_Grf_t_  Nwk_Grf_t;
+./src/opt/nwk/nwk.h:typedef struct Nwk_Obj_t_    Nwk_Obj_t;
+./src/opt/nwk/nwk.h:typedef enum { 
+./src/opt/nwk/ntlnwk.h:typedef struct Ntl_Man_t_    Ntl_Man_t;
+./src/opt/nwk/ntlnwk.h:typedef struct Nwk_Man_t_    Nwk_Man_t;
+./src/opt/cut/cutPre22.c:typedef struct Cut_Cell_t_ Cut_Cell_t;
+./src/opt/cut/cutPre22.c:typedef struct Cut_CMan_t_ Cut_CMan_t;
+./src/opt/cut/cut.h:typedef struct Cut_ManStruct_t_         Cut_Man_t;
+./src/opt/cut/cut.h:typedef struct Cut_OracleStruct_t_      Cut_Oracle_t;
+./src/opt/cut/cut.h:typedef struct Cut_CutStruct_t_         Cut_Cut_t;
+./src/opt/cut/cut.h:typedef struct Cut_ParamsStruct_t_      Cut_Params_t;
+./src/opt/cut/cutInt.h:typedef struct Cut_HashTableStruct_t_ Cut_HashTable_t;
+./src/opt/cut/cutList.h:typedef struct Cut_ListStruct_t_         Cut_List_t;
+./src/opt/csw/cswInt.h:typedef struct Csw_Man_t_            Csw_Man_t;
+./src/opt/csw/cswInt.h:typedef struct Csw_Cut_t_            Csw_Cut_t;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned short     var;
+./src/opt/rrr/rrrBddManager.h:  typedef int                bvar;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned           lit;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned short     ref;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned long long size;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned           edge;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned           uniq;
+./src/opt/rrr/rrrBddManager.h:  typedef unsigned           cac;
+./src/opt/fret/fretime.h:typedef struct Flow_Data_t_ {
+./src/opt/fret/fretime.h:typedef struct NodeLag_T_ {
+./src/opt/fret/fretime.h:typedef struct InitConstraint_t_ {
+./src/opt/fret/fretime.h:typedef struct MinRegMan_t_ {
+./src/opt/sim/sim.h:typedef struct Sym_Man_t_ Sym_Man_t;
+./src/opt/sim/sim.h:typedef struct Sim_Man_t_ Sim_Man_t;
+./src/opt/sim/sim.h:typedef struct Sim_Pat_t_ Sim_Pat_t;
+./src/opt/dsc/dsc.c:typedef struct Dsc_node_t_ Dsc_node_t;
+./src/demo.c:typedef struct Abc_Frame_t_ Abc_Frame_t;
+./src/bdd/cas/casDec.c:typedef struct
+./src/bdd/reo/reo.h:typedef enum {
+./src/bdd/reo/reo.h:typedef struct _reo_unit     reo_unit;    // the unit representing one DD node during reordering
+./src/bdd/reo/reo.h:typedef struct _reo_plane    reo_plane;   // the set of nodes on one level
+./src/bdd/reo/reo.h:typedef struct _reo_hash     reo_hash;    // the entry in the hash table
+./src/bdd/reo/reo.h:typedef struct _reo_man      reo_man;     // the reordering manager
+./src/bdd/reo/reo.h:typedef struct _reo_test     reo_test;    // 
+./src/bdd/epd/epd.h:typedef struct EpDoubleStruct EpDouble;
+./src/bdd/epd/epd.h:typedef struct IeeeDoubleStruct IeeeDouble;
+./src/bdd/epd/epd.h:typedef struct IeeeNanStruct IeeeNan;
+./src/bdd/epd/epd.h:typedef union EpTypeUnion EpType;
+./src/bdd/llb/llb3Image.c:typedef struct Llb_Var_t_ Llb_Var_t;
+./src/bdd/llb/llb3Image.c:typedef struct Llb_Prt_t_ Llb_Prt_t;
+./src/bdd/llb/llb3Image.c:typedef struct Llb_Mgr_t_ Llb_Mgr_t;
+./src/bdd/llb/llb4Nonlin.c:typedef struct Llb_Mnx_t_ Llb_Mnx_t;
+./src/bdd/llb/llbInt.h:typedef struct Llb_Man_t_ Llb_Man_t;
+./src/bdd/llb/llbInt.h:typedef struct Llb_Mtr_t_ Llb_Mtr_t;
+./src/bdd/llb/llbInt.h:typedef struct Llb_Grp_t_ Llb_Grp_t;
+./src/bdd/llb/llb2Core.c:typedef struct Llb_Img_t_ Llb_Img_t;
+./src/bdd/llb/llb3Nonlin.c:typedef struct Llb_Mnn_t_ Llb_Mnn_t;
+./src/bdd/llb/llb.h:typedef struct Gia_ParLlb_t_ Gia_ParLlb_t;
+./src/bdd/llb/llb4Image.c:typedef struct Llb_Var_t_ Llb_Var_t;
+./src/bdd/llb/llb4Image.c:typedef struct Llb_Prt_t_ Llb_Prt_t;
+./src/bdd/llb/llb4Image.c:typedef struct Llb_Mgr_t_ Llb_Mgr_t;
+./src/bdd/mtr/mtr.h:typedef unsigned int   MtrHalfWord;
+./src/bdd/mtr/mtr.h:typedef unsigned short MtrHalfWord;
+./src/bdd/mtr/mtr.h:typedef struct MtrNode {
+./src/bdd/extrab/extraBddImage.c:typedef struct Extra_ImageNode_t_  Extra_ImageNode_t;
+./src/bdd/extrab/extraBddImage.c:typedef struct Extra_ImagePart_t_  Extra_ImagePart_t;
+./src/bdd/extrab/extraBddImage.c:typedef struct Extra_ImageVar_t_   Extra_ImageVar_t;
+./src/bdd/extrab/extraBdd.h:typedef struct Extra_ImageTree_t_  Extra_ImageTree_t;
+./src/bdd/extrab/extraBdd.h:typedef struct Extra_ImageTree2_t_  Extra_ImageTree2_t;
+./src/bdd/extrab/extraBdd.h:typedef struct Extra_SymmInfo_t_  Extra_SymmInfo_t;
+./src/bdd/extrab/extraBdd.h:typedef struct Extra_UnateVar_t_  Extra_UnateVar_t;
+./src/bdd/extrab/extraBdd.h:typedef struct Extra_UnateInfo_t_  Extra_UnateInfo_t;
+./src/bdd/extrab/extraBddCas.c:typedef struct 
+./src/bdd/extrab/extraBddCas.c:typedef struct 
+./src/bdd/extrab/extraBddCas.c:typedef struct 
+./src/bdd/bbr/bbrNtbdd.c:typedef char ProgressBar;
+./src/bdd/bbr/bbr.h:typedef struct Bbr_ImageTree_t_  Bbr_ImageTree_t;
+./src/bdd/bbr/bbr.h:typedef struct Bbr_ImageTree2_t_  Bbr_ImageTree2_t;
+./src/bdd/bbr/bbrImage.c:typedef struct Bbr_ImageNode_t_  Bbr_ImageNode_t;
+./src/bdd/bbr/bbrImage.c:typedef struct Bbr_ImagePart_t_  Bbr_ImagePart_t;
+./src/bdd/bbr/bbrImage.c:typedef struct Bbr_ImageVar_t_   Bbr_ImageVar_t;
+./src/bdd/cudd/cuddSubsetHB.c:typedef struct NodeData NodeData_t;
+./src/bdd/cudd/cuddDecomp.c:typedef struct Conjuncts {
+./src/bdd/cudd/cuddDecomp.c:typedef struct  NodeStat {
+./src/bdd/cudd/cudd.h:** and 32 bits for each digit.  The typedefs should be in agreement
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef enum {
+./src/bdd/cudd/cudd.h:typedef unsigned int   DdHalfWord;
+./src/bdd/cudd/cudd.h:typedef unsigned short DdHalfWord;
+./src/bdd/cudd/cudd.h:typedef struct DdNode DdNode;
+./src/bdd/cudd/cudd.h:typedef struct DdChildren {
+./src/bdd/cudd/cudd.h:typedef struct DdManager DdManager;
+./src/bdd/cudd/cudd.h:typedef struct DdGen DdGen;
+./src/bdd/cudd/cudd.h:/* These typedefs for arbitrary precision arithmetic should agree with
+./src/bdd/cudd/cudd.h:typedef unsigned int DdApaDigit;
+./src/bdd/cudd/cudd.h:typedef unsigned long int DdApaDoubleDigit;
+./src/bdd/cudd/cudd.h:typedef unsigned short int DdApaDigit;
+./src/bdd/cudd/cudd.h:typedef unsigned int DdApaDoubleDigit;
+./src/bdd/cudd/cudd.h:typedef DdApaDigit * DdApaNumber;
+./src/bdd/cudd/cudd.h:typedef struct DdTlcInfo DdTlcInfo;
+./src/bdd/cudd/cudd.h:typedef int (*DD_HFP)(DdManager *, const char *, void *);
+./src/bdd/cudd/cudd.h:typedef DdNode * (*DD_PRFP)(DdManager * , int, DdNode **, DdNode **,
+./src/bdd/cudd/cudd.h:typedef DdNode * (*DD_AOP)(DdManager *, DdNode **, DdNode **);
+./src/bdd/cudd/cudd.h:typedef DdNode * (*DD_MAOP)(DdManager *, DdNode *);
+./src/bdd/cudd/cudd.h:typedef DdNode * (*DD_CTFP)(DdManager *, DdNode *, DdNode *);
+./src/bdd/cudd/cudd.h:typedef DdNode * (*DD_CTFP1)(DdManager *, DdNode *);
+./src/bdd/cudd/cudd.h:typedef void (*DD_OOMFP)(long);
+./src/bdd/cudd/cudd.h:typedef int (*DD_QSFP)(const void *, const void *);
+./src/bdd/cudd/cuddApprox.c:typedef struct NodeData {
+./src/bdd/cudd/cuddApprox.c:typedef struct ApproxInfo {
+./src/bdd/cudd/cuddApprox.c:typedef struct GlobalQueueItem {
+./src/bdd/cudd/cuddApprox.c:typedef struct LocalQueueItem {
+./src/bdd/cudd/cuddSat.c:typedef struct cuddPathPair {
+./src/bdd/cudd/cuddInt.h:typedef struct DdHook {         /* hook list element */
+./src/bdd/cudd/cuddInt.h:typedef long ptrint;
+./src/bdd/cudd/cuddInt.h:typedef unsigned long ptruint;
+./src/bdd/cudd/cuddInt.h:typedef int ptrint;
+./src/bdd/cudd/cuddInt.h:typedef unsigned int ptruint;
+./src/bdd/cudd/cuddInt.h:typedef ABC_PTRINT_T ptrint;
+./src/bdd/cudd/cuddInt.h:typedef ABC_PTRUINT_T ptruint;
+./src/bdd/cudd/cuddInt.h:typedef DdNode *DdNodePtr;
+./src/bdd/cudd/cuddInt.h:typedef struct DdLocalCacheItem {
+./src/bdd/cudd/cuddInt.h:typedef struct DdLocalCache {
+./src/bdd/cudd/cuddInt.h:typedef struct DdHashItem {
+./src/bdd/cudd/cuddInt.h:typedef struct DdHashTable {
+./src/bdd/cudd/cuddInt.h:typedef struct DdCache {
+./src/bdd/cudd/cuddInt.h:typedef struct DdSubtable {     /* subtable for one index */
+./src/bdd/cudd/cuddInt.h:typedef struct Move {
+./src/bdd/cudd/cuddInt.h:typedef struct DdQueueItem {
+./src/bdd/cudd/cuddInt.h:typedef struct DdLevelQueue {
+./src/bdd/cudd/cuddTable.c:typedef union hack {
+./src/bdd/cudd/cuddEssent.c:typedef long BitVector;
+./src/bdd/cudd/cuddEssent.c:typedef struct TlClause TlClause;
+./src/bdd/cudd/cuddBddCorr.c:typedef struct hashEntry {
+./src/bdd/cudd/cuddGroup.c:    typedef int (*DD_CHKFP)(DdManager *, int, int);
+./src/bdd/cudd/cuddSubsetSP.c:typedef struct NodeDist NodeDist_t;
+./src/bdd/cudd/cuddGenCof.c:typedef struct MarkCacheKey {
+./src/bdd/dsd/dsd.h:typedef struct Dsd_Manager_t_   Dsd_Manager_t;
+./src/bdd/dsd/dsd.h:typedef struct Dsd_Node_t_      Dsd_Node_t;
+./src/bdd/dsd/dsd.h:typedef enum   Dsd_Type_t_      Dsd_Type_t;
+./src/bdd/dsd/dsdCheck.c:typedef struct Dsd_Cache_t_  Dds_Cache_t;
+./src/bdd/dsd/dsdCheck.c:typedef struct Dsd_Entry_t_  Dsd_Entry_t;
+./src/bdd/dsd/dsdInt.h:typedef unsigned char byte;
+./src/base/cmd/cmd.h:typedef struct MvCommand    Abc_Command;  // one command
+./src/base/cmd/cmd.h:typedef struct MvAlias      Abc_Alias;    // one alias
+./src/base/cmd/cmd.h:typedef int (*Cmd_CommandFuncType)(Abc_Frame_t*, int, char**);
+./src/base/cmd/cmdAuto.c:typedef struct Cmd_AutoData_t_
+./src/base/abc/abcHieNew.c:typedef enum { 
+./src/base/abc/abcHieNew.c:typedef struct Au_Man_t_   Au_Man_t;
+./src/base/abc/abcHieNew.c:typedef struct Au_Ntk_t_   Au_Ntk_t;
+./src/base/abc/abcHieNew.c:typedef struct Au_Obj_t_   Au_Obj_t;
+./src/base/abc/abc.h:typedef enum { 
+./src/base/abc/abc.h:typedef enum { 
+./src/base/abc/abc.h:typedef enum { 
+./src/base/abc/abc.h:typedef enum { 
+./src/base/abc/abc.h:typedef struct Abc_Des_t_       Abc_Des_t;
+./src/base/abc/abc.h:typedef struct Abc_Ntk_t_       Abc_Ntk_t;
+./src/base/abc/abc.h:typedef struct Abc_Obj_t_       Abc_Obj_t;
+./src/base/abc/abc.h:typedef struct Abc_Aig_t_       Abc_Aig_t;
+./src/base/abc/abc.h:typedef struct Abc_ManTime_t_   Abc_ManTime_t;
+./src/base/abc/abc.h:typedef struct Abc_ManCut_t_    Abc_ManCut_t;
+./src/base/abc/abc.h:typedef struct Abc_Time_t_      Abc_Time_t;
+./src/base/abc/abc.h:typedef struct Odc_Man_t_         Odc_Man_t;
+./src/base/abci/abcCas.c:typedef struct Abc_BSEval_t_  Abc_BSEval_t;
+./src/base/abci/abcCas.c:typedef struct Abc_LutCas_t_  Abc_LutCas_t;
+./src/base/abci/abcRr.c:typedef struct Abc_RRMan_t_ Abc_RRMan_t;
+./src/base/abci/abcResub.c:typedef struct Abc_ManRes_t_ Abc_ManRes_t;
+./src/base/abci/abcMiter.c:typedef void (*AddFrameMapping)( Abc_Obj_t*, Abc_Obj_t*, int, void*);
+./src/base/abci/abcExact.c:typedef struct Ses_Man_t_ Ses_Man_t;
+./src/base/abci/abcExact.c:typedef struct Ses_TimesEntry_t_ Ses_TimesEntry_t;
+./src/base/abci/abcExact.c:typedef struct Ses_TruthEntry_t_ Ses_TruthEntry_t;
+./src/base/abci/abcExact.c:typedef struct Ses_Store_t_ Ses_Store_t;
+./src/base/abci/abcLut.c:typedef struct Abc_ManScl_t_ Abc_ManScl_t;
+./src/base/abci/abcRefactor.c:typedef struct Abc_ManRef_t_   Abc_ManRef_t;
+./src/base/abci/abcPart.c:typedef struct Supp_Man_t_     Supp_Man_t;
+./src/base/abci/abcPart.c:typedef struct Supp_One_t_     Supp_One_t;
+./src/base/abci/abcPart.c:typedef struct StochSynData_t_
+./src/base/abci/abcOdc.c:typedef unsigned short Odc_Lit_t;
+./src/base/abci/abcOdc.c:typedef struct Odc_Obj_t_ Odc_Obj_t;     // 16 bytes
+./src/base/abci/abcExtract.c:typedef struct Abc_ShaMan_t_ Abc_ShaMan_t;
+./src/base/abci/abcIfif.c:typedef struct Abc_IffObj_t_       Abc_IffObj_t;
+./src/base/abci/abcIfif.c:typedef struct Abc_IffMan_t_       Abc_IffMan_t;
+./src/base/abci/abcFx.c:typedef struct Fx_Man_t_ Fx_Man_t;
+./src/base/abci/abcOrchestration.c:typedef struct Abc_ManRes_t_ Abc_ManRes_t;
+./src/base/abci/abcOrchestration.c:typedef struct Abc_ManRef_t_   Abc_ManRef_t;
+./src/base/abci/abcScorr.c:typedef struct Tst_Dat_t_ Tst_Dat_t;
+./src/base/abci/abcDec.c:typedef struct Abc_TtStore_t_  Abc_TtStore_t;
+./src/base/abci/abcNpn.c:typedef struct Abc_TtStore_t_  Abc_TtStore_t;
+./src/base/abci/abcNpn.c://        typedef unsigned(*TtCanonicizeFunc)(Abc_TtHieMan_t * p, word * pTruth, int nVars, char * pCanonPerm, int flag);
+./src/base/abci/abcNpn.c://        typedef unsigned(*TtCanonicizeFunc)(Abc_TtHieMan_t * p, word * pTruth, int nVars, char * pCanonPerm, int flag);
+./src/base/abci/abcDetect.c:typedef enum { 
+./src/base/abci/abcRpo.c:typedef struct Rpo_TtStore_t_ Rpo_TtStore_t;
+./src/base/abci/abcRestruct.c:typedef struct Abc_ManRst_t_   Abc_ManRst_t;
+./src/base/abci/abcIvy.c:typedef int   Abc_Edge_t;
+./src/base/abci/abcNpnSave.c:typedef struct Npn_Obj_t_ Npn_Obj_t;
+./src/base/abci/abcNpnSave.c:typedef struct Npn_Man_t_ Npn_Man_t;
+./src/base/abci/abcRec3.c:typedef struct Lms_Man_t_ Lms_Man_t;
+./src/base/abci/abcMv.c:typedef struct Mv_Man_t_ Mv_Man_t;
+./src/base/abci/abcPrint.c:typedef struct Gli_Man_t_ Gli_Man_t;
+./src/base/ver/ver.h:typedef struct Ver_Man_t_       Ver_Man_t;
+./src/base/ver/ver.h:typedef struct Ver_Stream_t_    Ver_Stream_t;
+./src/base/ver/verCore.c:typedef enum { 
+./src/base/ver/verCore.c:typedef enum { 
+./src/base/ver/verCore.c:typedef struct Ver_Bundle_t_    Ver_Bundle_t;
+./src/base/cba/cbaReadBlif.c:typedef enum { 
+./src/base/cba/cbaPrs.h:typedef enum { 
+./src/base/cba/cbaPrs.h:typedef enum { 
+./src/base/cba/cbaPrs.h:typedef struct Prs_Ntk_t_ Prs_Ntk_t;
+./src/base/cba/cbaPrs.h:typedef struct Prs_Man_t_ Prs_Man_t;
+./src/base/cba/cbaReadVer.c:typedef struct Prs_VerPrim_t_ Prs_VerPrim_t;
+./src/base/cba/cbaReadVer.c:typedef struct Prs_VerInfo_t_ Prs_VerInfo_t;
+./src/base/cba/cba.h:typedef struct Cba_Ntk_t_ Cba_Ntk_t;
+./src/base/cba/cba.h:typedef struct Cba_Man_t_ Cba_Man_t;
+./src/base/cba/cbaTypes.h:typedef enum { 
+./src/base/exor/exor.h:///                  CUBE COVER and CUBE typedefs                    ///
+./src/base/exor/exor.h:typedef enum { MULTI_OUTPUT = 1, SINGLE_NODE, MULTI_NODE  } type;
+./src/base/exor/exor.h:typedef struct cinfo_tag 
+./src/base/exor/exor.h:typedef unsigned int  drow;
+./src/base/exor/exor.h:typedef unsigned char byte;
+./src/base/exor/exor.h:typedef struct cube 
+./src/base/exor/exor.h:///              VARVALUE and CUBEDIST enum typedefs                 ///
+./src/base/exor/exor.h:typedef enum { VAR_NEG = 1, VAR_POS, VAR_ABS  } varvalue;
+./src/base/exor/exor.h:typedef enum { DIST2, DIST3, DIST4 } cubedist;
+./src/base/exor/exorList.c:typedef struct
+./src/base/wlc/wlcAbs.c:typedef struct Int_Pair_t_       Int_Pair_t;
+./src/base/wlc/wlcPth.c:typedef struct Bmc3_ThData_t_
+./src/base/wlc/wlcReadVer.c:typedef struct Wlc_Prs_t_  Wlc_Prs_t;
+./src/base/wlc/wlcReadSmt.c:typedef struct Smt_Prs_t_ Smt_Prs_t;
+./src/base/wlc/wlcReadSmt.c:typedef enum { 
+./src/base/wlc/wlcReadSmt.c:typedef struct Smt_Pair_t_ Smt_Pair_t;
+./src/base/wlc/wlc.h:typedef enum { 
+./src/base/wlc/wlc.h:typedef struct Wlc_Obj_t_  Wlc_Obj_t;
+./src/base/wlc/wlc.h:typedef struct Wlc_Ntk_t_  Wlc_Ntk_t;
+./src/base/wlc/wlc.h:typedef struct Wlc_Par_t_ Wlc_Par_t;
+./src/base/wlc/wlc.h:typedef struct Wlc_BstPar_t_ Wlc_BstPar_t;
+./src/base/wlc/wlc.h:typedef struct Wla_Man_t_ Wla_Man_t;
+./src/base/bac/bacPrsTrans.c:typedef struct Bac_Trip_t_ Bac_Trip_t;
+./src/base/bac/bac.h:typedef enum { 
+./src/base/bac/bac.h:typedef enum { 
+./src/base/bac/bac.h:typedef struct Bac_Ntk_t_ Bac_Ntk_t;
+./src/base/bac/bac.h:typedef struct Bac_Man_t_ Bac_Man_t;
+./src/base/bac/bacPrs.h:typedef enum { 
+./src/base/bac/bacPrs.h:typedef struct Psr_Ntk_t_ Psr_Ntk_t;
+./src/base/bac/bacPrs.h:typedef struct Psr_Man_t_ Psr_Man_t;
+./src/base/bac/bacReadVer.c:typedef enum { 
+./src/base/bac/bacNtk.c:typedef struct Bac_Pair_t_ Bac_Pair_t;
+./src/base/bac/bacPtr.c:typedef enum { 
+./src/base/bac/bacReadBlif.c:typedef enum { 
+./src/base/io/ioReadAiger.c:typedef struct buflist {
+./src/base/io/ioReadBlifMv.c:typedef struct Io_MvVar_t_ Io_MvVar_t; // parsing var
+./src/base/io/ioReadBlifMv.c:typedef struct Io_MvMod_t_ Io_MvMod_t; // parsing model
+./src/base/io/ioReadBlifMv.c:typedef struct Io_MvMan_t_ Io_MvMan_t; // parsing manager
+./src/base/io/ioReadBlifMv.c:typedef struct buflist {
+./src/base/io/ioWriteAiger.c:typedef struct bz2file {
+./src/base/io/ioReadPlaMo.c:typedef struct Mop_Man_t_ Mop_Man_t;
+./src/base/io/ioResub.h:typedef struct Abc_RData_t_ Abc_RData_t;
+./src/base/io/ioReadBlifAig.c:typedef enum { 
+./src/base/io/ioReadBlifAig.c:typedef struct Io_BlifObj_t_ Io_BlifObj_t;  // parsing object
+./src/base/io/ioReadBlifAig.c:typedef struct Io_BlifMan_t_ Io_BlifMan_t;  // parsing manager
+./src/base/io/ioAbc.h:typedef enum { 
+./src/base/io/ioReadBlif.c:typedef struct Io_ReadBlif_t_        Io_ReadBlif_t;   // all reading info
+./src/base/io/ioJsonc.c:typedef enum {
+./src/base/io/ioJsonc.c:typedef struct {
+./src/base/io/ioJsonc.c:typedef struct {
+./src/base/io/ioJsonc.c:typedef struct {
+./src/base/io/ioJsonc.c:typedef struct {
+./src/base/pla/plaFxch.c:typedef struct Fxch_Obj_t_ Fxch_Obj_t;
+./src/base/pla/plaFxch.c:typedef struct Fxch_Man_t_ Fxch_Man_t;
+./src/base/pla/pla.h:typedef enum {
+./src/base/pla/pla.h:typedef enum {
+./src/base/pla/pla.h:typedef struct Pla_Man_t_ Pla_Man_t;
+./src/base/pla/plaHash.c:typedef struct Tab_Obj_t_ Tab_Obj_t;
+./src/base/pla/plaHash.c:typedef struct Tab_Man_t_ Tab_Man_t;
+./src/base/wln/wlnRetime.c:typedef struct Wln_Ret_t_ Wln_Ret_t;
+./src/base/wln/wlnRead.c://typedef struct Rtl_Lib_t_  Rtl_Lib_t;
+./src/base/wln/wlnRead.c:typedef struct Rtl_Ntk_t_  Rtl_Ntk_t;
+./src/base/wln/wlnRead.c:typedef enum {
+./src/base/wln/wln.h:typedef struct Wln_Vec_t_  Wln_Vec_t;
+./src/base/wln/wln.h:typedef struct Wln_Ntk_t_  Wln_Ntk_t;
+./src/base/wln/wln.h:typedef struct Rtl_Lib_t_ Rtl_Lib_t;
+./src/base/main/libSupport.c:typedef void (*lib_init_end_func) (Abc_Frame_t * pAbc);
+./src/base/main/mainInt.h:typedef void (*Abc_Frame_Callback_BmcFrameDone_Func)(int frame, int po, int status);
+./src/base/main/mainInt.h:typedef void (*Abc_Frame_Initialization_Func)( Abc_Frame_t * pAbc );
+./src/base/main/mainInt.h:typedef struct Abc_FrameInitializer_t_ Abc_FrameInitializer_t;
+./src/base/main/abcapis.h:typedef struct Abc_Frame_t_      Abc_Frame_t;
+./src/base/acb/acbPar.h:typedef struct Acb_Par_t_ Acb_Par_t;
+./src/base/acb/acb.h:typedef struct Acb_Aig_t_ Acb_Aig_t;
+./src/base/acb/acb.h:typedef struct Acb_Ntk_t_ Acb_Ntk_t;
+./src/base/acb/acb.h:typedef struct Acb_Man_t_ Acb_Man_t;
+./src/base/acb/acbMfs.c:typedef struct Acb_Mfs_t_ Acb_Mfs_t;
+./src/base/acb/acbFunc.c:typedef enum {

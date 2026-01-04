@@ -3618,6 +3618,7 @@ void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
     }
     fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
     fprintf(stderr, "[INFO] Child Graph Nodes:  %d\n", Gia_ManObjNum(pNew));
+    somthing_happening(pNew);
     if ( mode == 0 )
     {
         if ( pOld == pNew ) {

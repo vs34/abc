@@ -252,10 +252,11 @@ struct Gia_Man_t_
     int            iFirstAndObj;
     int            iFirstPoObj;
     Vec_Str_t *    vTTISOPs;      // truth tables from ISOP computation
-    Vec_Int_t *    vTTLut;      // truth tables from ISOP computation
+    Vec_Int_t *    vTTLut;        // truth tables from ISOP computation
     Vec_Int_t *    vMFFCsInfo;    // MFFC information
-    Vec_Int_t *    vMFFCsLuts;        // MFFCs for each lut
-    Vec_Ptr_t *    vLutsRankings;     // LUTs rankings of inputs
+    Vec_Int_t *    vMFFCsLuts;    // MFFCs for each lut
+    Vec_Ptr_t *    vLutsRankings; // LUTs rankings of inputs
+    Vec_Wec_t *    vLineage;      // Mapping: GIA ID -> Vector of Original AIG IDs
 };
 
 

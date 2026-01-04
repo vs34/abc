@@ -1,4 +1,4 @@
-read_verilog trash.v
+read_verilog complex_test.v
 print_stats;
 &get -n # n is to preserve the name
 &st

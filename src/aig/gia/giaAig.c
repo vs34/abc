@@ -63,7 +63,12 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
     Gia_ManFromAig_rec( pNew, p, Aig_ObjFanin0(pObj) );
     Gia_ManFromAig_rec( pNew, p, Aig_ObjFanin1(pObj) );
     pObj->iData = Gia_ManAppendAnd( pNew, Gia_ObjChild0Copy(pObj), Gia_ObjChild1Copy(pObj) );
-    if ( p->pEquivs && (pNext = Aig_ObjEquiv(p, pObj)) )
+
+    int iGiaId = Abc_Lit2Var( pObj->iData );
+    Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
+    Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+
+    if ( p->pEquivs && (pNext = Aig_ObjEquiv(p, pObj)) ) // wtf is this
     {
         int iObjNew, iNextNew;
         Gia_ManFromAig_rec( pNew, p, pNext );
@@ -72,6 +77,7 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
         if ( pNew->pNexts )
             pNew->pNexts[iObjNew] = iNextNew;        
     }
+    // hook somthing here to map netlist to GIA
 }
 Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
 {
@@ -80,26 +86,33 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     Aig_Obj_t * pObj;
     int i;
     // create the new manager
-    pNew = Gia_ManStart( Aig_ManObjNum(p) );
+    pNew = Gia_ManStart( Aig_ManObjNum(p) ); // allocate 11 for new GIA
     pNew->pName = Abc_UtilStrsav( p->pName );
     pNew->pSpec = Abc_UtilStrsav( p->pSpec );
     pNew->nConstrs = p->nConstrs;
+    pNew->vLineage = Vec_WecStart( Aig_ManNodeNum(p) );
     // create room to store equivalences
     if ( p->pEquivs )
         pNew->pNexts = ABC_CALLOC( int, Aig_ManObjNum(p) );
     // create the PIs
-    Aig_ManCleanData( p );
+    Aig_ManCleanData( p );  // 11 
     Aig_ManConst1(p)->iData = 1;
-    Aig_ManForEachCi( p, pObj, i )
+    Aig_ManForEachCi( p, pObj, i ) { // setting inputs 3 times
         pObj->iData = Gia_ManAppendCi( pNew );
+        int iGiaId = Abc_Lit2Var( pObj->iData );
+        Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
+        Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+    }
     // add logic for the POs
-    Aig_ManForEachCo( p, pObj, i )
-        Gia_ManFromAig_rec( pNew, p, Aig_ObjFanin0(pObj) );        
-    Aig_ManForEachCo( p, pObj, i )
-        Gia_ManAppendCo( pNew, Gia_ObjChild0Copy(pObj) );
+    Aig_ManForEachCo( p, pObj, i ) // for logic it is recursive
+        Gia_ManFromAig_rec( pNew, p, Aig_ObjFanin0(pObj) ); 
+    Aig_ManForEachCo( p, pObj, i ) // for outpus
+        Gia_ManAppendCo( pNew, Gia_ObjChild0Copy(pObj) ); 
     Gia_ManSetRegNum( pNew, Aig_ManRegNum(p) );
+    
     if ( pNew->pNexts )
         Gia_ManDeriveReprs( pNew );
+
     somthing_happening(pNew);
 
     // ================= [VERIFY LINK START] =================
@@ -197,7 +210,7 @@ void Gia_ManFromAigChoices_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pOb
     Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjFanin1(pObj) );
     Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjEquiv(p, pObj) );
     pObj->iData = Gia_ManAppendAnd( pNew, Gia_ObjChild0Copy(pObj), Gia_ObjChild1Copy(pObj) );
-    if ( Aig_ObjEquiv(p, pObj) )
+    if ( Aig_ObjEquiv(p, pObj) ) 
     {
         int iObjNew, iNextNew;
         iObjNew  = Abc_Lit2Var(pObj->iData);
