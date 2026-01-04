@@ -3566,6 +3566,42 @@ void Gia_ManFindMutualEquivsTest()
 
 void somthing_happening(Gia_Man_t *p) {
     if (!p) return;
+
+
+    Vec_Int_t * vList;
+    int iiii, k, Entry;
+
+    // Check if the lineage vector exists to prevent a crash
+    if ( p->vLineage == NULL )
+    {
+        printf( "Error: No lineage data found in this GIA manager.\n" );
+        return;
+    }
+
+    printf( "\n=== Lineage Mapping Report ===\n" );
+    
+    // Iterate over every node in the GIA manager
+    // Vec_WecSize ensures we don't go out of bounds of the vector
+    for ( iiii = 0; iiii < Vec_WecSize(p->vLineage); iiii++ )
+    {
+        // Get the list of ancestors for GIA Node 'iiii'
+        vList = Vec_WecEntry( p->vLineage, iiii );
+
+        // If the list is empty, skip printing to reduce noise
+        if ( Vec_IntSize(vList) == 0 ) 
+            continue;
+
+        printf( "GIA Node %5d <--- Comes from AIG IDs: { ", iiii );
+        
+        // Iterate through the inner vector (the list of AIG IDs)
+        Vec_IntForEachEntry( vList, Entry, k )
+        {
+            printf( "%d ", Entry );
+        }
+        printf( "}\n" );
+    }
+    printf( "==============================\n" );
+
     
     printf("\n--- GIA Table (Nodes: %d) ---\n", Gia_ManObjNum(p));
     printf("ID   | Type | In0 | In1 | Logic (Decoded)\n");

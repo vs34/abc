@@ -90,7 +90,7 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     pNew->pName = Abc_UtilStrsav( p->pName );
     pNew->pSpec = Abc_UtilStrsav( p->pSpec );
     pNew->nConstrs = p->nConstrs;
-    pNew->vLineage = Vec_WecStart( Aig_ManNodeNum(p) );
+    pNew->vLineage = Vec_WecStart( Aig_ManObjNum(p) );
     // create room to store equivalences
     if ( p->pEquivs )
         pNew->pNexts = ABC_CALLOC( int, Aig_ManObjNum(p) );
