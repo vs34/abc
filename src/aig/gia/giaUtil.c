@@ -3564,74 +3564,57 @@ void Gia_ManFindMutualEquivsTest()
 }
 
 
-void somthing_happening(Gia_Man_t *p) {
+void somthing_happening(Gia_Man_t *p) 
+{
+
+    printf("\n++++ tracking the main GIA +++++\n", Gia_ManObjNum(p));
     if (!p) return;
 
-
-    Vec_Int_t * vList;
-    int iiii, k, Entry;
-
-    // Check if the lineage vector exists to prevent a crash
-    if ( p->vLineage == NULL )
-    {
-        printf( "Error: No lineage data found in this GIA manager.\n" );
-        return;
-    }
-
-    printf( "\n=== Lineage Mapping Report ===\n" );
-    
-    // Iterate over every node in the GIA manager
-    // Vec_WecSize ensures we don't go out of bounds of the vector
-    for ( iiii = 0; iiii < Vec_WecSize(p->vLineage); iiii++ )
-    {
-        // Get the list of ancestors for GIA Node 'iiii'
-        vList = Vec_WecEntry( p->vLineage, iiii );
-
-        // If the list is empty, skip printing to reduce noise
-        if ( Vec_IntSize(vList) == 0 ) 
-            continue;
-
-        printf( "GIA Node %5d <--- Comes from AIG IDs: { ", iiii );
-        
-        // Iterate through the inner vector (the list of AIG IDs)
-        Vec_IntForEachEntry( vList, Entry, k )
-        {
-            printf( "%d ", Entry );
-        }
-        printf( "}\n" );
-    }
-    printf( "==============================\n" );
-
-    
-    printf("\n--- GIA Table (Nodes: %d) ---\n", Gia_ManObjNum(p));
-    printf("ID   | Type | In0 | In1 | Logic (Decoded)\n");
-    printf("-----|------|-----|-----|----------------\n");
+    printf("\n=== GIA Table & Lineage (Nodes: %d) ===\n", Gia_ManObjNum(p));
+    printf(" ID   | Type | Fanins      | Lineage {AIG IDs}\n");
+    printf("------|------|-------------|------------------\n");
 
     Gia_Obj_t *pObj; 
-    int i;
-    
-    Gia_ManForEachObj(p, pObj, i) {
-        if (Gia_ObjIsConst0(pObj)) {
-            printf("%-4d | Cnst |     |     | = 0\n", i);
-        }
-        else if (Gia_ObjIsCi(pObj)) {
-            printf("%-4d | PI   |     |     | (Input)\n", i);
-        }
+    int i, k, Entry;
+    Vec_Int_t * vList;
+
+    Gia_ManForEachObj(p, pObj, i) 
+    {
+        // 1. Print ID and Type
+        printf("%-5d | ", i);
+        
+        if (Gia_ObjIsConst0(pObj))      printf("Cnst |             | ");
+        else if (Gia_ObjIsCi(pObj))     printf("PI   |             | ");
         else if (Gia_ObjIsCo(pObj)) {
             int L = Gia_ObjFaninLit0(pObj, i);
-            printf("%-4d | PO   | %-3d |     | = %s%d\n", 
-                   i, L, Abc_LitIsCompl(L)?"!":"", Abc_Lit2Var(L));
+            printf("PO   | %c%-4d       | ", Abc_LitIsCompl(L)?'~':' ', Abc_Lit2Var(L));
         }
         else if (Gia_ObjIsAnd(pObj)) {
             int L0 = Gia_ObjFaninLit0(pObj, i);
             int L1 = Gia_ObjFaninLit1(pObj, i);
-            printf("%-4d | AND  | %-3d | %-3d | = %s%d & %s%d\n", 
-                   i, L0, L1, 
-                   Abc_LitIsCompl(L0)?"!":"", Abc_Lit2Var(L0),
-                   Abc_LitIsCompl(L1)?"!":"", Abc_Lit2Var(L1));
+            // Compact format: "~12, 45"
+            printf("AND  | %c%-4d, %c%-4d | ", 
+                Abc_LitIsCompl(L0)?'~':' ', Abc_Lit2Var(L0),
+                Abc_LitIsCompl(L1)?'~':' ', Abc_Lit2Var(L1));
         }
+        else printf("???? |             | ");
+
+        // 2. Print Lineage (Side-by-Side)
+        if ( p->vLineage && i < Vec_WecSize(p->vLineage) )
+        {
+            vList = Vec_WecEntry( p->vLineage, i );
+            if ( Vec_IntSize(vList) > 0 )
+            {
+                printf("{ ");
+                Vec_IntForEachEntry( vList, Entry, k )
+                    printf("%d ", Entry);
+                printf("}");
+            }
+        }
+        
+        printf("\n");
     }
-    printf("-----------------------------\n");
+    printf("----------------------------------------------\n");
 }
 
 
