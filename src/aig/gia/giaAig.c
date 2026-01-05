@@ -632,7 +632,7 @@ void Gia_ManReprToAigRepr2( Aig_Man_t * pAig, Gia_Man_t * pGia )
 
   Synopsis    [Transfers representatives from pAig to pGia.]
 
-  Description []
+  Description [pAgi is new AGI, pGia is original Gia]
                
   SideEffects []
 
@@ -758,14 +758,14 @@ Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars )
     if ( p->pManTime && p->vLevels == NULL )
         Gia_ManLevelWithBoxes( p );
     if ( fUseMapping && Gia_ManHasMapping(p) )
-        pGia1 = (Gia_Man_t *)Dsm_ManDeriveGia( p, 0 );
+        pGia1 = (Gia_Man_t *)Dsm_ManDeriveGia( p, 0 ); // new gia
     else
         pGia1 = Gia_ManDup( p );
-    pNew = Gia_ManToAig( pGia1, 0 );
+    pNew = Gia_ManToAig( pGia1, 0 ); // gia converted to aig
     Gia_ManStop( pGia1 );
-    pNew = Dar_ManChoiceNew( pNew, (Dch_Pars_t *)pPars );
+    pNew = Dar_ManChoiceNew( pNew, (Dch_Pars_t *)pPars ); // some aig transformation on gia
 //    pGia = Gia_ManFromAig( pNew );
-    pGia = Gia_ManFromAigChoices( pNew );
+    pGia = Gia_ManFromAigChoices( pNew ); // new gia from aig
     Aig_ManStop( pNew );
     if ( !p->pManTime && !Gia_ManTestChoices(pGia) )
     {

@@ -85,6 +85,7 @@ extern ABC_DLL int             Abc_FrameShowProgress( Abc_Frame_t * p );
 extern ABC_DLL void            Abc_FrameClearVerifStatus( Abc_Frame_t * p );
 extern ABC_DLL void            Abc_FrameUpdateGia( Abc_Frame_t * p, Gia_Man_t * pNew );
 extern ABC_DLL void            Abc_vLineageUpdate( Abc_Frame_t * pAbc );
+extern ABC_DLL void            Gia_ManTransferLineage( Gia_Man_t * pNew, Gia_Man_t * pOld );
 extern ABC_DLL Gia_Man_t *     Abc_FrameGetGia( Abc_Frame_t * p );
 
 extern ABC_DLL void            Abc_FrameSetCurrentNetwork( Abc_Frame_t * p, Abc_Ntk_t * pNet );

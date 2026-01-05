@@ -1,0 +1,65 @@
+.model test_alu
+.inputs A0 A1 A2 A3 B0 B1 B2 B3 Cin Op
+.outputs S0 S1 S2 S3 Cout
+
+# --- Bit 0 ---
+# XOR A^B
+.names A0 B0 AxB0
+10 1
+01 1
+# AND A&B
+.names A0 B0 AaB0
+11 1
+# Mux for B operand based on Op (0=Add, 1=Sub/Logic)
+.names B0 Op B_mod0
+10 1
+01 1
+# Sum Logic: AxB0 ^ Cin
+.names AxB0 Cin S0
+10 1
+01 1
+# Carry Logic: (A&B) | (Cin & (A^B))
+.names AaB0 Cin AxB0 C0
+1-- 1
+-11 1
+
+# --- Bit 1 ---
+.names A1 B1 AxB1
+10 1
+01 1
+.names A1 B1 AaB1
+11 1
+.names AxB1 C0 S1
+10 1
+01 1
+.names AaB1 C0 AxB1 C1
+1-- 1
+-11 1
+
+# --- Bit 2 ---
+.names A2 B2 AxB2
+10 1
+01 1
+.names A2 B2 AaB2
+11 1
+.names AxB2 C1 S2
+10 1
+01 1
+.names AaB2 C1 AxB2 C2
+1-- 1
+-11 1
+
+# --- Bit 3 ---
+.names A3 B3 AxB3
+10 1
+01 1
+.names A3 B3 AaB3
+11 1
+.names AxB3 C2 S3
+10 1
+01 1
+.names AaB3 C2 AxB3 Cout
+1-- 1
+-11 1
+
+.end

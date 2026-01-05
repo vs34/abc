@@ -1,0 +1,393 @@
+
+======== ABC command line "source script.scr"
+[1;37mxor_blast                     :[0m i/o =    3/    1  lat =    0  nd =     1  edge =      3  aig  =     6  lev = 1
+running code for &get
+--- Netlist Nodes ---
+Object ID: 1, Name: a
+Object ID: 2, Name: b
+Object ID: 3, Name: c
+Object ID: 4, Name: out
+Object ID: 5, Name: out
+AIG to GIA (&get)
+
+++++ tracking the main GIA +++++
+Address of p: 0x103961650
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  |  1   , ~2    | { 4 }
+5     | AND  | ~1   ,  2    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~3   , ~6    | { 7 }
+8     | AND  |  3   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   | ~9          | 
+----------------------------------------------
+
+=== [LINK] Verifying AIG (Source) -> GIA (Destination) ===
+  [LINK] Input  AIG 1  --->  GIA 1
+  [LINK] Input  AIG 2  --->  GIA 2
+  [LINK] Input  AIG 3  --->  GIA 3
+  [LINK] Output  AIG 10  --->  GIA 0
+  [LINK] Logic  AIG 4  --->  GIA 4
+  [LINK] Logic  AIG 5  --->  GIA 5
+  [LINK] Logic  AIG 6  --->  GIA 6
+  [LINK] Logic  AIG 7  --->  GIA 7
+  [LINK] Logic  AIG 8  --->  GIA 8
+  [LINK] Logic  AIG 9  --->  GIA 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+update the pAbc(mother) with pNew
+
+++++ tracking the main GIA +++++
+Address of p: 0x103961cb0
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  |  1   , ~2    | { 4 }
+5     | AND  | ~1   ,  2    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~3   , ~6    | { 7 }
+8     | AND  |  3   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   | ~9          | 
+----------------------------------------------
+running code &st
+update the pAbc(mother) with pNew
+Address of pNew: 0x103962950
+Address of pOld: 0x103961cb0
+
+++++ tracking the main GIA +++++
+Address of p: 0x103962950
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  |  1   , ~2    | { 4 }
+5     | AND  | ~1   ,  2    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~3   , ~6    | { 7 }
+8     | AND  |  3   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   | ~9          | 
+----------------------------------------------
+running code &sweep
+update the pAbc(mother) with pNew
+Address of pNew: 0x103962e50
+Address of pOld: 0x103962950
+
+++++ tracking the main GIA +++++
+Address of p: 0x103962e50
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  |  1   , ~2    | { 4 }
+5     | AND  | ~1   ,  2    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~3   , ~6    | { 7 }
+8     | AND  |  3   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   | ~9          | 
+----------------------------------------------
+running code &dch
+GIA to AIG (&put)
+
+=== [LINK] Verifying GIA (Source) -> AIG (Destination) ===
+  [LINK] Input  GIA 1  --->  AIG 1
+  [LINK] Input  GIA 2  --->  AIG 2
+  [LINK] Input  GIA 3  --->  AIG 3
+  [LINK] Output GIA 10  --->  AIG 10 (Driven by AIG 9)
+  [LINK] Logic  GIA 4  --->  AIG 4
+  [LINK] Logic  GIA 5  --->  AIG 5
+  [LINK] Logic  GIA 6  --->  AIG 6
+  [LINK] Logic  GIA 7  --->  AIG 7
+  [LINK] Logic  GIA 8  --->  AIG 8
+  [LINK] Logic  GIA 9  --->  AIG 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+
+++++ tracking the main GIA +++++
+Address of p: 0x1039618b0
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | 
+2     | PI   |             | 
+3     | PI   |             | 
+4     | AND  |  1   , ~2    | 
+5     | AND  | ~1   ,  2    | 
+6     | AND  | ~4   , ~5    | 
+7     | AND  | ~3   , ~6    | 
+8     | AND  |  3   ,  6    | 
+9     | AND  | ~7   , ~8    | 
+10    | PO   | ~9          | 
+----------------------------------------------
+AIG to GIA (&get)
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078000
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  |  1   , ~2    | { 4 }
+5     | AND  | ~1   ,  2    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~3   , ~6    | { 7 }
+8     | AND  |  3   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   | ~9          | 
+----------------------------------------------
+
+=== [LINK] Verifying AIG (Source) -> GIA (Destination) ===
+  [LINK] Input  AIG 1  --->  GIA 1
+  [LINK] Input  AIG 2  --->  GIA 2
+  [LINK] Input  AIG 3  --->  GIA 3
+  [LINK] Output  AIG 10  --->  GIA 0
+  [LINK] Logic  AIG 4  --->  GIA 4
+  [LINK] Logic  AIG 5  --->  GIA 5
+  [LINK] Logic  AIG 6  --->  GIA 6
+  [LINK] Logic  AIG 7  --->  GIA 7
+  [LINK] Logic  AIG 8  --->  GIA 8
+  [LINK] Logic  AIG 9  --->  GIA 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+AIG to GIA (&get)
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078500
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  | ~2   ,  3    | { 4 }
+5     | AND  |  2   , ~3    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  |  1   , ~6    | { 7 }
+8     | AND  | ~1   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   |  9          | 
+----------------------------------------------
+
+=== [LINK] Verifying AIG (Source) -> GIA (Destination) ===
+  [LINK] Input  AIG 1  --->  GIA 1
+  [LINK] Input  AIG 2  --->  GIA 2
+  [LINK] Input  AIG 3  --->  GIA 3
+  [LINK] Output  AIG 10  --->  GIA 0
+  [LINK] Logic  AIG 4  --->  GIA 4
+  [LINK] Logic  AIG 5  --->  GIA 5
+  [LINK] Logic  AIG 6  --->  GIA 6
+  [LINK] Logic  AIG 7  --->  GIA 7
+  [LINK] Logic  AIG 8  --->  GIA 8
+  [LINK] Logic  AIG 9  --->  GIA 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+AIG to GIA (&get)
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078a00
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  | ~2   ,  3    | { 4 }
+5     | AND  |  2   , ~3    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  |  1   , ~6    | { 7 }
+8     | AND  | ~1   ,  6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   |  9          | 
+----------------------------------------------
+
+=== [LINK] Verifying AIG (Source) -> GIA (Destination) ===
+  [LINK] Input  AIG 1  --->  GIA 1
+  [LINK] Input  AIG 2  --->  GIA 2
+  [LINK] Input  AIG 3  --->  GIA 3
+  [LINK] Output  AIG 10  --->  GIA 0
+  [LINK] Logic  AIG 4  --->  GIA 4
+  [LINK] Logic  AIG 5  --->  GIA 5
+  [LINK] Logic  AIG 6  --->  GIA 6
+  [LINK] Logic  AIG 7  --->  GIA 7
+  [LINK] Logic  AIG 8  --->  GIA 8
+  [LINK] Logic  AIG 9  --->  GIA 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+update the pAbc(mother) with pNew
+Address of pNew: 0x7a3078000
+Address of pOld: 0x103962e50
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078000
+
+=== GIA Table & Lineage (Nodes: 17) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  | ~2   ,  3    | { 4 }
+5     | AND  |  2   , ~3    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  |  1   , ~6    | { 7 }
+8     | AND  | ~1   ,  6    | { 8 }
+9     | AND  |  1   , ~2    | { 9 }
+10    | AND  | ~1   ,  2    | 
+11    | AND  | ~9   , ~10   | 
+12    | AND  | ~3   , ~11   | 
+13    | AND  |  3   ,  11   | 
+14    | AND  | ~12  , ~13   | 
+15    | AND  | ~7   , ~8    | 
+16    | PO   |  15         | 
+----------------------------------------------
+update the pAbc(mother) with pNew
+running code &syn2
+ballnceing the graph
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078f00
+
+=== GIA Table & Lineage (Nodes: 7) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | 
+2     | PI   |             | 
+3     | PI   |             | 
+4     | AND  |  3   ,  2    | 
+5     | AND  |  4   ,  1    | 
+6     | PO   |  5          | 
+----------------------------------------------
+ballnceing the graph
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078a00
+
+=== GIA Table & Lineage (Nodes: 7) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | 
+2     | PI   |             | 
+3     | PI   |             | 
+4     | AND  |  3   ,  2    | 
+5     | AND  |  4   ,  1    | 
+6     | PO   |  5          | 
+----------------------------------------------
+update the pAbc(mother) with pNew
+Address of pNew: 0x7a3078f00
+Address of pOld: 0x7a3078000
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3078f00
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 1 }
+2     | PI   |             | { 2 }
+3     | PI   |             | { 3 }
+4     | AND  | ~2   ,  3    | { 4 }
+5     | AND  |  2   , ~3    | { 5 }
+6     | AND  | ~4   , ~5    | { 6 }
+7     | AND  | ~1   ,  6    | { 7 }
+8     | AND  |  1   , ~6    | { 8 }
+9     | AND  | ~7   , ~8    | { 9 }
+10    | PO   |  9          | 
+----------------------------------------------
+running code &if
+update the pAbc(mother) with pNew
+Address of pNew: 0x7a3079400
+Address of pOld: 0x7a3078f00
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3079400
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 2 3 }
+2     | PI   |             | { 4 5 }
+3     | PI   |             | { 6 7 }
+4     | AND  |  2   , ~3    | { 8 9 }
+5     | AND  | ~2   ,  3    | 
+6     | AND  | ~4   , ~5    | 
+7     | AND  |  1   , ~6    | 
+8     | AND  | ~1   ,  6    | 
+9     | AND  | ~7   , ~8    | 
+10    | PO   |  9          | 
+----------------------------------------------
+Nodes by level:
+ 0 : 
+ 1 :  out
+running code &put
+GIA to AIG (&put)
+
+=== [LINK] Verifying GIA (Source) -> AIG (Destination) ===
+  [LINK] Input  GIA 1  --->  AIG 1
+  [LINK] Input  GIA 2  --->  AIG 2
+  [LINK] Input  GIA 3  --->  AIG 3
+  [LINK] Output GIA 10  --->  AIG 10 (Driven by AIG 9)
+  [LINK] Logic  GIA 4  --->  AIG 4
+  [LINK] Logic  GIA 5  --->  AIG 5
+  [LINK] Logic  GIA 6  --->  AIG 6
+  [LINK] Logic  GIA 7  --->  AIG 7
+  [LINK] Logic  GIA 8  --->  AIG 8
+  [LINK] Logic  GIA 9  --->  AIG 9
+=== [LINK] Verified 6 logic gates transferred. ===
+
+
+++++ tracking the main GIA +++++
+Address of p: 0x7a3079400
+
+=== GIA Table & Lineage (Nodes: 11) ===
+ ID   | Type | Fanins      | Lineage {AIG IDs}
+------|------|-------------|------------------
+0     | Cnst |             | 
+1     | PI   |             | { 2 3 }
+2     | PI   |             | { 4 5 }
+3     | PI   |             | { 6 7 }
+4     | AND  |  2   , ~3    | { 8 9 }
+5     | AND  | ~2   ,  3    | 
+6     | AND  | ~4   , ~5    | 
+7     | AND  |  1   , ~6    | 
+8     | AND  | ~1   ,  6    | 
+9     | AND  | ~7   , ~8    | 
+10    | PO   |  9          | 
+----------------------------------------------
+[1;37mxor_blast                     :[0m i/o =    3/    1  lat =    0  and =      6  lev =  4

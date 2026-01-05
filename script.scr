@@ -3,10 +3,10 @@ print_stats;
 &get -n # n is to preserve the name
 &st
 &sweep
-# &dch   # most complex
-# &nf  # causing error
-#&syn2  # calling bal
-# &if -g -K 6
+&dch   # most complex
+#&nf  # causing error
+&syn2  # calling bal
+&if -g -K 6
 print_level -n;
 &put
 print_stats;

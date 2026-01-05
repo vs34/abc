@@ -899,8 +899,10 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
     // 3. Priority Check: Did a specific command hook already fill this?
     // If pNew->vLineage is already full, we assume the command did a better job
     // than we can do here, so we exit to avoid duplicating data.
-    if ( pNew->vLineage != NULL )
+    if ( pNew->vLineage != NULL ){
+        printf("[WARNING] vLinaege is of pNew is not null\n");
         return;
+    }
 
     // 4. "Catch-All" Transfer
     // The command finished but didn't copy the lineage.

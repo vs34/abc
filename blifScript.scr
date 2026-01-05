@@ -1,0 +1,33 @@
+# 1. Start fresh
+read_blif test_alu.blif
+strash
+&get
+
+# 2. Checkpoint A: Creation
+&ps
+# &print_lineage  # (Or whatever you named your debug printer)
+
+# 3. The "Mergers" & "Janitors"
+&st
+&sweep
+&dch
+
+# 4. Checkpoint B: Did we lose it after merging?
+&ps
+#&print_lineage
+
+# 5. The "Architects" (The dangerous ones)
+&b
+#&rw
+&syn2
+
+# 6. Checkpoint C: Did we lose it after rewriting?
+&ps
+#&print_lineage
+
+# 7. The "Grouper" (Mapping)
+&if -g -K 6
+
+# 8. Final Check
+&ps
+#&print_lineage

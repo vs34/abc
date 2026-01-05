@@ -1,14 +1,16 @@
 module complex_trace (
-    input [3:0] a,
-    input [3:0] b,
-    input cin,
-    output [3:0] sum,
-    output cout,
-    output parity
+     [3:0] a,
+     [3:0] b,
+     cin,
+     [3:0] sum,
+     cout,
+     parity
 );
     // --- PART 1: The Valid Logic (Ripple Carry Adder) ---
     // This creates a deep chain of dependencies (C0 -> C1 -> C2 -> C3)
     // ABC will try to flatten this chain (Tree Balancing).
+    input a,b,cin;
+    output sum,cout,parity;
     
     wire [4:0] c;
     assign c[0] = cin;
