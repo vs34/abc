@@ -910,59 +910,6 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
     Gia_ManTransferLineage( pNew, pOld );
 }
 
-/**Function*************************************************************
-
-  Synopsis    [Transfers lineage data from Old GIA to New GIA based on mapping.]
-
-  Description [Iterates through the Old GIA. If an Old Node maps to a New Node 
-               (via pObj->Value), we copy the Old Node's history to the New Node.
-               Handles M-to-1 merges automatically by appending history.]
-
-***********************************************************************/
-void Gia_ManTransferLineage( Gia_Man_t * pNew, Gia_Man_t * pOld )
-{
-    Gia_Obj_t * pObj;
-    int i, iNewId;
-    Vec_Int_t * vOldList;
-    Vec_Int_t * vNewList;
-
-    // 1. Safety Checks
-    if ( pOld->vLineage == NULL ) return;
-    
-    // Initialize New Vector if it doesn't exist (with safety buffer)
-    if ( pNew->vLineage == NULL )
-        pNew->vLineage = Vec_WecStart( Gia_ManObjNum(pNew) );
-
-    // 2. Iterate over OLD nodes to find where they went
-    Gia_ManForEachObj( pOld, pObj, i )
-    {
-        // Get the "Map" - In most ABC functions, pObj->Value holds the New ID.
-        // We use Abc_Lit2Var because it might be a complemented literal (inverted).
-        iNewId = Abc_Lit2Var( pObj->Value );
-
-        // If this old node wasn't mapped to anything (deleted), or maps to Constant 0, skip
-        if ( iNewId <= 0 || iNewId >= Vec_WecSize(pNew->vLineage) ) 
-            continue;
-
-        // 3. Get the Old History
-        vOldList = Vec_WecEntry( pOld->vLineage, i );
-        if ( Vec_IntSize(vOldList) == 0 ) continue;
-
-        // 4. Copy/Merge to New History
-        vNewList = Vec_WecEntry( pNew->vLineage, iNewId );
-        
-        // This handles the "Merge" automatically!
-        // If multiple Old Nodes map to the same New ID, we append ALL their histories.
-        Vec_IntAppend( vNewList, vOldList );
-    }
-
-    // Optional: Remove duplicates from the lists if you want cleaner output
-    // (e.g., if Node A and Node B both came from AIG_10 and merged, you get {10, 10})
-    /*
-    Vec_WecForEachLevel( pNew->vLineage, vNewList, i )
-        Vec_IntUniqify( vNewList );
-    */
-}
 
 /**Function*************************************************************
 
