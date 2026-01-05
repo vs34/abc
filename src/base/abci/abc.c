@@ -872,6 +872,7 @@ void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
     somthing_happening(pNew);
 }
 
+
 /**Function*************************************************************
 
   Synopsis    [Updates the Lineage from Old GIA to New GIA]
@@ -881,40 +882,58 @@ void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
                didn't manually handle lineage, this function attempts to 
                transfer it using the mapping left in pObj->Value.]
 
-  SideEffects []
-
-  SeeAlso     []
-
 ***********************************************************************/
 void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
 {
     Gia_Man_t * pNew = pAbc->pGia;   // The New Manager (Current)
     Gia_Man_t * pOld = pAbc->pGia2;  // The Old Manager (Backup)
-    Gia_Obj_t * pObj;
-    Vec_Int_t * vOldList;
-    Vec_Int_t * vNewList;
-    int i, iNewId;
 
-    // 1. Sanity Checks: Ensure both managers exist
+    // 1. Sanity Checks
     if ( pNew == NULL || pOld == NULL )
         return;
 
     // 2. If the Old manager has no history, there is nothing to pass on.
-    if ( pOld->vLineage == NULL ){
-        printf("[Warning] the Lineage is lost"); // TODO change this to real warning
+    if ( pOld->vLineage == NULL )
         return;
-    }
+
     // 3. Priority Check: Did a specific command hook already fill this?
     // If pNew->vLineage is already full, we assume the command did a better job
     // than we can do here, so we exit to avoid duplicating data.
     if ( pNew->vLineage != NULL )
         return;
 
-    // 4. Initialize New Vector if it doesn't exist
-    // We allocate extra space (+1000) to be safe against slight index growth
-    pNew->vLineage = Vec_WecStart( Gia_ManObjNum(pNew) + 1000 );
+    // 4. "Catch-All" Transfer
+    // The command finished but didn't copy the lineage.
+    // We assume the command left the mapping in `pOld->Value`.
+    // printf("Global Hook: Transferring lineage from Old GIA to New GIA...\n");
+    
+    Gia_ManTransferLineage( pNew, pOld );
+}
 
-    // 5. Transfer Loop: Iterate over OLD nodes to find where they went
+/**Function*************************************************************
+
+  Synopsis    [Transfers lineage data from Old GIA to New GIA based on mapping.]
+
+  Description [Iterates through the Old GIA. If an Old Node maps to a New Node 
+               (via pObj->Value), we copy the Old Node's history to the New Node.
+               Handles M-to-1 merges automatically by appending history.]
+
+***********************************************************************/
+void Gia_ManTransferLineage( Gia_Man_t * pNew, Gia_Man_t * pOld )
+{
+    Gia_Obj_t * pObj;
+    int i, iNewId;
+    Vec_Int_t * vOldList;
+    Vec_Int_t * vNewList;
+
+    // 1. Safety Checks
+    if ( pOld->vLineage == NULL ) return;
+    
+    // Initialize New Vector if it doesn't exist (with safety buffer)
+    if ( pNew->vLineage == NULL )
+        pNew->vLineage = Vec_WecStart( Gia_ManObjNum(pNew) );
+
+    // 2. Iterate over OLD nodes to find where they went
     Gia_ManForEachObj( pOld, pObj, i )
     {
         // Get the "Map" - In most ABC functions, pObj->Value holds the New ID.
@@ -922,28 +941,28 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
         iNewId = Abc_Lit2Var( pObj->Value );
 
         // If this old node wasn't mapped to anything (deleted), or maps to Constant 0, skip
-        // Also check bounds to prevent segfaults
         if ( iNewId <= 0 || iNewId >= Vec_WecSize(pNew->vLineage) ) 
             continue;
 
-        // Get the Old History
+        // 3. Get the Old History
         vOldList = Vec_WecEntry( pOld->vLineage, i );
-        if ( Vec_IntSize(vOldList) == 0 ) 
-            continue;
+        if ( Vec_IntSize(vOldList) == 0 ) continue;
 
-        // Copy/Merge to New History
+        // 4. Copy/Merge to New History
         vNewList = Vec_WecEntry( pNew->vLineage, iNewId );
         
         // This handles the "Merge" automatically!
         // If multiple Old Nodes map to the same New ID, we append ALL their histories.
         Vec_IntAppend( vNewList, vOldList );
-
     }
 
-    // Optional: Log that transfer happened (useful for debugging)
-    printf("Abc_vLineageUpdate: Transferred lineage from GIA %p to %p\n", pOld, pNew);
+    // Optional: Remove duplicates from the lists if you want cleaner output
+    // (e.g., if Node A and Node B both came from AIG_10 and merged, you get {10, 10})
+    /*
+    Vec_WecForEachLevel( pNew->vLineage, vNewList, i )
+        Vec_IntUniqify( vNewList );
+    */
 }
-
 
 /**Function*************************************************************
 
