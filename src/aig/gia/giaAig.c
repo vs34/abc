@@ -65,8 +65,13 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
     pObj->iData = Gia_ManAppendAnd( pNew, Gia_ObjChild0Copy(pObj), Gia_ObjChild1Copy(pObj) );
 
     int iGiaId = Abc_Lit2Var( pObj->iData );
-    Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
-    Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+    if (pObj->iGiaLineageId > 0){ // in between conversion GIA -> AIG (->) GIA
+        Vec_IntWriteEntry( pNew->vOldGia, iGiaId, pObj->iGiaLineageId - 1 );
+    }
+    else { // the 1st GIA from AIG
+        Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
+        Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+    }
 
     if ( p->pEquivs && (pNext = Aig_ObjEquiv(p, pObj)) ) // wtf is this
     {
@@ -102,8 +107,13 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     Aig_ManForEachCi( p, pObj, i ) { // setting inputs 3 times
         pObj->iData = Gia_ManAppendCi( pNew );
         int iGiaId = Abc_Lit2Var( pObj->iData );
+        if (pObj->iGiaLineageId > 0){ // in between conversion GIA -> AIG (->) GIA
+            Vec_IntWriteEntry( pNew->vOldGia, iGiaId, pObj->iGiaLineageId - 1 );
+        }
+        else { // the 1st GIA from AIG
             Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
             Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+        }
     }
     // add logic for the POs
     Aig_ManForEachCo( p, pObj, i ) // for logic it is recursive
