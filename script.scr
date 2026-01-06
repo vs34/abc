@@ -1,14 +1,19 @@
-read_verilog complex_test.v
+#read_verilog strash_sweep_test.v
+#read_verilog complex_test.v
+read_verilog trash.v
 print_stats;
 &get -n # n is to preserve the name
-&st
-&sweep
-&dch   # most complex
+#&st
+#&sweep
+&dch   # most complx
 #&nf  # causing error
-&syn2  # calling bal
-&if -g -K 6
-print_level -n;
-&put
+#&syn2  # calling bal
+#&if -g -K 6
+#print_level -n;
+#&put
 print_stats;
 write_verilog trash_output.v
 quit
+
+
+

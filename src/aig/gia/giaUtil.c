@@ -3638,7 +3638,7 @@ void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
     }// Example: Printing the address of the GIA Managers
 printf( "Address of pNew: %p\n", (void *)pNew );
 printf( "Address of pOld: %p\n", (void *)pOld );
-    /*
+    
     fprintf(stderr, "[INFO] Mother Graph Nodes: %d\n", Gia_ManObjNum(pOld));
     fprintf(stderr, "[INFO] Child Graph Nodes:  %d\n", Gia_ManObjNum(pNew));
     somthing_happening(pNew);
@@ -3701,7 +3701,7 @@ printf( "Address of pOld: %p\n", (void *)pOld );
         fprintf(stderr, "=== [TRACE END] Mapped: %d | Constants: %d | Swept/Lost: %d ===\n\n", 
                 nMapped, nConst, nLost);
     }
-    */
+    
 }
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///

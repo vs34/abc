@@ -835,7 +835,6 @@ void Abc_FrameClearDesign()
 ***********************************************************************/
 void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
-    // IMPORTENT
     printf("update the pAbc(mother) with pNew\n");
 
     if ( pNew == NULL )
@@ -907,9 +906,7 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
         printf("[WARNING] vLinaege is of pNew is not null\n");
         return;
     }
-    if ( pNew->vLineage != NULL ){
-        printf("Lineage already present (Internal Hook used). Skipping generic update.\n");
-    }
+
     // 4. "Catch-All" Transfer
     // The command finished but didn't copy the lineage.
     // We assume the command left the mapping in `pOld->Value`.
@@ -34546,10 +34543,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Put( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
-    // IMPORTENT
     printf("running code &put\n");
-    printf("====== the final GIA ======= \n");
-    somthing_happening(pAbc->pGia);
     extern Abc_Ntk_t * Abc_NtkFromDarChoices( Abc_Ntk_t * pNtkOld, Aig_Man_t * pMan );
     extern void Abc_NtkRedirectCiCo( Abc_Ntk_t * pNtk );
     extern Abc_Ntk_t * Abc_NtkFromCellMappedGia( Gia_Man_t * p, int fUseBuffs );

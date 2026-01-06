@@ -2454,6 +2454,7 @@ void Gia_ManTransferLineage( Gia_Man_t * pNew, Gia_Man_t * pOld )
         // If multiple Old Nodes map to the same New ID, we append ALL their histories.
         Vec_IntAppend( vNewList, vOldList );
     }
+    printf("updated the linage =========\n");
 
     // Optional: Remove duplicates from the lists if you want cleaner output
     // (e.g., if Node A and Node B both came from AIG_10 and merged, you get {10, 10})

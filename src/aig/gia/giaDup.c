@@ -3644,7 +3644,7 @@ Gia_Man_t * Gia_ManDupZeroUndc( Gia_Man_t * p, char * pInit, int nNewPis, int fG
     Gia_ManSetRegNum( pNew, Gia_ManRegNum(p) + (int)(CountPis > Gia_ManPiNum(p)) );
     if ( fVerbose )
         printf( "Converted %d 1-valued FFs and %d DC-valued FFs.\n", Count1, CountPis-Gia_ManPiNum(p) );
-    Gia_ManTransferLineage( pNew, p );
+    Gia_ManTransferLineage( pNew, p ); // &get calles this funtion
     return pNew;
 }
 

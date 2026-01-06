@@ -248,6 +248,22 @@ Gia_Man_t * Gia_ManFromAigChoices( Aig_Man_t * p )
     //Gia_ManCheckChoices( pNew );
     if ( pNew->pSibls )
         Gia_ManDeriveReprsFromSibls( pNew );
+
+    /*/ =========================================================
+    printf("\n--- TRACE: Gia_ManFromAigChoices (AIG -> Final GIA) ---\n");
+    // Iterate over ALL objects in the AIG manager (Inputs, Ands, Outputs)
+    Aig_ManForEachObj( p, pObj, i )
+    {
+        // Only print if the node was actually used/mapped (iData > 0)
+        // iData holds the literal (GIA ID * 2 + compl). We shift >> 1 to get the pure ID.
+        if ( pObj->iData > 0 ) 
+        {
+            printf("AIG Addr: %p (ID: %d)  ->  Final GIA ID: %d\n", 
+                   (void*)pObj, pObj->Id, Abc_Lit2Var(pObj->iData) );
+        }
+    }
+    printf("-------------------------------------------------------\n");
+    // =========================================================*/
     return pNew;
 }
 
@@ -401,6 +417,24 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCo( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
     }
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
+    Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
+    
+    
+    printf("AGI nodes are");
+    Gia_ManForEachObj( p, pObj, i )
+    {
+        // Check if a mapping exists for this node
+        if ( ppNodes[i] ) 
+        {
+            // pObj->Value = Abc_ptr2lit( ppNodes[i] ); // this will not work as AIG is linklist
+            printf("GIA ID: %d  ->  AIG Node Addr: %p (AIG ID: %d)\n", 
+                i, (void*)ppNodes[i], ppNodes[i]->Id );
+        }
+        else
+        {
+            pObj->Value = ~0; // Mark as unmapped/invalid
+        }
+    }
 // ================= [VERIFY LINK START] =================
     // PASTE THIS *BEFORE* ABC_FREE( ppNodes );
     
@@ -750,22 +784,32 @@ int Gia_ManTestChoices( Gia_Man_t * p )
     Vec_IntFree( vPointed );
     return 1;
 }
-Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars )
+Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars ) // p -> value => pGia1
 {
+    // IMPORTENT 1
     int fUseMapping = 0;
     Gia_Man_t * pGia, * pGia1;
     Aig_Man_t * pNew;
     if ( p->pManTime && p->vLevels == NULL )
         Gia_ManLevelWithBoxes( p );
     if ( fUseMapping && Gia_ManHasMapping(p) )
-        pGia1 = (Gia_Man_t *)Dsm_ManDeriveGia( p, 0 ); // new gia
+        pGia1 = (Gia_Man_t *)Dsm_ManDeriveGia( p, 0 ); 
     else
-        pGia1 = Gia_ManDup( p );
-    pNew = Gia_ManToAig( pGia1, 0 ); // gia converted to aig
+        pGia1 = Gia_ManDup( p ); // dupilicate of original GIA p -> value => pGia1 one to one mapping 
+    pNew = Gia_ManToAig( pGia1, 0 ); // gia converted to AIG pGia1 -> value => ABC 
+   /* 
+    int i;
+    Gia_Obj_t * pObj;
+    Vec_Int_t * vGia1_to_pNew = Vec_IntStart( Gia_ManObjNum(pGia1) );
+    Gia_ManForEachObj( pGia1, pObj, i ){
+        printf(" ------------- the pGia1 values === %d \n",pObj->Value);
+        Vec_IntWriteEntry( vGia1_to_pNew, i, pObj->Value );
+    }
+    */
     Gia_ManStop( pGia1 );
     pNew = Dar_ManChoiceNew( pNew, (Dch_Pars_t *)pPars ); // some aig transformation on gia
 //    pGia = Gia_ManFromAig( pNew );
-    pGia = Gia_ManFromAigChoices( pNew ); // new gia from aig
+    pGia = Gia_ManFromAigChoices( pNew ); // new pNew -> ppNode => pGia [ppNode is temp]
     Aig_ManStop( pNew );
     if ( !p->pManTime && !Gia_ManTestChoices(pGia) )
     {
@@ -773,6 +817,7 @@ Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars )
         pGia = Gia_ManDup( p );
     }
     Gia_ManTransferTiming( pGia, p );
+    //Vec_IntFree( vGia1_to_pNew );
     return pGia;
 }
 
