@@ -365,14 +365,17 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
     Gia_Obj_t * pNext;
     if ( ppNodes[Gia_ObjId(p, pObj)] )
         return;
-    if ( Gia_ObjIsCi(pObj) )
+    if ( Gia_ObjIsCi(pObj) ) {
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCi( pNew );
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+    }
     else
     {
         assert( Gia_ObjIsAnd(pObj) );
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin0(pObj) );
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin1(pObj) );
         ppNodes[Gia_ObjId(p, pObj)] = Aig_And( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)), Gia_ObjChild1Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
     }
     if ( pNew->pEquivs && (pNext = Gia_ObjNextObj(p, Gia_ObjId(p, pObj))) )
     {
@@ -386,6 +389,7 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
 }
 Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
 {
+    // importent
     printf("GIA to AIG (&put)\n");
     Aig_Man_t * pNew;
     Aig_Obj_t ** ppNodes;
@@ -404,8 +408,10 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     // create the PIs
     ppNodes = ABC_CALLOC( Aig_Obj_t *, Gia_ManObjNum(p) );
     ppNodes[0] = Aig_ManConst0(pNew);
-    Gia_ManForEachCi( p, pObj, i )
+    Gia_ManForEachCi( p, pObj, i ){
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCi( pNew );
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+    }
     // transfer level
     if ( p->vLevels )
     Gia_ManForEachCi( p, pObj, i )
@@ -415,6 +421,7 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     {
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin0(pObj) );        
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCo( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
     }
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
@@ -492,7 +499,7 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     }
     printf("=== [LINK] Verified %d logic gates transferred. ===\n\n", countLog);
     // ================= [VERIFY LINK END] =================
-
+    
 
     ABC_FREE( ppNodes );
     somthing_happening(p);

@@ -66,7 +66,7 @@ typedef enum {
 } Aig_Type_t;
 
 // the AIG node
-struct Aig_Obj_t_  // 8 words
+struct Aig_Obj_t_  // 9 words
 {
     union {                         
         Aig_Obj_t *  pNext;          // strashing table
@@ -83,6 +83,7 @@ struct Aig_Obj_t_  // 8 words
     unsigned         nCuts   :  8;   // the number of cuts
     int              TravId;         // unique ID of last traversal involving the node
     int              Id;             // unique ID of the node
+    int             iGiaLineageId;   // to map GIA -> AGI for linage
     union {                          // temporary store for user's data
         void *       pData;
         int          iData;
