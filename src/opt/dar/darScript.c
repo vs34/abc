@@ -867,21 +867,21 @@ Aig_Man_t * Dar_ManChoiceNew( Aig_Man_t * pAig, Dch_Pars_t * pPars )
     pSpec = Abc_UtilStrsav( pAig->pSpec );
 
     // perform synthesis
-clk = Abc_Clock();
-    pGia = Dar_NewChoiceSynthesis( Aig_ManDupDfs(pAig), 1, 1, pPars->fPower, pPars->fLightSynth, pPars->fVerbose );
-pPars->timeSynth = Abc_Clock() - clk;
+    clk = Abc_Clock();
+    pGia = Dar_NewChoiceSynthesis( Aig_ManDupDfs(pAig), 1, 1, pPars->fPower, pPars->fLightSynth, pPars->fVerbose ); // AIG -> GIA(vector of vector) 
+    pPars->timeSynth = Abc_Clock() - clk;
 
     // perform choice computation
     if ( pPars->fUseNew )
-        pMan = Cec_ComputeChoicesNew( pGia, pPars->nBTLimit, pPars->fVerbose );
+        pMan = Cec_ComputeChoicesNew( pGia, pPars->nBTLimit, pPars->fVerbose ); // tranfer obj linage
     else if ( pPars->fUseNew2 )
-        pMan = Cec_ComputeChoicesNew2( pGia, pPars->nBTLimit, pPars->fVerbose );
+        pMan = Cec_ComputeChoicesNew2( pGia, pPars->nBTLimit, pPars->fVerbose ); // tranfer obj linage
     else if ( pPars->fUseGia )
-        pMan = Cec_ComputeChoices( pGia, pPars );
+        pMan = Cec_ComputeChoices( pGia, pPars ); // tranfer obj linage
     else
     {
-        pMan = Gia_ManToAigSkip( pGia, 3 );
-        pMan = Dch_ComputeChoices( pTemp = pMan, pPars );
+        pMan = Gia_ManToAigSkip( pGia, 3 ); // tranfer obj linage
+        pMan = Dch_ComputeChoices( pTemp = pMan, pPars ); // tranfer obj linage
         Aig_ManStop( pTemp );
     }
     Gia_ManStop( pGia );
@@ -891,12 +891,12 @@ pPars->timeSynth = Abc_Clock() - clk;
     Aig_ManStop( pAig );
 
     // reconstruct the network
-    pMan = Aig_ManDupDfsGuided( pTemp = pMan, vPios );
+    pMan = Aig_ManDupDfsGuided( pTemp = pMan, vPios ); // tranfer obj linage
     Aig_ManStop( pTemp );
     Vec_PtrFree( vPios );
 
     // reset levels
-    pMan->pManTime = pManTime;
+    pMan->pManTime = pManTime; // tranfer obj linage
     Aig_ManChoiceLevel( pMan );
 
     // copy names

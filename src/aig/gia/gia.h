@@ -256,7 +256,9 @@ struct Gia_Man_t_
     Vec_Int_t *    vMFFCsInfo;    // MFFC information
     Vec_Int_t *    vMFFCsLuts;    // MFFCs for each lut
     Vec_Ptr_t *    vLutsRankings; // LUTs rankings of inputs
-    Vec_Wec_t *    vLineage;      // Mapping: GIA ID -> Vector of Original AIG IDs
+    Vec_Wec_t *    vLineage;      // Mapping: GIA ID to Vector of Original AIG IDs
+    Vec_Int_t *    vOldGia;       // Mapping: GIA ID to pre AIG GIA ID 
+                                  // some optimization create AIG for optimizing
 };
 
 

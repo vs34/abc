@@ -81,6 +81,7 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
 }
 Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
 {
+    // importent
     printf("AIG to GIA (&get)\n");
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
@@ -91,6 +92,7 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     pNew->pSpec = Abc_UtilStrsav( p->pSpec );
     pNew->nConstrs = p->nConstrs;
     pNew->vLineage = Vec_WecStart( Aig_ManObjNum(p) );
+    pNew->vOldGia = Vec_IntStart( Aig_ManObjNum(p) );
     // create room to store equivalences
     if ( p->pEquivs )
         pNew->pNexts = ABC_CALLOC( int, Aig_ManObjNum(p) );
@@ -100,8 +102,8 @@ Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
     Aig_ManForEachCi( p, pObj, i ) { // setting inputs 3 times
         pObj->iData = Gia_ManAppendCi( pNew );
         int iGiaId = Abc_Lit2Var( pObj->iData );
-        Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
-        Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
+            Vec_Int_t * vAncestors = Vec_WecEntry( pNew->vLineage, iGiaId );
+            Vec_IntPush( vAncestors, Aig_ObjId(pObj) );
     }
     // add logic for the POs
     Aig_ManForEachCo( p, pObj, i ) // for logic it is recursive
@@ -222,6 +224,7 @@ void Gia_ManFromAigChoices_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pOb
 }
 Gia_Man_t * Gia_ManFromAigChoices( Aig_Man_t * p )
 {
+    // IMPORTENT 1
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
     int i;
@@ -367,7 +370,7 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
         return;
     if ( Gia_ObjIsCi(pObj) ) {
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCi( pNew );
-        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj) + 1;
     }
     else
     {
@@ -375,7 +378,7 @@ void Gia_ManToAig_rec( Aig_Man_t * pNew, Aig_Obj_t ** ppNodes, Gia_Man_t * p, Gi
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin0(pObj) );
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin1(pObj) );
         ppNodes[Gia_ObjId(p, pObj)] = Aig_And( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)), Gia_ObjChild1Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
-        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj) + 1;
     }
     if ( pNew->pEquivs && (pNext = Gia_ObjNextObj(p, Gia_ObjId(p, pObj))) )
     {
@@ -410,7 +413,7 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     ppNodes[0] = Aig_ManConst0(pNew);
     Gia_ManForEachCi( p, pObj, i ){
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCi( pNew );
-        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj) + 1;
     }
     // transfer level
     if ( p->vLevels )
@@ -421,12 +424,12 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     {
         Gia_ManToAig_rec( pNew, ppNodes, p, Gia_ObjFanin0(pObj) );        
         ppNodes[Gia_ObjId(p, pObj)] = Aig_ObjCreateCo( pNew, Gia_ObjChild0Copy2(ppNodes, pObj, Gia_ObjId(p, pObj)) );
-        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj);
+        ppNodes[Gia_ObjId(p, pObj)] -> iGiaLineageId = Gia_ObjId(p, pObj) + 1;
     }
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
     Aig_ManSetRegNum( pNew, Gia_ManRegNum(p) );
     
-    
+    /* 
     printf("AGI nodes are");
     Gia_ManForEachObj( p, pObj, i )
     {
@@ -500,6 +503,7 @@ Aig_Man_t * Gia_ManToAig( Gia_Man_t * p, int fChoices )
     printf("=== [LINK] Verified %d logic gates transferred. ===\n\n", countLog);
     // ================= [VERIFY LINK END] =================
     
+    */
 
     ABC_FREE( ppNodes );
     somthing_happening(p);
@@ -803,7 +807,7 @@ Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars ) // p -> value => pG
         pGia1 = (Gia_Man_t *)Dsm_ManDeriveGia( p, 0 ); 
     else
         pGia1 = Gia_ManDup( p ); // dupilicate of original GIA p -> value => pGia1 one to one mapping 
-    pNew = Gia_ManToAig( pGia1, 0 ); // gia converted to AIG pGia1 -> value => ABC 
+    pNew = Gia_ManToAig( pGia1, 0 ); // gia converted to AIG pNew -> obj -> int => pGia1 AKA p
    /* 
     int i;
     Gia_Obj_t * pObj;

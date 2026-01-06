@@ -161,6 +161,7 @@ void Gia_ManStop( Gia_Man_t * p )
     Vec_StrFreeP( &p->vStopsF );
     Vec_StrFreeP( &p->vStopsB );    
     Vec_WecFreeP( &p->vLineage );
+    Vec_IntFreeP( &p->vOldGia );
     ABC_FREE( p->pData2 );
     ABC_FREE( p->pTravIds );
     ABC_FREE( p->pPlacement );
@@ -2420,6 +2421,7 @@ Gia_Man_t * Gia_ManDupFromArray( int * pObjs, int nObjs, int nIns, int nLatches,
 ***********************************************************************/
 void Gia_ManTransferLineage( Gia_Man_t * pNew, Gia_Man_t * pOld )
 {
+    //IMPORTENT
     Gia_Obj_t * pObj;
     int i, iNewId;
     Vec_Int_t * vOldList;
