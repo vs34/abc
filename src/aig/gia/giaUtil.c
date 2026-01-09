@@ -3566,7 +3566,8 @@ void Gia_ManFindMutualEquivsTest()
 
 void somthing_happening(Gia_Man_t *p) 
 {
-
+    printf("kuch tho ho rah hai\n");
+    /*
     printf("\n++++ tracking the main GIA +++++\n");
     if (!p) return;
     printf( "Address of p: %p\n", (void *)p );
@@ -3615,13 +3616,14 @@ void somthing_happening(Gia_Man_t *p)
         
         printf("\n");
     }
-    printf("----------------------------------------------\n");
+    printf("----------------------------------------------\n");*/
 }
 
 
 void updating_mother( Gia_Man_t * pOld, Gia_Man_t * pNew, int mode )
 {
-    // Mode 0: Forward Trace
+    printf("bahut acche\n");
+    /*/ Mode 0: Forward Trace
     if ( pOld == NULL && pNew == NULL ) {
         fprintf(stderr, "[ERROR] Mother and Child manager is NULL.\n");
         return;
@@ -3701,6 +3703,7 @@ printf( "Address of pOld: %p\n", (void *)pOld );
         fprintf(stderr, "=== [TRACE END] Mapped: %d | Constants: %d | Swept/Lost: %d ===\n\n", 
                 nMapped, nConst, nLost);
     }
+    */
     
 }
 ////////////////////////////////////////////////////////////////////////

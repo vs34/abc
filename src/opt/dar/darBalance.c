@@ -103,7 +103,7 @@ void Dar_BalanceUniqify( Aig_Obj_t * pObj, Vec_Ptr_t * vNodes, int fExor )
   SeeAlso     []
 
 ***********************************************************************/
-void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSuper )
+void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSuper)// , vlinage)
 {
     if ( pObj != pRoot && (Aig_IsComplement(pObj) || Aig_ObjType(pObj) != Aig_ObjType(pRoot) || Aig_ObjRefs(pObj) > 1 || Vec_PtrSize(vSuper) > 10000) )
         Vec_PtrPush( vSuper, pObj );
@@ -112,11 +112,14 @@ void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSupe
         assert( !Aig_IsComplement(pObj) );
         assert( Aig_ObjIsNode(pObj) );
         // go through the branches
-        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild0(pObj) ), vSuper );
-        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild1(pObj) ), vSuper );
+        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild0(pObj) ), vSuper);//, Vliange);
+        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild1(pObj) ), vSuper);//, Vliange );
+        //Vlonage.append( Aig_ObjReal_rec( Aig_ObjChild0(pObj) ) -> iGiaLineageId); // NOTE this could also be vector
+        //Vlonage.append( Aig_ObjReal_rec( Aig_ObjChild1(pObj) ) -> iGiaLineageId); // so flattern it to be int only
+        // create a int vector for the prev linage for this block
     }
 }
-Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level )
+Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level)//, vlinage)
 {
     Vec_Ptr_t * vNodes;
     assert( !Aig_IsComplement(pObj) );
@@ -128,7 +131,7 @@ Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level )
     vNodes = Vec_VecEntry( vStore, Level );
     Vec_PtrClear( vNodes );
     // collect the nodes in the implication supergate
-    Dar_BalanceCone_rec( pObj, pObj, vNodes );
+    Dar_BalanceCone_rec( pObj, pObj, vNodes);//, Vliange);
     // remove duplicates
     Dar_BalanceUniqify( pObj, vNodes, Aig_ObjIsExor(pObj) );
     return vNodes;
@@ -396,7 +399,7 @@ void Dar_BalancePushUniqueOrderByLevel( Vec_Ptr_t * vStore, Aig_Obj_t * pObj, in
   SeeAlso     []
 
 ***********************************************************************/
-Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel )
+Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel ) //, vLinage)
 {
     Aig_Obj_t * pObj1, * pObj2;
     int LeftBound;
@@ -413,6 +416,10 @@ Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t
         // pull out the last two nodes
         pObj1 = (Aig_Obj_t *)Vec_PtrPop(vSuper);
         pObj2 = (Aig_Obj_t *)Vec_PtrPop(vSuper);
+        // accoring to gimini Aig_Oper(p, pObj1, pObj2, Type) creates new agi_obj_t wich is what creates new graph
+        // so tranfer linkage here
+        Aig_Obj_t * pNewNode = Aig_Oper(p, pObj1, pObj2, Type);
+        pNewNode->iGiaLineageId = 8;
         Dar_BalancePushUniqueOrderByLevel( vSuper, Aig_Oper(p, pObj1, pObj2, Type), Type == AIG_OBJ_EXOR );
     }
     return vSuper->nSize ? (Aig_Obj_t *)Vec_PtrEntry(vSuper, 0) : Aig_ManConst0(p);
@@ -511,7 +518,8 @@ Aig_Obj_t * Dar_Balance_rec( Aig_Man_t * pNew, Aig_Obj_t * pObjOld, Vec_Vec_t * 
         return (Aig_Obj_t *)pObjOld->pData;
     assert( Aig_ObjIsNode(pObjOld) );
     // get the implication supergate
-    vSuper = Dar_BalanceCone( pObjOld, vStore, Level );
+    // initalize vLinage vector of int
+    vSuper = Dar_BalanceCone( pObjOld, vStore, Level);//, vLiange);
     // check if supergate contains two nodes in the opposite polarity
     if ( vSuper->nSize == 0 )
         return (Aig_Obj_t *)(pObjOld->pData = Aig_ManConst0(pNew));
@@ -521,6 +529,7 @@ Aig_Obj_t * Dar_Balance_rec( Aig_Man_t * pNew, Aig_Obj_t * pObjOld, Vec_Vec_t * 
         pObjNew = Dar_Balance_rec( pNew, Aig_Regular((Aig_Obj_t *)vSuper->pArray[i]), vStore, Level + 1, fUpdateLevel );
         if ( pObjNew == NULL )
             return NULL;
+        pObjNew->iGiaLineageId = Aig_Regular((Aig_Obj_t *)vSuper->pArray[i])->iGiaLineageId;
         vSuper->pArray[i] = Aig_NotCond( pObjNew, Aig_IsComplement((Aig_Obj_t *)vSuper->pArray[i]) );
     }
     // check for exactly one node
@@ -530,8 +539,10 @@ Aig_Obj_t * Dar_Balance_rec( Aig_Man_t * pNew, Aig_Obj_t * pObjOld, Vec_Vec_t * 
 #ifdef USE_LUTSIZE_BALANCE
     pObjNew = Dar_BalanceBuildSuperTop( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel, 6 );
 #else
-    pObjNew = Dar_BalanceBuildSuper( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel );
+    pObjNew = Dar_BalanceBuildSuper( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel);//, vLinage);
 #endif
+    //pNew->vvLingage.append(vLinage); // for freeing the vLinage after complition
+    pObjNew->iGiaLineageId = pObjOld->iGiaLineageId;
     if ( pNew->Time2Quit && !(Aig_Regular(pObjNew)->Id & 255) && Abc_Clock() > pNew->Time2Quit )
         return NULL;
     // make sure the balanced node is not assigned
@@ -572,6 +583,7 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
     Aig_ManCleanData( p );
     Aig_ManConst1(p)->pData = Aig_ManConst1(pNew);
     vStore = Vec_VecAlloc( 50 );
+    int lllll;
     if ( p->pManTime != NULL )
     {
         float arrTime;
@@ -586,6 +598,8 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
                 // copy the PI
                 pObjNew = Aig_ObjCreateCi(pNew); 
                 pObj->pData = pObjNew;
+                lllll = pObj->iGiaLineageId;
+                pObjNew->iGiaLineageId = pObj->iGiaLineageId;
                 // set the arrival time of the new PI
                 arrTime = Tim_ManGetCiArrival( (Tim_Man_t *)p->pManTime, Aig_ObjCioId(pObj) );
                 pObjNew->Level = (int)arrTime;
@@ -607,6 +621,8 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
                 Tim_ManSetCoArrival( (Tim_Man_t *)p->pManTime, Aig_ObjCioId(pObj), arrTime );
                 // create PO
                 pObjNew = Aig_ObjCreateCo( pNew, pObjNew );
+                lllll = pObj->iGiaLineageId;
+                pObjNew->iGiaLineageId = pObj->iGiaLineageId;
             }
             else
                 assert( 0 );
@@ -621,6 +637,8 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
             pObjNew = Aig_ObjCreateCi(pNew); 
             pObjNew->Level = pObj->Level;
             pObj->pData = pObjNew;
+                lllll = pObj->iGiaLineageId; // it is always == to 13 or outpin
+            pObjNew->iGiaLineageId = pObj->iGiaLineageId; // this is not correct
         }
         if ( p->nBarBufs == 0 )
         {
@@ -636,6 +654,8 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
                 }
                 pObjNew = Aig_NotCond( pObjNew, Aig_IsComplement(pDriver) );
                 pObjNew = Aig_ObjCreateCo( pNew, pObjNew );
+                lllll = pObj->iGiaLineageId;
+                pObjNew->iGiaLineageId = pObj->iGiaLineageId;
             }
         }
         else
@@ -657,6 +677,8 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
                 Vec_PtrWriteEntry( vLits, k, pObjNew );
                 if ( i < p->nBarBufs )
                     Aig_ManCi(pNew, Aig_ManCiNum(p) - p->nBarBufs + i)->Level = Aig_Regular(pObjNew)->Level;
+                lllll = pObj->iGiaLineageId;
+                pObjNew->iGiaLineageId = pObj->iGiaLineageId;
             }
             Aig_ManForEachCo( p, pObj, i )
                 Aig_ObjCreateCo( pNew, (Aig_Obj_t *)Vec_PtrEntry(vLits, i) );
@@ -665,6 +687,29 @@ Aig_Man_t * Dar_ManBalance( Aig_Man_t * p, int fUpdateLevel )
     }
     Vec_VecFree( vStore );
     // remove dangling nodes
+
+    ////////////////////// DEBUG //////////////////
+    int ii;
+    int nFound = 0;
+    if ( pNew == NULL ) { printf( "[Debug] compress IN balance Aig_Man is NULL.\n" ); }
+    else{
+    printf( "\n[Debug] compress IN balance Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "-------------------------------------------------------\n" );
+    printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
+    printf( "-------------------------------------------------------\n" );
+    Aig_ManForEachObj( pNew, pObj, ii ) {
+        if ( pObj->iGiaLineageId == 0 ) continue;
+        printf( "  %7d  ->  %7d", pObj->Id, pObj->iGiaLineageId -1);
+        if ( Aig_ObjIsCi(pObj) ) printf( " (PI)" );
+        else if ( Aig_ObjIsCo(pObj) ) printf( " (PO)" );
+        else if ( Aig_ObjIsConst1(pObj) ) printf( " (Const)" );
+        printf( "\n" ); nFound++;
+    }
+    printf( "-------------------------------------------------------\n" );
+    printf( "Total nodes with lineage info: %d / %d\n", nFound, Aig_ManObjNum(pNew) );
+    }
+    ////////////////////// DEBUG //////////////////
+
     Aig_ManCleanup( pNew );
     Aig_ManSetRegNum( pNew, Aig_ManRegNum(p) );
     // check the resulting AIG

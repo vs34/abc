@@ -455,23 +455,73 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
     pAig = Aig_ManDupDfs( pTemp = pAig ); 
     Aig_ManStop( pTemp );
     if ( fVerbose ) printf( "Rewrite:   " ), Aig_ManPrintStats( pAig );
-    
+
+
     // refactor
     Dar_ManRefactor( pAig, pParsRef );
     pAig = Aig_ManDupDfs( pTemp = pAig ); 
     Aig_ManStop( pTemp );
     if ( fVerbose ) printf( "Refactor:  " ), Aig_ManPrintStats( pAig );
+    
+    ////////////////////// DEBUG //////////////////
+    Aig_Obj_t * pObj;
+    int ii;
+    int nFound = 0;
+    if ( pAig == NULL ) { printf( "[Debug] compress before balance Aig_Man is NULL.\n" ); }
+    else{
+    printf( "\n[Debug] compress before balance Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "-------------------------------------------------------\n" );
+    printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
+    printf( "-------------------------------------------------------\n" );
+    Aig_ManForEachObj( pAig, pObj, ii ) {
+        if ( pObj->iGiaLineageId == 0 ) continue;
+        printf( "  %7d  ->  %7d", pObj->Id, pObj->iGiaLineageId -1);
+        if ( Aig_ObjIsCi(pObj) ) printf( " (PI)" );
+        else if ( Aig_ObjIsCo(pObj) ) printf( " (PO)" );
+        else if ( Aig_ObjIsConst1(pObj) ) printf( " (Const)" );
+        printf( "\n" ); nFound++;
+    }
+    printf( "-------------------------------------------------------\n" );
+    printf( "Total nodes with lineage info: %d / %d\n", nFound, Aig_ManObjNum(pAig) );
+    }
+    ////////////////////// DEBUG //////////////////
+
+
 
     // balance
     if ( fBalance )
     {
-    pAig = Dar_ManBalance( pTemp = pAig, fUpdateLevel );
+    pAig = Dar_ManBalance( pTemp = pAig, fUpdateLevel ); // somthing wrong in this
     Aig_ManStop( pTemp );
     if ( fVerbose ) printf( "Balance:   " ), Aig_ManPrintStats( pAig );
     }
-
     pParsRwr->fUseZeros = 1;
     pParsRef->fUseZeros = 1;
+
+
+    ////////////////////// DEBUG //////////////////
+    nFound = 0;
+    if ( pAig == NULL ) { printf( "[Debug] compress AFTERR balance Aig_Man is NULL.\n" ); }
+    else{
+    printf( "\n[Debug] compress AFTERR balance Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "-------------------------------------------------------\n" );
+    printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
+    printf( "-------------------------------------------------------\n" );
+    Aig_ManForEachObj( pAig, pObj, ii ) {
+        if ( pObj->iGiaLineageId == 0 ) continue;
+        printf( "  %7d  ->  %7d", pObj->Id, pObj->iGiaLineageId -1);
+        if ( Aig_ObjIsCi(pObj) ) printf( " (PI)" );
+        else if ( Aig_ObjIsCo(pObj) ) printf( " (PO)" );
+        else if ( Aig_ObjIsConst1(pObj) ) printf( " (Const)" );
+        printf( "\n" ); nFound++;
+    }
+    printf( "-------------------------------------------------------\n" );
+    printf( "Total nodes with lineage info: %d / %d\n", nFound, Aig_ManObjNum(pAig) );
+    }
+    ////////////////////// DEBUG //////////////////
+
+
+
     
     // rewrite
     Dar_ManRewrite( pAig, pParsRwr );
@@ -632,6 +682,7 @@ int Dar_NewChoiceSynthesisGuard( Aig_Man_t * pAig )
 Gia_Man_t * Dar_NewChoiceSynthesis( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, int fPower, int fLightSynth, int fVerbose )
 //alias resyn    "b; rw; rwz; b; rwz; b"
 //alias resyn2   "b; rw; rf; b; rw; rwz; b; rfz; rwz; b"
+// importent
 {
     Vec_Ptr_t * vGias;
     Gia_Man_t * pGia, * pTemp;
@@ -645,13 +696,30 @@ Gia_Man_t * Dar_NewChoiceSynthesis( Aig_Man_t * pAig, int fBalance, int fUpdateL
     }
 
     vGias = Vec_PtrAlloc( 3 );
-    pGia = Gia_ManFromAig(pAig);
+    pGia = Gia_ManFromAig(pAig); // done till here
     Vec_PtrPush( vGias, pGia );
+
+
+    ////////////////////// DEBUG //////////////////
+    int iii, OldId;
+    if ( pGia->vOldGia == NULL ) {
+        printf( "[Debug] Dar_NewChoiceSynthesis vOldGia is NULL (No mapping info available).\n" );}
+    else{
+    printf( "[Debug] DDar_NewChoiceSynthesis umping vOldGia Mapping (New GIA ID -> Old GIA ID):\n" );
+    printf( "-------------------------------------------\n" );
+    Vec_IntForEachEntry( pGia->vOldGia, OldId, iii ) {
+        printf( "  Current Node %6d  ->  Old Node %6d\n", iii, OldId ); }
+    printf( "-------------------------------------------\n" );
+    printf( "Total entries: %d\n", Vec_IntSize(pGia->vOldGia) );
+    }
+    ////////////////////// DEBUG //////////////////
+
 
     pAig = Dar_NewCompress( pAig, fBalance, fUpdateLevel, fPower, fVerbose );
     pGia = Gia_ManFromAig(pAig);
     Vec_PtrPush( vGias, pGia );
 //Aig_ManPrintStats( pAig );
+
 
     pAig = Dar_NewCompress2( pAig, fBalance, fUpdateLevel, 1, fPower, fLightSynth, fVerbose );
     pGia = Gia_ManFromAig(pAig);
@@ -848,6 +916,7 @@ pPars->timeSynth = Abc_Clock() - clk;
 ***********************************************************************/
 Aig_Man_t * Dar_ManChoiceNew( Aig_Man_t * pAig, Dch_Pars_t * pPars )
 {
+// importent
     extern Aig_Man_t * Cec_ComputeChoicesNew( Gia_Man_t * pGia, int nConfs, int fVerbose );
     extern Aig_Man_t * Cec_ComputeChoicesNew2( Gia_Man_t * pGia, int nConfs, int fVerbose );
     extern Aig_Man_t * Cec_ComputeChoices( Gia_Man_t * pGia, Dch_Pars_t * pPars );
@@ -865,6 +934,8 @@ Aig_Man_t * Dar_ManChoiceNew( Aig_Man_t * pAig, Dch_Pars_t * pPars )
     pManTime = pAig->pManTime; pAig->pManTime = NULL;
     pName = Abc_UtilStrsav( pAig->pName );
     pSpec = Abc_UtilStrsav( pAig->pSpec );
+
+
 
     // perform synthesis
     clk = Abc_Clock();
@@ -884,6 +955,8 @@ Aig_Man_t * Dar_ManChoiceNew( Aig_Man_t * pAig, Dch_Pars_t * pPars )
         pMan = Dch_ComputeChoices( pTemp = pMan, pPars ); // tranfer obj linage
         Aig_ManStop( pTemp );
     }
+
+
     Gia_ManStop( pGia );
 
     // create guidence

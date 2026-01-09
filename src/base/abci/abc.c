@@ -835,7 +835,6 @@ void Abc_FrameClearDesign()
 ***********************************************************************/
 void Abc_FrameUpdateGia( Abc_Frame_t * pAbc, Gia_Man_t * pNew )
 {
-    // IMPORTENT
     printf("update the pAbc(mother) with pNew\n");
 
     if ( pNew == NULL )
@@ -890,26 +889,19 @@ void Abc_vLineageUpdate( Abc_Frame_t * pAbc )
     Gia_Man_t * pOld = pAbc->pGia2;  // The Old Manager (Backup)
 
     // 1. Sanity Checks
-    if ( pNew == NULL || pOld == NULL ){
-        printf("[WARNING] vLinaege both null\n");
+    if ( pNew == NULL || pOld == NULL )
         return;
-    }
+
     // 2. If the Old manager has no history, there is nothing to pass on.
-    if ( pOld->vLineage == NULL ){
-        printf("[WARNING] vLinaege old null\n");
+    if ( pOld->vLineage == NULL )
         return;
-    }
 
     // 3. Priority Check: Did a specific command hook already fill this?
     // If pNew->vLineage is already full, we assume the command did a better job
     // than we can do here, so we exit to avoid duplicating data.
-    if ( pNew->vLineage != NULL ){
-        printf("[WARNING] vLinaege is of pNew is not null\n");
+    if ( pNew->vLineage != NULL )
         return;
-    }
-    if ( pNew->vLineage != NULL ){
-        printf("Lineage already present (Internal Hook used). Skipping generic update.\n");
-    }
+
     // 4. "Catch-All" Transfer
     // The command finished but didn't copy the lineage.
     // We assume the command left the mapping in `pOld->Value`.
@@ -34546,10 +34538,7 @@ usage:
 ***********************************************************************/
 int Abc_CommandAbc9Put( Abc_Frame_t * pAbc, int argc, char ** argv )
 {
-    // IMPORTENT
     printf("running code &put\n");
-    printf("====== the final GIA ======= \n");
-    somthing_happening(pAbc->pGia);
     extern Abc_Ntk_t * Abc_NtkFromDarChoices( Abc_Ntk_t * pNtkOld, Aig_Man_t * pMan );
     extern void Abc_NtkRedirectCiCo( Abc_Ntk_t * pNtk );
     extern Abc_Ntk_t * Abc_NtkFromCellMappedGia( Gia_Man_t * p, int fUseBuffs );
@@ -48532,20 +48521,35 @@ int Abc_CommandAbc9Dch( Abc_Frame_t * pAbc, int argc, char ** argv )
     }
     if ( fEquiv )
     {
-        Aig_Man_t * pNew = Gia_ManToAigSimple( pAbc->pGia );
+        Aig_Man_t * pNew = Gia_ManToAigSimple( pAbc->pGia ); // new aig
         assert( Gia_ManObjNum(pAbc->pGia) == Aig_ManObjNum(pNew) );
-        Dch_ComputeEquivalences( pNew, (Dch_Pars_t *)pPars );
-        Gia_ManReprFromAigRepr( pNew, pAbc->pGia );
+        Dch_ComputeEquivalences( pNew, (Dch_Pars_t *)pPars ); // some transformation in aig
+        Gia_ManReprFromAigRepr( pNew, pAbc->pGia ); // wow it is changeing pGia on the spot
         Aig_ManStop( pNew );
         pTemp = Gia_ManEquivReduce( pAbc->pGia, 1, 0, 0, 0 );
     }
     else
     {
-        pTemp = Gia_ManPerformDch( pAbc->pGia, pPars );
-        Abc_FrameUpdateGia( pAbc, pTemp );
+        pTemp = Gia_ManPerformDch( pAbc->pGia, pPars ); // new gia
+        Abc_FrameUpdateGia( pAbc, pTemp ); // updated gia
         if ( fMinLevel || fRandom ) 
             pTemp = Gia_ManEquivReduce2( pAbc->pGia, fRandom );
     }
+    
+    ////////////////////// DEBUG //////////////////
+    int i, OldId;
+    if ( pTemp->vOldGia == NULL ) {
+        printf( "[Debug] vOldGia is NULL (No mapping info available).\n" );}
+    else{
+    printf( "[Debug] Dumping vOldGia Mapping (New GIA ID -> Old GIA ID):\n" );
+    printf( "-------------------------------------------\n" );
+    Vec_IntForEachEntry( pTemp->vOldGia, OldId, i ) {
+        printf( "  Current Node %6d  ->  Old Node %6d\n", i, OldId ); }
+    printf( "-------------------------------------------\n" );
+    printf( "Total entries: %d\n", Vec_IntSize(pTemp->vOldGia) );
+    }
+    ////////////////////// DEBUG //////////////////
+
     Abc_FrameUpdateGia( pAbc, pTemp );
     return 0;
 

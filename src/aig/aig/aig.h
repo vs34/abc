@@ -83,7 +83,7 @@ struct Aig_Obj_t_  // 9 words
     unsigned         nCuts   :  8;   // the number of cuts
     int              TravId;         // unique ID of last traversal involving the node
     int              Id;             // unique ID of the node
-    int             iGiaLineageId;   // to map GIA -> AGI for linage
+    int              iGiaLineageId;  // to map GIA -> AGI for linage   // change this to ptr to an array presnet in man
     union {                          // temporary store for user's data
         void *       pData;
         int          iData;
@@ -101,6 +101,7 @@ struct Aig_Man_t_
     Vec_Ptr_t *      vCos;           // the array of POs
     Vec_Ptr_t *      vObjs;          // the array of all nodes (optional)
     Vec_Ptr_t *      vBufs;          // the array of buffers
+    Vec_Ptr_t *      vvLinage;         // the array of array with linkage (that one node refrance to) (could use Vec_Wec_t) <- 
     Aig_Obj_t *      pConst1;        // the constant 1 node
     Aig_Obj_t        Ghost;          // the ghost node
     int              nRegs;          // the number of registers (registers are last POs)

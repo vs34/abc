@@ -86,8 +86,9 @@ void Gia_ManFromAig_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj )
 }
 Gia_Man_t * Gia_ManFromAig( Aig_Man_t * p )
 {
-    // importent
+    // importent A to G
     printf("AIG to GIA (&get)\n");
+    // TODO remove the pOldGia as it is used for first ever GIA
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
     int i;
@@ -221,7 +222,11 @@ void Gia_ManFromAigChoices_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pOb
     Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjFanin0(pObj) );
     Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjFanin1(pObj) );
     Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjEquiv(p, pObj) );
+
+    int iGiaId = Abc_Lit2Var( pObj->iData );
     pObj->iData = Gia_ManAppendAnd( pNew, Gia_ObjChild0Copy(pObj), Gia_ObjChild1Copy(pObj) );
+    
+    Vec_IntWriteEntry( pNew->vOldGia, iGiaId, pObj->iGiaLineageId - 1 );
     if ( Aig_ObjEquiv(p, pObj) ) 
     {
         int iObjNew, iNextNew;
@@ -234,7 +239,7 @@ void Gia_ManFromAigChoices_rec( Gia_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pOb
 }
 Gia_Man_t * Gia_ManFromAigChoices( Aig_Man_t * p )
 {
-    // IMPORTENT 1
+    // IMPORTENT A to G
     Gia_Man_t * pNew;
     Aig_Obj_t * pObj;
     int i;
@@ -244,13 +249,18 @@ Gia_Man_t * Gia_ManFromAigChoices( Aig_Man_t * p )
     pNew->pName = Abc_UtilStrsav( p->pName );
     pNew->pSpec = Abc_UtilStrsav( p->pSpec );
     pNew->nConstrs = p->nConstrs;
+    pNew->vOldGia = Vec_IntStart( Aig_ManObjNum(p) );
     // create room to store equivalences
     pNew->pSibls = ABC_CALLOC( int, Aig_ManObjNum(p) );
     // create the PIs
     Aig_ManCleanData( p );
     Aig_ManConst1(p)->iData = 1;
-    Aig_ManForEachCi( p, pObj, i )
+    Aig_ManForEachCi( p, pObj, i ){
         pObj->iData = Gia_ManAppendCi( pNew );
+
+        int iGiaId = Abc_Lit2Var( pObj->iData );
+        Vec_IntWriteEntry( pNew->vOldGia, iGiaId, pObj->iGiaLineageId - 1 );
+    }
     // add logic for the POs
     Aig_ManForEachCo( p, pObj, i )
         Gia_ManFromAigChoices_rec( pNew, p, Aig_ObjFanin0(pObj) );        
@@ -829,6 +839,7 @@ Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars ) // p -> value => pG
     */
     Gia_ManStop( pGia1 );
     pNew = Dar_ManChoiceNew( pNew, (Dch_Pars_t *)pPars ); // some aig transformation on gia
+
 //    pGia = Gia_ManFromAig( pNew );
     pGia = Gia_ManFromAigChoices( pNew ); // new pNew -> ppNode => pGia [ppNode is temp]
     Aig_ManStop( pNew );

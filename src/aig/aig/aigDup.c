@@ -537,7 +537,12 @@ Aig_Obj_t * Aig_ManDupDfs_rec( Aig_Man_t * pNew, Aig_Man_t * p, Aig_Obj_t * pObj
     if ( Aig_ObjIsBuf(pObj) )
         return (Aig_Obj_t *)(pObj->pData = Aig_ObjChild0Copy(pObj));
     Aig_ManDupDfs_rec( pNew, p, Aig_ObjFanin1(pObj) );
-    pObjNew = Aig_Oper( pNew, Aig_ObjChild0Copy(pObj), Aig_ObjChild1Copy(pObj), Aig_ObjType(pObj) );
+    pObjNew = Aig_Oper( pNew, Aig_ObjChild0Copy(pObj), Aig_ObjChild1Copy(pObj), Aig_ObjType(pObj) ); // TODO hack into this with external strcture for linage
+    pObjNew->iGiaLineageId = pObj->iGiaLineageId;
+    // combining the similar nodes but linage dosent combine them
+    if ( Aig_Regular(pObjNew)->iGiaLineageId == 0 ) // NOTE this is transfering GIA linage 
+        Aig_Regular(pObjNew)->iGiaLineageId = pObj->iGiaLineageId;
+
     if ( pEquivNew )
     {
         assert( Aig_Regular(pEquivNew)->Id < Aig_Regular(pObjNew)->Id );
@@ -583,6 +588,7 @@ Aig_Man_t * Aig_ManDupDfs( Aig_Man_t * p )
     Aig_ManCleanData( p );
     // duplicate internal nodes
     Aig_ManConst1(p)->pData = Aig_ManConst1(pNew);
+    int linage;
     Aig_ManForEachObj( p, pObj, i )
     {
         if ( Aig_ObjIsCi(pObj) )
@@ -590,12 +596,17 @@ Aig_Man_t * Aig_ManDupDfs( Aig_Man_t * p )
             pObjNew = Aig_ObjCreateCi( pNew );
             pObjNew->Level = pObj->Level;
             pObj->pData = pObjNew;
+            linage = pObj->iGiaLineageId; // TODO remove this for lldb visulaization
+            pObjNew->iGiaLineageId = pObj->iGiaLineageId;
+
         }
         else if ( Aig_ObjIsCo(pObj) )
         {
             Aig_ManDupDfs_rec( pNew, p, Aig_ObjFanin0(pObj) );        
 //            assert( pObj->Level == ((Aig_Obj_t*)pObj->pData)->Level );
             pObjNew = Aig_ObjCreateCo( pNew, Aig_ObjChild0Copy(pObj) );
+            linage = pObj->iGiaLineageId; // TODO remove this for lldb visulaization
+            pObjNew->iGiaLineageId = pObj->iGiaLineageId;
             pObj->pData = pObjNew;
         }
     }

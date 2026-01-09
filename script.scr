@@ -10,7 +10,7 @@ print_stats;
 #&syn2  # calling bal
 #&if -g -K 6
 #print_level -n;
-#&put
+&put
 print_stats;
 write_verilog trash_output.v
 quit
