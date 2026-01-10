@@ -456,12 +456,6 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
     Aig_ManStop( pTemp );
     if ( fVerbose ) printf( "Rewrite:   " ), Aig_ManPrintStats( pAig );
 
-
-    // refactor
-    Dar_ManRefactor( pAig, pParsRef );
-    pAig = Aig_ManDupDfs( pTemp = pAig ); 
-    Aig_ManStop( pTemp );
-    if ( fVerbose ) printf( "Refactor:  " ), Aig_ManPrintStats( pAig );
     
     ////////////////////// DEBUG //////////////////
     Aig_Obj_t * pObj;
@@ -469,7 +463,7 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
     int nFound = 0;
     if ( pAig == NULL ) { printf( "[Debug] compress before balance Aig_Man is NULL.\n" ); }
     else{
-    printf( "\n[Debug] compress before balance Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "\n[Debug] compress after 1st Rewrite Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
     printf( "-------------------------------------------------------\n" );
     printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
     printf( "-------------------------------------------------------\n" );
@@ -487,6 +481,12 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
     ////////////////////// DEBUG //////////////////
 
 
+
+    // refactor
+    Dar_ManRefactor( pAig, pParsRef );
+    pAig = Aig_ManDupDfs( pTemp = pAig ); 
+    Aig_ManStop( pTemp );
+    if ( fVerbose ) printf( "Refactor:  " ), Aig_ManPrintStats( pAig );
 
     // balance
     if ( fBalance )
@@ -498,12 +498,19 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
     pParsRwr->fUseZeros = 1;
     pParsRef->fUseZeros = 1;
 
+    // rewrite
+    Dar_ManRewrite( pAig, pParsRwr );
+    pAig = Aig_ManDupDfs( pTemp = pAig ); 
+    Aig_ManStop( pTemp );
+    if ( fVerbose ) printf( "RewriteZ:  " ), Aig_ManPrintStats( pAig );
+
+
 
     ////////////////////// DEBUG //////////////////
     nFound = 0;
     if ( pAig == NULL ) { printf( "[Debug] compress AFTERR balance Aig_Man is NULL.\n" ); }
     else{
-    printf( "\n[Debug] compress AFTERR balance Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "\n[Debug] compress AFTERR Rewrite Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
     printf( "-------------------------------------------------------\n" );
     printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
     printf( "-------------------------------------------------------\n" );
@@ -523,11 +530,6 @@ Aig_Man_t * Dar_NewCompress( Aig_Man_t * pAig, int fBalance, int fUpdateLevel, i
 
 
     
-    // rewrite
-    Dar_ManRewrite( pAig, pParsRwr );
-    pAig = Aig_ManDupDfs( pTemp = pAig ); 
-    Aig_ManStop( pTemp );
-    if ( fVerbose ) printf( "RewriteZ:  " ), Aig_ManPrintStats( pAig );
 
     return pAig;
 }
@@ -699,6 +701,37 @@ Gia_Man_t * Dar_NewChoiceSynthesis( Aig_Man_t * pAig, int fBalance, int fUpdateL
     pGia = Gia_ManFromAig(pAig); // done till here
     Vec_PtrPush( vGias, pGia );
 
+    pAig = Dar_NewCompress( pAig, fBalance, fUpdateLevel, fPower, fVerbose );
+    pGia = Gia_ManFromAig(pAig);
+    Vec_PtrPush( vGias, pGia );
+//Aig_ManPrintStats( pAig );
+
+ 
+    ////////////////////// DEBUG //////////////////
+    Aig_Obj_t * pObj;
+    int ii;
+    int nFound = 0;
+    if ( pAig == NULL ) { printf( "[Debug] compress before balance Aig_Man is NULL.\n" ); }
+    else{
+    printf( "\n[Debug] compress after wtf is happening Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "-------------------------------------------------------\n" );
+    printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
+    printf( "-------------------------------------------------------\n" );
+    Aig_ManForEachObj( pAig, pObj, ii ) {
+        if ( pObj->iGiaLineageId == 0 ) continue;
+        printf( "  %7d  ->  %7d", pObj->Id, pObj->iGiaLineageId -1);
+        if ( Aig_ObjIsCi(pObj) ) printf( " (PI)" );
+        else if ( Aig_ObjIsCo(pObj) ) printf( " (PO)" );
+        else if ( Aig_ObjIsConst1(pObj) ) printf( " (Const)" );
+        printf( "\n" ); nFound++;
+    }
+    printf( "-------------------------------------------------------\n" );
+    printf( "Total nodes with lineage info: %d / %d\n", nFound, Aig_ManObjNum(pAig) );
+    }
+    ////////////////////// DEBUG //////////////////
+
+
+
 
     ////////////////////// DEBUG //////////////////
     int iii, OldId;
@@ -713,12 +746,6 @@ Gia_Man_t * Dar_NewChoiceSynthesis( Aig_Man_t * pAig, int fBalance, int fUpdateL
     printf( "Total entries: %d\n", Vec_IntSize(pGia->vOldGia) );
     }
     ////////////////////// DEBUG //////////////////
-
-
-    pAig = Dar_NewCompress( pAig, fBalance, fUpdateLevel, fPower, fVerbose );
-    pGia = Gia_ManFromAig(pAig);
-    Vec_PtrPush( vGias, pGia );
-//Aig_ManPrintStats( pAig );
 
 
     pAig = Dar_NewCompress2( pAig, fBalance, fUpdateLevel, 1, fPower, fLightSynth, fVerbose );

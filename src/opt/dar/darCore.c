@@ -154,16 +154,18 @@ p->timeCuts += Abc_Clock() - clk;
             {
                 assert( pCut->uTruth == 0 || pCut->uTruth == 0xFFFF );
                 pObjNew = Aig_NotCond( Aig_ManConst1(p->pAig), pCut->uTruth==0 );
+                pObjNew->iGiaLineageId = 9;
             }
             else
             {
                 assert( pCut->uTruth == 0xAAAA || pCut->uTruth == 0x5555 );
-                pObjNew = Aig_NotCond( Aig_ManObj(p->pAig, pCut->pLeaves[0]), pCut->uTruth==0x5555 );
+                pObjNew = Aig_NotCond( Aig_ManObj(p->pAig, pCut->pLeaves[0]), pCut->uTruth==0x5555 ); // create a new linage with linage of p->pAig and pCut->pLeaves
+                pObjNew->iGiaLineageId = 9;
             }
             // remove the old cuts
             Dar_ObjSetCuts( pObj, NULL );
             // replace the node
-            Aig_ObjReplace( pAig, pObj, pObjNew, p->pPars->fUpdateLevel );
+            Aig_ObjReplace( pAig, pObj, pObjNew, p->pPars->fUpdateLevel ); // this can ovverite the pObj or can swap connections
             continue;
         }
 
@@ -191,8 +193,49 @@ p->timeCuts += Abc_Clock() - clk;
         Dar_ObjSetCuts( pObj, NULL );
         // if we end up here, a rewriting step is accepted
         nNodeBefore = Aig_ManNodeNum( pAig );
+
+// Variable declarations
+    int i;
+    Aig_Obj_t * pNode, * pLeaf;
+
+    // ---------------------------------------------------------
+    // PART 1: Print the "Leaves" (Inputs to the Supergate)
+    // ---------------------------------------------------------
+    printf( "\n--- Inspecting Best Cut Leaves (Inputs) ---\n" );
+    if ( p->vLeavesBest )
+    {
+        Vec_PtrForEachEntry( Aig_Obj_t *, p->vLeavesBest, pLeaf, i )
+        {
+            printf( "Leaf [%d] ID: %d | Lineage: %d\n", i, pLeaf->Id, pLeaf->iGiaLineageId );
+        }
+    }
+    else
+    {
+        printf( "vLeavesBest is NULL\n" );
+    }
+
+    // ---------------------------------------------------------
+    // PART 2: Print the MFFC (Internal Nodes being replaced)
+    // ---------------------------------------------------------
+    // Mark the nodes inside the MFFC with the current traversal ID
+    Aig_NodeMffcLabelCut( pAig, pObj, p->vLeavesBest );
+    // create a linage vector with all these linage
+    printf( "--- Inspecting MFFC Internal Nodes (To be replaced) ---\n" );
+    Aig_ManForEachNode( pAig, pNode, i )
+    {
+        // Only check nodes that were just marked by Aig_NodeMffcLabelCut
+        if ( Aig_ObjIsTravIdCurrent(pAig, pNode) )
+        {
+            printf( "Node Index: %d | Lineage: %d\n", pNode->Id, pNode->iGiaLineageId );
+        }
+    }
+    printf( "-----------------------------------\n" );
+
+
+    // pass that vector to this  // also change the low level node creator like xor and not to add linkage one shot agi solution
         pObjNew = Dar_LibBuildBest( p ); // pObjNew can be complemented!
         pObjNew = Aig_NotCond( pObjNew, Aig_ObjPhaseReal(pObjNew) ^ pObj->fPhase );
+        pObjNew->iGiaLineageId = 9;
         assert( (int)Aig_Regular(pObjNew)->Level <= Required );
         // replace the node
         Aig_ObjReplace( pAig, pObj, pObjNew, p->pPars->fUpdateLevel );

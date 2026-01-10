@@ -1008,11 +1008,11 @@ Aig_Obj_t * Dar_LibBuildBest_rec( Dar_Man_t * p, Dar_LibObj_t * pObj )
     Dar_LibDat_t * pData = s_DarLib->pDatas + pObj->Num;
     if ( pData->pFunc )
         return pData->pFunc;
-    pFanin0 = Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, pObj->Fan0) );
-    pFanin1 = Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, pObj->Fan1) );
-    pFanin0 = Aig_NotCond( pFanin0, pObj->fCompl0 );
-    pFanin1 = Aig_NotCond( pFanin1, pObj->fCompl1 );
-    pData->pFunc = Aig_And( p->pAig, pFanin0, pFanin1 );
+    pFanin0 = Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, pObj->Fan0) ); // pass vector
+    pFanin1 = Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, pObj->Fan1) ); // pass_vector
+    pFanin0 = Aig_NotCond( pFanin0, pObj->fCompl0 ); // vector pass
+    pFanin1 = Aig_NotCond( pFanin1, pObj->fCompl1 );// vector ps
+    pData->pFunc = Aig_And( p->pAig, pFanin0, pFanin1 ); // pass that vector to this it will attach that vector to the new graph
 //    assert( pData->Level == (int)Aig_Regular(pData->pFunc)->Level );
     return pData->pFunc;
 }
@@ -1033,8 +1033,8 @@ Aig_Obj_t * Dar_LibBuildBest( Dar_Man_t * p )
     int i, Counter = 4;
     for ( i = 0; i < Vec_PtrSize(p->vLeavesBest); i++ )
         s_DarLib->pDatas[i].pFunc = (Aig_Obj_t *)Vec_PtrEntry( p->vLeavesBest, i );
-    Dar_LibBuildClear_rec( Dar_LibObj(s_DarLib, p->OutBest), &Counter );
-    return Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, p->OutBest) );
+    Dar_LibBuildClear_rec( Dar_LibObj(s_DarLib, p->OutBest), &Counter ); // pass that vector to this
+    return Dar_LibBuildBest_rec( p, Dar_LibObj(s_DarLib, p->OutBest) ); // pass that vector to this
 }
 
 
