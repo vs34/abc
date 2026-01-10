@@ -103,7 +103,7 @@ void Dar_BalanceUniqify( Aig_Obj_t * pObj, Vec_Ptr_t * vNodes, int fExor )
   SeeAlso     []
 
 ***********************************************************************/
-void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSuper)// , vlinage)
+void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSuper, Vec_Int_t * vLineage)
 {
     if ( pObj != pRoot && (Aig_IsComplement(pObj) || Aig_ObjType(pObj) != Aig_ObjType(pRoot) || Aig_ObjRefs(pObj) > 1 || Vec_PtrSize(vSuper) > 10000) )
         Vec_PtrPush( vSuper, pObj );
@@ -111,15 +111,46 @@ void Dar_BalanceCone_rec( Aig_Obj_t * pRoot, Aig_Obj_t * pObj, Vec_Ptr_t * vSupe
     {
         assert( !Aig_IsComplement(pObj) );
         assert( Aig_ObjIsNode(pObj) );
+        Aig_Obj_t * pChild0 = Aig_ObjReal_rec( Aig_ObjChild0(pObj) );
+        Aig_Obj_t * pChild1 = Aig_ObjReal_rec( Aig_ObjChild1(pObj) );
         // go through the branches
-        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild0(pObj) ), vSuper);//, Vliange);
-        Dar_BalanceCone_rec( pRoot, Aig_ObjReal_rec( Aig_ObjChild1(pObj) ), vSuper);//, Vliange );
+        Dar_BalanceCone_rec( pRoot, pChild0, vSuper, vLineage);
+        Dar_BalanceCone_rec( pRoot, pChild1, vSuper, vLineage);
         //Vlonage.append( Aig_ObjReal_rec( Aig_ObjChild0(pObj) ) -> iGiaLineageId); // NOTE this could also be vector
         //Vlonage.append( Aig_ObjReal_rec( Aig_ObjChild1(pObj) ) -> iGiaLineageId); // so flattern it to be int only
-        // create a int vector for the prev linage for this block
+        if (pChild0 -> oneAncestor){
+        Vec_Int_t * pCh1_lin = (Vec_Int_t *)pChild0->vGiaLineageId;
+            if ( pCh1_lin )
+            {
+                int i, Entry;
+                Vec_IntForEachEntry( pCh1_lin, Entry, i )
+                {
+                    Vec_IntPush( vLineage, Entry );
+                }
+            }
+        }
+        else
+            Vec_IntPush( vLineage, pChild0->iGiaLineageId);
+
+
+        if (pChild0 -> oneAncestor){
+            Vec_Int_t * pch2_lin = (Vec_Int_t *)pChild1->vGiaLineageId;
+            if ( pch2_lin )
+            {
+                int i, Entry;
+                Vec_IntForEachEntry( pch2_lin, Entry, i )
+                {
+                    Vec_IntPush( vLineage, Entry );
+                }
+            }
+        }
+        else
+            Vec_IntPush( vLineage, pChild0->iGiaLineageId);
+
     }
 }
-Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level)//, vlinage)
+Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level, Vec_Int_t * vLineage)
+
 {
     Vec_Ptr_t * vNodes;
     assert( !Aig_IsComplement(pObj) );
@@ -131,7 +162,7 @@ Vec_Ptr_t * Dar_BalanceCone( Aig_Obj_t * pObj, Vec_Vec_t * vStore, int Level)//,
     vNodes = Vec_VecEntry( vStore, Level );
     Vec_PtrClear( vNodes );
     // collect the nodes in the implication supergate
-    Dar_BalanceCone_rec( pObj, pObj, vNodes);//, Vliange);
+    Dar_BalanceCone_rec( pObj, pObj, vNodes, vLineage);
     // remove duplicates
     Dar_BalanceUniqify( pObj, vNodes, Aig_ObjIsExor(pObj) );
     return vNodes;
@@ -399,7 +430,7 @@ void Dar_BalancePushUniqueOrderByLevel( Vec_Ptr_t * vStore, Aig_Obj_t * pObj, in
   SeeAlso     []
 
 ***********************************************************************/
-Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel ) //, vLinage)
+Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel, Vec_Int_t * vLineage)
 {
     Aig_Obj_t * pObj1, * pObj2;
     int LeftBound;
@@ -419,7 +450,12 @@ Aig_Obj_t * Dar_BalanceBuildSuper( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t
         // accoring to gimini Aig_Oper(p, pObj1, pObj2, Type) creates new agi_obj_t wich is what creates new graph
         // so tranfer linkage here
         Aig_Obj_t * pNewNode = Aig_Oper(p, pObj1, pObj2, Type);
-        pNewNode->iGiaLineageId = 8;
+        if (Vec_IntSize(vLineage) > 1){
+            pNewNode->vGiaLineageId = vLineage;
+            pNewNode->oneAncestor = 0;
+        }
+        else
+            pNewNode->iGiaLineageId = Vec_IntEntry( vLineage, 0 );;
         Dar_BalancePushUniqueOrderByLevel( vSuper, Aig_Oper(p, pObj1, pObj2, Type), Type == AIG_OBJ_EXOR );
     }
     return vSuper->nSize ? (Aig_Obj_t *)Vec_PtrEntry(vSuper, 0) : Aig_ManConst0(p);
@@ -462,7 +498,7 @@ int Aig_BaseSize( Aig_Man_t * p, Aig_Obj_t * pObj, int nLutSize )
   SeeAlso     []
 
 ***********************************************************************/
-Aig_Obj_t * Dar_BalanceBuildSuperTop( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel, int nLutSize )
+Aig_Obj_t * Dar_BalanceBuildSuperTop( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Type_t Type, int fUpdateLevel, int nLutSize,Vec_Int_t * vLineage )
 {
     Vec_Ptr_t * vSubset;
     Aig_Obj_t * pObj;
@@ -487,7 +523,7 @@ Aig_Obj_t * Dar_BalanceBuildSuperTop( Aig_Man_t * p, Vec_Ptr_t * vSuper, Aig_Typ
         // remove them from vSuper
         Vec_PtrShrink( vSuper, Vec_PtrSize(vSuper) - Vec_PtrSize(vSubset) );
         // create the new supergate
-        pObj = Dar_BalanceBuildSuper( p, vSubset, Type, fUpdateLevel );
+        pObj = Dar_BalanceBuildSuper( p, vSubset, Type, fUpdateLevel, vLineage );
         Vec_PtrFree( vSubset );
         // add the new output
         Dar_BalancePushUniqueOrderByLevel( vSuper, pObj, Type == AIG_OBJ_EXOR );
@@ -519,30 +555,44 @@ Aig_Obj_t * Dar_Balance_rec( Aig_Man_t * pNew, Aig_Obj_t * pObjOld, Vec_Vec_t * 
     assert( Aig_ObjIsNode(pObjOld) );
     // get the implication supergate
     // initalize vLinage vector of int
-    vSuper = Dar_BalanceCone( pObjOld, vStore, Level);//, vLiange);
+    Vec_Int_t * vLineage = Vec_IntAlloc(2);
+    vSuper = Dar_BalanceCone( pObjOld, vStore, Level, vLineage);
     // check if supergate contains two nodes in the opposite polarity
-    if ( vSuper->nSize == 0 )
+    if ( vSuper->nSize == 0 ){
+        Vec_IntFree( vLineage );
         return (Aig_Obj_t *)(pObjOld->pData = Aig_ManConst0(pNew));
+    }
     // for each old node, derive the new well-balanced node
     for ( i = 0; i < Vec_PtrSize(vSuper); i++ )
     {
         pObjNew = Dar_Balance_rec( pNew, Aig_Regular((Aig_Obj_t *)vSuper->pArray[i]), vStore, Level + 1, fUpdateLevel );
-        if ( pObjNew == NULL )
+        if ( pObjNew == NULL ){
+            Vec_IntFree( vLineage );
             return NULL;
+        }
         pObjNew->iGiaLineageId = Aig_Regular((Aig_Obj_t *)vSuper->pArray[i])->iGiaLineageId;
         vSuper->pArray[i] = Aig_NotCond( pObjNew, Aig_IsComplement((Aig_Obj_t *)vSuper->pArray[i]) );
     }
     // check for exactly one node
-    if ( vSuper->nSize == 1 )
+    if ( vSuper->nSize == 1 ){
+        Vec_IntFree( vLineage );
         return (Aig_Obj_t *)Vec_PtrEntry(vSuper, 0);
+    }
     // build the supergate
 #ifdef USE_LUTSIZE_BALANCE
-    pObjNew = Dar_BalanceBuildSuperTop( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel, 6 );
+    pObjNew = Dar_BalanceBuildSuperTop( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel, 6, vLineage);
 #else
-    pObjNew = Dar_BalanceBuildSuper( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel);//, vLinage);
+    pObjNew = Dar_BalanceBuildSuper( pNew, vSuper, Aig_ObjType(pObjOld), fUpdateLevel, vLineage);
 #endif
-    //pNew->vvLingage.append(vLinage); // for freeing the vLinage after complition
-    pObjNew->iGiaLineageId = pObjOld->iGiaLineageId;
+    if ( Vec_IntSize(vLineage) > 1 ){
+        Vec_PtrPush( pNew->vvLinage, (void *) vLineage ); // for freeing the vLinage after deletion og AGI
+        pObjNew->vGiaLineageId = vLineage;
+    }
+    else{
+        pObjNew->vGiaLineageId = vLineage;
+        Vec_IntFree( vLineage );
+    }
+
     if ( pNew->Time2Quit && !(Aig_Regular(pObjNew)->Id & 255) && Abc_Clock() > pNew->Time2Quit )
         return NULL;
     // make sure the balanced node is not assigned
@@ -781,7 +831,7 @@ void Dar_BalancePrintStats( Aig_Man_t * p )
         if ( pObj->fMarkA && pObj->nRefs == 1 )
             continue;
         Vec_PtrClear( vSuper );
-        Dar_BalanceCone_rec( pObj, pObj, vSuper );
+        Dar_BalanceCone_rec( pObj, pObj, vSuper ,NULL); // TODO add NULL if else to the above modifyed code
         Vec_PtrForEachEntry( Aig_Obj_t *, vSuper, pTemp, k )
             pTemp->fMarkB = 0;
         if ( Vec_PtrSize(vSuper) < 3 )

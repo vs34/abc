@@ -83,7 +83,11 @@ struct Aig_Obj_t_  // 9 words
     unsigned         nCuts   :  8;   // the number of cuts
     int              TravId;         // unique ID of last traversal involving the node
     int              Id;             // unique ID of the node
-    int              iGiaLineageId;  // to map GIA -> AGI for linage   // change this to ptr to an array presnet in man
+    unsigned int  oneAncestor : 1; // what is used in below union
+    union {
+        int          iGiaLineageId;  // to map GIA -> AGI for linage  
+        Vec_Int_t *  vGiaLineageId;  // if AGI map to more then 1 GIA
+    };
     union {                          // temporary store for user's data
         void *       pData;
         int          iData;

@@ -66,6 +66,7 @@ Aig_Man_t * Aig_ManStart( int nNodesMax )
        //--jlong -- end
     // prepare the internal memory manager
     p->pMemObjs = Aig_MmFixedStart( sizeof(Aig_Obj_t), nNodesMax );
+    p->vvLinage = (void *)Vec_VecAlloc( 100 );
     // create the constant node
     p->pConst1 = Aig_ManFetchMemory( p );
     p->pConst1->Type = AIG_OBJ_CONST1;
@@ -217,6 +218,11 @@ void Aig_ManStop( Aig_Man_t * p )
     Vec_IntFreeP( &p->vProbs );
     Vec_IntFreeP( &p->vCiNumsOrig );
     Vec_PtrFreeP( &p->vMapped );
+    if ( p->vvLinage )
+    {
+        Vec_VecFree( (Vec_Vec_t *)p->vvLinage );
+        p->vvLinage = NULL;
+    }
     if ( p->vSeqModelVec )
         Vec_PtrFreeFree( p->vSeqModelVec );
     ABC_FREE( p->pTerSimData );
