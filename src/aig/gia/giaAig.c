@@ -840,6 +840,31 @@ Gia_Man_t * Gia_ManPerformDch( Gia_Man_t * p, void * pPars ) // p -> value => pG
     Gia_ManStop( pGia1 );
     pNew = Dar_ManChoiceNew( pNew, (Dch_Pars_t *)pPars ); // some aig transformation on gia
 
+ 
+    ////////////////////// DEBUG //////////////////
+    Aig_Obj_t * pObj;
+    int ii;
+    int nFound = 0;
+    if ( pNew == NULL ) { printf( "[Debug] compress before balance Aig_Man is NULL.\n" ); }
+    else{
+    printf( "\n[Debug] in Gia_ManPerformDch Dumping AIG Lineage (Node ID -> Gia Lineage ID):\n" );
+    printf( "-------------------------------------------------------\n" );
+    printf( "  Node ID  |  Lineage ID (Original GIA Node)\n" );
+    printf( "-------------------------------------------------------\n" );
+    Aig_ManForEachObj( pNew, pObj, ii ) {
+        if ( pObj->iGiaLineageId == 0 ) continue;
+        printf( "  %7d  ->  %7d", pObj->Id, pObj->iGiaLineageId -1);
+        if ( Aig_ObjIsCi(pObj) ) printf( " (PI)" );
+        else if ( Aig_ObjIsCo(pObj) ) printf( " (PO)" );
+        else if ( Aig_ObjIsConst1(pObj) ) printf( " (Const)" );
+        printf( "\n" ); nFound++;
+    }
+    printf( "-------------------------------------------------------\n" );
+    printf( "Total nodes with lineage info: %d / %d\n", nFound, Aig_ManObjNum(pNew) );
+    }
+    ////////////////////// DEBUG //////////////////
+
+
 //    pGia = Gia_ManFromAig( pNew );
     pGia = Gia_ManFromAigChoices( pNew ); // new pNew -> ppNode => pGia [ppNode is temp]
     Aig_ManStop( pNew );
